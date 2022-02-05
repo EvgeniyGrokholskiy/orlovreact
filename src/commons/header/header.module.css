@@ -1,0 +1,26 @@
+.header__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 137px;
+    margin: 0 0 5.8%;
+}
+
+.header__logo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    height: 80px;
+    width: 80px;
+}
+
+.header__h1 {
+    font-family: 'Pattaya', sans-serif;
+    font-size: 33px;
+    font-weight: 500;
+    color: var(--orange);
+    margin-left: 26px;
+}

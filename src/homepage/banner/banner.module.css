@@ -1,0 +1,70 @@
+.banner {
+    display: flex;
+    align-items: center;
+    background-color: var(--orange) ;
+    border-radius: 12px;
+    padding: 0 3%;
+    margin: 93px auto 36px;
+    height: 147px;
+    max-width: 1140px;
+    width: 100%;
+}
+
+.size {
+    margin-left: 100px;
+}
+
+.size_header, .price_header {
+    color: var(--white_text);
+    font-family: Roboto-Regular, sans-serif;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.46em;
+    letter-spacing: 0;
+    margin: 0 0 5px;
+}
+
+.size_text, .price_text  {
+    color: var(--white_text);
+    font-family: Roboto-Regular, sans-serif;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.6em;
+    letter-spacing: 0;
+    width: 17em;
+    margin: 5px 0 0 0;
+}
+
+.price {
+    margin-left: 180px;
+}
+
+.price_text {
+    margin: 5px 0 23px;
+}
+
+
+@media screen and (max-width: 1100px) {
+    .banner {
+        justify-content: space-around;
+        margin-top: 40px;
+    }
+
+    .banner__size, .banner__price {
+        margin: 0;
+    }
+
+    .banner__price_header {
+        font-size: 20px;
+    }
+
+    .banner__size_text {
+        font-size: 14px;
+    }
+
+    .banner__price_text {
+        font-size: 14px;
+    }
+}

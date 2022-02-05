@@ -1,7 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1db4bea4-2679-42e4-8c16-8a37b79ebd5f" name="Changes" comment="" />
+    <list default="true" id="1db4bea4-2679-42e4-8c16-8a37b79ebd5f" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/fonts/Pattaya-Regular.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/fonts/Pattaya-Regular.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/fonts/Roboto-Regular.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/fonts/Roboto-Regular.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/fonts/stylesheet.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/common/logo.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/footer/logo_orange_bg.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/homepage/apple.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/homepage/new_tag.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/homepage/slide_1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/homepage/slide_2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/homepage/slide_3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/homepage/spotify.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/homepage/vk.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/commons/button/button.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/commons/footer/footer.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/commons/footer/footer.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/commons/header/back/back.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/commons/header/back/back.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/commons/header/header.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/commons/header/header.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/commons/header/heeaderRoute.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/commons/link/link.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/delivery/delivery.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/homepage/banner/banner.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/homepage/banner/banner.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/homepage/coverSelect/coveSelect.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/homepage/coverSelect/coverSelectButton/coverSelectButton.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/homepage/coverSelect/coverSlect.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/homepage/homepage.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/homepage/homepage.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/homepage/sizeselect/sizeSelect.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/homepage/sizeselect/sizeSelect.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/homepage/sizeselect/syzeSelectButton/sizeSelectButton.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/homepage/slider/slider.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/order/order.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/page404/page404.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/policy/policy.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/promotions/promotions.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/reviews/reviews.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logo.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -10,23 +61,51 @@
   <component name="ComposerSettings">
     <execution />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="TypeScript File" />
+        <option value="CSS File" />
+        <option value="TypeScript JSX File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/my-app" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="24g6sHa3OW92hh2so98xiu8XpwO" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../site" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/assets/images/homepage" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="ts.external.directory.path" value="D:\FRONT\orlov\reactSPA\my-app\node_modules\typescript\lib" />
+    <property name="ts.external.directory.path" value="D:\FRONT\orlov\reactsra\node_modules\typescript\lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\FRONT\orlov\reactsra\src\assets\images\homepage" />
+      <recent name="D:\FRONT\orlov\reactsra\src\assets\images\footer" />
+      <recent name="D:\FRONT\orlov\reactsra\src\homepage\header\img" />
+      <recent name="D:\FRONT\orlov\reactsra\src\assets\images\common" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\FRONT\orlov\reactsra\src\commons\footer" />
+      <recent name="D:\FRONT\orlov\reactsra\src\homepage" />
+      <recent name="D:\FRONT\orlov\reactsra\src\commons\header\back" />
+      <recent name="D:\FRONT\orlov\reactsra\src\commons" />
+      <recent name="D:\FRONT\orlov\reactsra\src" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -37,10 +116,15 @@
       <option name="presentableId" value="Default" />
       <updated>1644040087665</updated>
       <workItem from="1644040088795" duration="2122000" />
+      <workItem from="1644042331046" duration="17513000" />
+      <workItem from="1644066003419" duration="20408000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
 </project>
