@@ -2,7 +2,7 @@ import React from "react";
 import Banner from "./banner/banner";
 import Link from "../commons/link/link";
 import styles from "./homepage.module.css"
-import Button from "../commons/button/button";
+import MyButton from "../commons/button/myButton";
 import SizeSelect from "./sizeselect/sizeSelect";
 import FocusOnSelectSlider from "./slider/slider";
 import CoveSelect from "./coverSelect/coveSelect";
@@ -24,7 +24,7 @@ const Homepage = () => {
                             телефона на специальный spotify-код
                         </p>
                         <div className={styles.order_buttons}>
-                            <Button className={`${styles.order_button} ${styles.shadow}`}>Заказать</Button>
+                            <MyButton className={`${styles.order_button} ${styles.shadow}`}>Заказать</MyButton>
                             <Link
                                 className={`${styles.link} ${styles.instagram} ${styles.shadow} ${styles.shadowRound}`}
                                 ariaLabel="ссылка на инстаграм"

@@ -5,7 +5,7 @@ type PropsType = {
     className: string
 }
 
-const Button: React.FC<PropsType> = ({children, className}:PropsType) => {
+const MyButton: React.FC<PropsType> = ({children, className}:PropsType) => {
     return (
         <button className={className}>
             {children}
@@ -13,4 +13,4 @@ const Button: React.FC<PropsType> = ({children, className}:PropsType) => {
     );
 };
 
-export default Button;
+export default MyButton;
