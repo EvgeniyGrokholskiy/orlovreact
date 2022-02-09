@@ -1,8 +1,8 @@
 import Slider from "react-slick";
 import React, {Component} from "react";
-import slide1 from "../../assets/images/homepage/slide_1.jpg"
-import slide2 from "../../assets/images/homepage/slide_2.jpg"
-import slide3 from "../../assets/images/homepage/slide_3.jpg"
+import slide1 from "../../../assets/images/homepage/slide_1.jpg"
+import slide2 from "../../../assets/images/homepage/slide_2.jpg"
+import slide3 from "../../../assets/images/homepage/slide_3.jpg"
 
 
 export default class FocusOnSelect extends Component {

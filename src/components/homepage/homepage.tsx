@@ -1,14 +1,23 @@
 import React from "react";
+import {connect} from "react-redux";
 import Banner from "./banner/banner";
-import Link from "../commons/link/link";
 import styles from "./homepage.module.css"
-import MyButton from "../commons/button/myButton";
+import MyLink from "../commons/link/myLink";
+import {RootStateType} from "../../redux/store";
 import SizeSelect from "./sizeselect/sizeSelect";
 import FocusOnSelectSlider from "./slider/slider";
 import CoveSelect from "./coverSelect/coveSelect";
+import {setCoverActionCreator} from "../../redux/coverSelectReducer";
+import {sizeSelectActionCreator} from "../../redux/sizeSelectReducer";
 
+type PropsType = {
+    covers: Array<{ tabIndex: number, name: string, className: string, selected: boolean, cover: any }>
+    sizes: Array<{ format: string, name: string, price: string, selected: boolean, size: string, tabIndex: number, top: boolean }>
+    setCoverActionCreator: (index: number) => void
+    sizeSelectActionCreator: (index:number) => void
+}
 
-const Homepage = () => {
+const Homepage = ({covers, setCoverActionCreator, sizes, sizeSelectActionCreator}: PropsType) => {
 
     return (
         <main>
@@ -24,8 +33,9 @@ const Homepage = () => {
                             телефона на специальный spotify-код
                         </p>
                         <div className={styles.order_buttons}>
-                            <MyButton className={`${styles.order_button} ${styles.shadow}`}>Заказать</MyButton>
-                            <Link
+                            <MyLink className={`${styles.order_button} ${styles.shadow}`} ariaLabel={""}
+                                    href={"#size_select"} target={"_self"}>Заказать</MyLink>
+                            <MyLink
                                 className={`${styles.link} ${styles.instagram} ${styles.shadow} ${styles.shadowRound}`}
                                 ariaLabel="ссылка на инстаграм"
                                 href="https://www.instagram.com/trend_gifts74/"/>
@@ -41,16 +51,29 @@ const Homepage = () => {
                 <Banner/>
             </section>
             <section>
-                <SizeSelect/>
+                <SizeSelect sizes={sizes} sizeSelectActionCreator={sizeSelectActionCreator}/>
                 <hr className={styles.separator}/>
             </section>
             <section>
-                <CoveSelect />
+                <CoveSelect covers={covers} setCoverActionCreator={setCoverActionCreator}/>
                 <hr className={styles.separator}/>
-                <Link className={`${styles.continue} shadow`} data-href="" ariaLabel={""} href={""} target={"_self"}>Продолжить</Link>
+                <MyLink className={`${styles.continue} shadow`} data-href="" ariaLabel={""} href={""}
+                        target={"_self"}>Продолжить</MyLink>
             </section>
         </main>
     );
 };
 
-export default Homepage;
+const mapStateToProps = (state: RootStateType) => ({
+    covers: state.covers,
+    sizes: state.size
+})
+
+const mapDispatchToProps = {
+    setCoverActionCreator,
+    sizeSelectActionCreator
+}
+
+const ConnectedHomePage = connect(mapStateToProps, mapDispatchToProps)(Homepage)
+
+export default ConnectedHomePage;

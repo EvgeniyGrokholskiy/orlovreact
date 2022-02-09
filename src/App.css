@@ -245,3 +245,25 @@ img {
     background-position: 15px center;
     background-repeat: no-repeat;
 }
+
+.shadow {
+    box-shadow: 4px 4px 9px gray;
+}
+
+.shadow-round {
+    border-radius: 50%;
+}
+
+.shadow-no_shadow {
+    box-shadow: none;
+}
+
+.shadow:hover {
+    transform: scale(1.03);
+    box-shadow: 5px 5px 5px gray;
+}
+
+.shadow:active {
+    transform: scale(0.99);
+    box-shadow: 3px 3px 3px gray;
+}

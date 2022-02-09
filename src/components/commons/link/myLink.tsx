@@ -8,7 +8,7 @@ type PropsType = {
     target?:string
 }
 
-const Link: React.FC<PropsType> = ({children, className, href, ariaLabel,target="_blank"}: PropsType) => {
+const MyLink: React.FC<PropsType> = ({children, className, href, ariaLabel,target="_blank"}: PropsType) => {
     return (
         <a href={href} target={target} className={className} aria-label={ariaLabel}>
             {children}
@@ -16,4 +16,4 @@ const Link: React.FC<PropsType> = ({children, className, href, ariaLabel,target=
     );
 };
 
-export default Link;
+export default MyLink;

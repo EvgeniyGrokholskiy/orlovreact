@@ -5,17 +5,14 @@ type StateItemType = { tabIndex: number, name: string, className: string, select
 
 type PropsType = {
     item: StateItemType,
-    callback: (path: string) => void
+    callback: (index: number) => void
 }
 
 const CoverSelectButton = ({item, callback}: PropsType) => {
     return (
-        <div key={item.tabIndex} className={`${item.className} ${styles.button} shadow shadow-no_shadow`}
-             tabIndex={item.tabIndex}
-             data-src="img/apple.jpg"
-             data-cover={item.cover}
+        <div className={`${item.className} ${styles.button} ${item.selected ? styles.selected : ""} shadow shadow-no_shadow`}
              onClick={() => {
-                 callback(item.cover)
+                 callback(item.tabIndex)
              }}
         >
             <p className={styles.text}>{item.name}</p>

@@ -1,13 +1,13 @@
 import React from 'react';
 import styles from "../sizeSelect.module.css";
 
-type PropsType = {name:string, tabIndex: number, format: string, size: string, price: string, top: boolean }
+type PropsType = { callback: (index: number) => void, name: string, tabIndex: number, format: string, selected: boolean, size: string, price: string, top: boolean }
 
-const SizeSelectButton = ({name, tabIndex, format, size, price, top}: PropsType) => {
+const SizeSelectButton = ({callback, name, tabIndex, format, selected, size, price, top}: PropsType) => {
 
     return (
-        <div className={`${name} ${styles.button} ${"shadow"} ${"shadowNoShadow"}`} tabIndex={tabIndex}
-             data-number="small">
+        <div className={`${name} ${styles.button} ${selected ? styles.selected : ""} shadow shadowNoShadow`} tabIndex={tabIndex}
+             onClick={()=>{callback(tabIndex)}}>
             {
                 top ?
                     <div className={styles.top_tag}/>
