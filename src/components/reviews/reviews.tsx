@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Reviews = () => {
+const Reviews:React.FC = () => {
     return (
         <div>
             reviews

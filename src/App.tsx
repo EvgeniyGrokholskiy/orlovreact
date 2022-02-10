@@ -1,10 +1,10 @@
 import './App.css';
 import React from 'react';
 import Order from "./components/order/order";
+import {Route, Routes} from "react-router-dom";
 import Policy from "./components/policy/policy";
 import Reviews from './components/reviews/reviews';
 import Page404 from './components/page404/page404';
-import {Link, Route, Routes} from "react-router-dom";
 import Delivery from "./components/delivery/delivery";
 import Footer from "./components/commons/footer/footer";
 import Promotions from "./components/promotions/promotions";

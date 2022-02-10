@@ -1,10 +1,10 @@
 import React from 'react';
 import {Link} from "react-router-dom";
-import style from "./back.module.css"
+import styles from "./back.module.css";
 
-const Back = () => {
+const Back:React.FC = () => {
     return (
-        <Link to={"/"} className={style.link}>
+        <Link to={"/"} className={styles.link}>
           <span>
             <svg xmlns="http://www.w3.org/2000/svg" width="20"
                  height="14" fill="none">

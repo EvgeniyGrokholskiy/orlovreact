@@ -1,18 +1,30 @@
-import React from 'react';
+import React, {ReactNode, MouseEvent} from 'react';
 
 type PropsType = {
-    children?: JSX.Element | string
+    children?: ReactNode
     href: string
     ariaLabel: string
     className: string
-    target?:string
+    target?: string
+    callback?: null | (() => void)
 }
 
-const MyLink: React.FC<PropsType> = ({children, className, href, ariaLabel,target="_blank"}: PropsType) => {
+const MyLink: React.FC<PropsType> = ({children, className, href, ariaLabel, target = "_blank", callback = null}: PropsType) => {
     return (
-        <a href={href} target={target} className={className} aria-label={ariaLabel}>
-            {children}
-        </a>
+        <>
+            {
+                !callback ?
+
+                <a href={href} target={target} className={className} aria-label={ariaLabel}>
+                    {children}
+                </a>
+                :
+                <div className={className} onClick={(event:MouseEvent<HTMLDivElement>)=>callback()}>
+                    {children}
+                </div>
+            }
+        </>
+
     );
 };
 

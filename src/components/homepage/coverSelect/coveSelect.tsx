@@ -1,17 +1,17 @@
-import React from 'react';
+import React, {ReactNode} from 'react';
 import styles from "./coverSlect.module.css";
 import CoverSelectButton from "./coverSelectButton/coverSelectButton";
-import {setCoverActionCreator} from "../../../redux/coverSelectReducer";
 
 
 type PropsType = {
     covers: Array<{ tabIndex: number, name: string, className: string, selected: boolean, cover: any }>
     setCoverActionCreator: (index: number) => void
+    children?: ReactNode
 }
 
 type StateItemType = { tabIndex: number, name: string, className: string, selected: boolean, cover: any };
 
-const CoveSelect = ({covers, setCoverActionCreator}: PropsType) => {
+const CoveSelect:React.FC<PropsType> = ({covers, setCoverActionCreator}: PropsType) => {
 
     return (
 
@@ -43,8 +43,6 @@ const CoveSelect = ({covers, setCoverActionCreator}: PropsType) => {
                         }
                     )
                 }
-                {/* <img src={selectedCover} alt="Проигрыватель онлайн музыки" id="cover_img" width="280"
-                     height="379"/>*/}
             </div>
         </div>
     );

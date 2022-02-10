@@ -1,8 +1,19 @@
 import apple from "../assets/images/homepage/apple.jpg";
-import spotify from "../assets/images/homepage/spotify.jpg";
 import vk_music from "../assets/images/homepage/vk.jpg";
+import spotify from "../assets/images/homepage/spotify.jpg";
 
 const SET_COVER = "SET_COVER"
+
+type SetCoverAction = {
+    type: typeof SET_COVER
+    payload: number
+}
+
+type CoverSelectActions = SetCoverAction
+
+type coverSelectReducerType = (state:InitialStateType, action:CoverSelectActions) => InitialStateType
+
+type SetCoverActionCreatorType = (index: number) => { type: typeof SET_COVER, payload: number }
 
 type StateItem = {
     tabIndex: number,
@@ -38,7 +49,7 @@ const initialState: InitialStateType = [
     }
 ]
 
-const coverSelectReducer = (state: InitialStateType = initialState, action: { type: string, payload?: any }) => {
+const coverSelectReducer:coverSelectReducerType = (state: InitialStateType = initialState, action: CoverSelectActions) => {
     switch (action.type) {
         case SET_COVER: {
             const newState: any = state.map((item: StateItem) => {
@@ -58,8 +69,6 @@ const coverSelectReducer = (state: InitialStateType = initialState, action: { ty
     }
 }
 
-type SetCoverActionType = (index: number) => { type: typeof SET_COVER, payload: number }
-
-export const setCoverActionCreator: SetCoverActionType = (index: number) => ({type: SET_COVER, payload: index})
+export const setCoverActionCreator: SetCoverActionCreatorType = (index: number) => ({type: SET_COVER, payload: index})
 
 export default coverSelectReducer;

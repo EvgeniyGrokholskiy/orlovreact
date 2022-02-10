@@ -3,7 +3,7 @@ import styles from "../sizeSelect.module.css";
 
 type PropsType = { callback: (index: number) => void, name: string, tabIndex: number, format: string, selected: boolean, size: string, price: string, top: boolean }
 
-const SizeSelectButton = ({callback, name, tabIndex, format, selected, size, price, top}: PropsType) => {
+const SizeSelectButton:React.FC<PropsType> = ({callback, name, tabIndex, format, selected, size, price, top}: PropsType) => {
 
     return (
         <div className={`${name} ${styles.button} ${selected ? styles.selected : ""} shadow shadowNoShadow`} tabIndex={tabIndex}

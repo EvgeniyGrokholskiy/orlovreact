@@ -1,14 +1,15 @@
-import React from 'react';
+import React, {ReactNode} from 'react';
 import styles from "../coverSlect.module.css";
 
 type StateItemType = { tabIndex: number, name: string, className: string, selected: boolean, cover: any }
 
 type PropsType = {
-    item: StateItemType,
+    item: StateItemType
     callback: (index: number) => void
+    children?:ReactNode
 }
 
-const CoverSelectButton = ({item, callback}: PropsType) => {
+const CoverSelectButton:React.FC<PropsType> = ({item, callback}: PropsType) => {
     return (
         <div className={`${item.className} ${styles.button} ${item.selected ? styles.selected : ""} shadow shadow-no_shadow`}
              onClick={() => {

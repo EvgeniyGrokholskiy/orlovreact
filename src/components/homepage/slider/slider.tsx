@@ -20,13 +20,13 @@ export default class FocusOnSelect extends Component {
             <>
                 <Slider {...settings}>
                     <div>
-                        <img src={slide1} alt={"Пример продукции"}/>
+                        <img className={"img"} src={slide1} alt={"Пример продукции"}/>
                     </div>
                     <div>
-                        <img src={slide2} alt={"Пример продукции"}/>
+                        <img className={"img"} src={slide2} alt={"Пример продукции"}/>
                     </div>
                     <div>
-                        <img src={slide3} alt={"Пример продукции"}/>
+                        <img className={"img"} src={slide3} alt={"Пример продукции"}/>
                     </div>
                 </Slider>
             </>

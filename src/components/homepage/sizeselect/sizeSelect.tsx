@@ -1,4 +1,4 @@
-import React, {MouseEventHandler} from "react";
+import React, {ReactNode} from "react";
 import styles from "./sizeSelect.module.css"
 import SizeSelectButton from "./syzeSelectButton/sizeSelectButton";
 
@@ -16,9 +16,10 @@ type ItemType = {
 type PropsType = {
     sizes: Array<ItemType>
     sizeSelectActionCreator: (index: number) => void
+    children?:ReactNode
 }
 
-const SizeSelect = ({sizes, sizeSelectActionCreator}: PropsType) => {
+const SizeSelect:React.FC<PropsType> = ({sizes, sizeSelectActionCreator}: PropsType) => {
 
     return (
         <div className={styles.size_select}>

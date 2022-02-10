@@ -1,5 +1,15 @@
 const SET_SIZE = "SET_SIZE";
 
+type SetSizeAction = {
+    type: typeof SET_SIZE
+    payload: number
+}
+type SetSizeActions = SetSizeAction
+
+type SizeSelectReducerType = (state:InitialStateType, action: SetSizeActions)=> InitialStateType
+
+type SizeSelectActionType = (index: number) => { type: typeof SET_SIZE, payload: number }
+
 type InitialStateItem = {
     format: string,
     name: string,
@@ -50,8 +60,7 @@ const InitialState: InitialStateType = [
     }
 ]
 
-
-export const SizeSelectReducer = (state: InitialStateType = InitialState, action: { type: string, payload?: any }) => {
+export const SizeSelectReducer:SizeSelectReducerType = (state: InitialStateType = InitialState, action: SetSizeActions) => {
 
     switch (action.type) {
         case SET_SIZE: {
@@ -68,7 +77,5 @@ export const SizeSelectReducer = (state: InitialStateType = InitialState, action
             return state
     }
 }
-
-type SizeSelectActionType = (index: number) => { type: typeof SET_SIZE, payload: number }
 
 export const sizeSelectActionCreator: SizeSelectActionType = (index: number) => ({type: SET_SIZE, payload: index})

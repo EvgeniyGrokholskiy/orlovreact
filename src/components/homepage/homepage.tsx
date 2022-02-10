@@ -1,7 +1,7 @@
-import React from "react";
 import {connect} from "react-redux";
 import Banner from "./banner/banner";
-import styles from "./homepage.module.css"
+import React, {ReactNode} from "react";
+import styles from "./homepage.module.css";
 import MyLink from "../commons/link/myLink";
 import {RootStateType} from "../../redux/store";
 import SizeSelect from "./sizeselect/sizeSelect";
@@ -15,9 +15,10 @@ type PropsType = {
     sizes: Array<{ format: string, name: string, price: string, selected: boolean, size: string, tabIndex: number, top: boolean }>
     setCoverActionCreator: (index: number) => void
     sizeSelectActionCreator: (index:number) => void
+    children?: ReactNode;
 }
 
-const Homepage = ({covers, setCoverActionCreator, sizes, sizeSelectActionCreator}: PropsType) => {
+const Homepage:React.FC<PropsType> = ({covers, setCoverActionCreator, sizes, sizeSelectActionCreator}: PropsType) => {
 
     return (
         <main>
@@ -34,7 +35,7 @@ const Homepage = ({covers, setCoverActionCreator, sizes, sizeSelectActionCreator
                         </p>
                         <div className={styles.order_buttons}>
                             <MyLink className={`${styles.order_button} ${styles.shadow}`} ariaLabel={""}
-                                    href={"#size_select"} target={"_self"}>Заказать</MyLink>
+                                    href={"#order"} target={"_self"}>Заказать</MyLink>
                             <MyLink
                                 className={`${styles.link} ${styles.instagram} ${styles.shadow} ${styles.shadowRound}`}
                                 ariaLabel="ссылка на инстаграм"
