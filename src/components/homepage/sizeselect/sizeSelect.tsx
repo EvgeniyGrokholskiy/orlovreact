@@ -15,16 +15,17 @@ type ItemType = {
 
 type PropsType = {
     sizes: Array<ItemType>
+    error: boolean
     sizeSelectActionCreator: (index: number) => void
     children?:ReactNode
 }
 
-const SizeSelect:React.FC<PropsType> = ({sizes, sizeSelectActionCreator}: PropsType) => {
+const SizeSelect:React.FC<PropsType> = ({sizes, error, sizeSelectActionCreator}: PropsType) => {
 
     return (
         <div className={styles.size_select}>
             <div className={styles.header}>
-                <h2 id="size_select" className={styles.header__text}>Выберите размер</h2>
+                <h2 id="size_select" className={`${styles.header__text} ${error ? styles.error : ""}`}>Выберите размер</h2>
             </div>
             <div className={styles.buttons}>
                 {

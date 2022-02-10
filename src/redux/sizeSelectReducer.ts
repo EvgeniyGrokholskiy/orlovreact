@@ -1,14 +1,24 @@
-const SET_SIZE = "SET_SIZE";
+const SET_SIZE = "SET_SIZE"
+const SET_ERROR = "SET_ERROR"
+const REMOVE_ERROR = "REMOVE_ERROR"
 
 type SetSizeAction = {
     type: typeof SET_SIZE
     payload: number
 }
-type SetSizeActions = SetSizeAction
+type SetErrorAction = {
+    type: typeof SET_ERROR
+}
+type RemoveErrorAction = {
+    type: typeof REMOVE_ERROR
+}
+type SetSizeActions = SetSizeAction | SetErrorAction | RemoveErrorAction
 
-type SizeSelectReducerType = (state:InitialStateType, action: SetSizeActions)=> InitialStateType
+type SizeSelectReducerType = (state: SizeSelectStateType, action: SetSizeActions) => SizeSelectStateType
 
 type SizeSelectActionType = (index: number) => { type: typeof SET_SIZE, payload: number }
+type SetErrorActionType = () => { type: typeof SET_ERROR}
+type RemoveErrorActionType = () => { type: typeof REMOVE_ERROR}
 
 type InitialStateItem = {
     format: string,
@@ -19,57 +29,79 @@ type InitialStateItem = {
     tabIndex: number,
     top: boolean,
 }
-export type InitialStateType = Array<InitialStateItem>
+export type SizeSelectStateType = {
+    error: boolean
+    sizes: Array<InitialStateItem>
+}
 
-const InitialState: InitialStateType = [
-    {
-        format: "A5",
-        name: "small",
-        price: "990",
-        selected: true,
-        size: "148.0×210.0 мм, толщина 3 мм",
-        tabIndex: 5,
-        top: false
-    },
-    {
-        format: "A4",
-        name: "medium",
-        price: "1490",
-        selected: false,
-        size: "210.0×297.0 мм, толщина 3 мм",
-        tabIndex: 6,
-        top: false
-    },
-    {
-        format: "A3",
-        name: "large",
-        price: "3990",
-        selected: false,
-        size: "300.0×400.0 мм, толщина 3 мм",
-        tabIndex: 7,
-        top: false
-    },
-    {
-        format: "Брелок с колечком",
-        name: "trinket",
-        price: "490",
-        selected: false,
-        size: "50,0×65,0 мм, толщина 3 мм",
-        tabIndex: 8,
-        top: true
-    }
-]
+const InitialState: SizeSelectStateType = {
+    error: false,
+    sizes: [
+        {
+            format: "A5",
+            name: "small",
+            price: "990",
+            selected: true,
+            size: "148.0×210.0 мм, толщина 3 мм",
+            tabIndex: 5,
+            top: false
+        },
+        {
+            format: "A4",
+            name: "medium",
+            price: "1490",
+            selected: false,
+            size: "210.0×297.0 мм, толщина 3 мм",
+            tabIndex: 6,
+            top: false
+        },
+        {
+            format: "A3",
+            name: "large",
+            price: "3990",
+            selected: false,
+            size: "300.0×400.0 мм, толщина 3 мм",
+            tabIndex: 7,
+            top: false
+        },
+        {
+            format: "Брелок с колечком",
+            name: "trinket",
+            price: "490",
+            selected: false,
+            size: "50,0×65,0 мм, толщина 3 мм",
+            tabIndex: 8,
+            top: true
+        }
+    ]
+}
 
-export const SizeSelectReducer:SizeSelectReducerType = (state: InitialStateType = InitialState, action: SetSizeActions) => {
+export const SizeSelectReducer: SizeSelectReducerType = (state: SizeSelectStateType = InitialState, action: SetSizeActions) => {
 
     switch (action.type) {
         case SET_SIZE: {
 
-            return state.map((item: InitialStateItem) => {
+            const newSizes = state.sizes.map((item: InitialStateItem) => {
                 if (item.tabIndex === action.payload) {
+                    sessionStorage.setItem("size", item.name)
                     return ({...item, selected: true})
                 }
                 return ({...item, selected: false})
+            })
+            return ({
+                ...state, sizes:newSizes, error: false
+            })
+        }
+
+        case SET_ERROR: {
+            return ({
+                ...state, error: true
+            })
+        }
+
+        case REMOVE_ERROR: {
+            return ({
+                ...state,error:false
             })
         }
 
@@ -79,3 +111,5 @@ export const SizeSelectReducer:SizeSelectReducerType = (state: InitialStateType 
 }
 
 export const sizeSelectActionCreator: SizeSelectActionType = (index: number) => ({type: SET_SIZE, payload: index})
+export const setSizeErrorActionCreator: SetErrorActionType = () => ({type: SET_ERROR})
+export const removeSizeErrorActionCreator: RemoveErrorActionType = () => ({type: REMOVE_ERROR})

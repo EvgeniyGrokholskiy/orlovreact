@@ -1,6 +1,6 @@
 import {combineReducers, createStore} from 'redux'
-import coverSelectReducer from "./coverSelectReducer";
-import {SizeSelectReducer} from "./sizeSelectReducer";
+import coverSelectReducer, {IInitialState} from "./coverSelectReducer";
+import {SizeSelectReducer, SizeSelectStateType} from "./sizeSelectReducer";
 
 
 const reducers = combineReducers({

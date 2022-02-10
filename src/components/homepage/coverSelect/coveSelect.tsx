@@ -5,20 +5,23 @@ import CoverSelectButton from "./coverSelectButton/coverSelectButton";
 
 type PropsType = {
     covers: Array<{ tabIndex: number, name: string, className: string, selected: boolean, cover: any }>
+    error: boolean
     setCoverActionCreator: (index: number) => void
     children?: ReactNode
 }
 
 type StateItemType = { tabIndex: number, name: string, className: string, selected: boolean, cover: any };
 
-const CoveSelect:React.FC<PropsType> = ({covers, setCoverActionCreator}: PropsType) => {
+const CoveSelect: React.FC<PropsType> = ({covers, error, setCoverActionCreator}: PropsType) => {
 
     return (
 
         <div className={styles.cover_select}>
             <div className={styles.container}>
                 <div className={styles.header}>
-                    <h2 id="cover_select" className={styles.header_text}>Выберите макет</h2>
+                    <h2 id="cover_select" className={`${styles.header_text} ${error ? styles.error : ""}`}>
+                        Выберите макет
+                    </h2>
                 </div>
                 <div className={styles.buttons}>
                     {

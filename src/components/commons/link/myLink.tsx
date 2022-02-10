@@ -1,6 +1,7 @@
 import React, {ReactNode, MouseEvent} from 'react';
 
 type PropsType = {
+    ref?: any
     children?: ReactNode
     href: string
     ariaLabel: string
@@ -9,23 +10,24 @@ type PropsType = {
     callback?: null | (() => void)
 }
 
-const MyLink: React.FC<PropsType> = ({children, className, href, ariaLabel, target = "_blank", callback = null}: PropsType) => {
+const MyLink: React.FC<PropsType> = React.forwardRef((props,ref:any) => {
+    const {href,ariaLabel,children,callback,className,target} = props
     return (
         <>
             {
                 !callback ?
 
-                <a href={href} target={target} className={className} aria-label={ariaLabel}>
+                <a ref={ref} href={href} target={target} className={className} aria-label={ariaLabel}>
                     {children}
                 </a>
                 :
-                <div className={className} onClick={(event:MouseEvent<HTMLDivElement>)=>callback()}>
+                <div ref={ref} className={className} onClick={(event:MouseEvent<HTMLDivElement>)=>callback()}>
                     {children}
                 </div>
             }
         </>
 
     );
-};
+});
 
 export default MyLink;
