@@ -2,31 +2,22 @@ main {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    flex: 1 0 auto;
+    margin: 9% 0;
 }
 
-.header__container {
-
-}
-
-.header__nav {
-    justify-content: flex-end;
-    background: none;
-}
-
-.delivery_container {
+.container {
     display: flex;
     justify-content: space-between;
     padding: 0 9%;
     width: 100%;
 }
 
-.delivery__chose {
+.chose {
     max-width: 580px;
     width: 100%;
 }
 
-.delivery__header {
+.header {
     font-family: Roboto-Regular, sans-serif;
     font-size: 42px;
     font-style: normal;
@@ -37,7 +28,7 @@ main {
     margin-bottom: 37px;
 }
 
-.delivery__info {
+.info {
     font-family: Roboto-Regular, sans-serif;
     font-size: 16px;
     font-style: normal;
@@ -47,7 +38,7 @@ main {
     color: var(--text_color);
 }
 
-.delivery__destination {
+.destination {
     font-family: Roboto-Regular, sans-serif;
     font-size: 24px;
     font-style: normal;
@@ -57,7 +48,7 @@ main {
     color: var(--text_color);
 }
 
-.delivery__destination_chose {
+.destination_chose {
     font-family: Roboto-Regular, sans-serif;
     font-size: 20px;
     font-style: normal;
@@ -74,7 +65,17 @@ main {
     width: 100%;
 }
 
-.delivery__icons {
+.separator {
+    color: var(--gray);
+    background-color: var(--gray);
+    border: none;
+    height: 1px;
+    margin: 40px auto;
+    max-width: 1140px;
+    width: 100%;
+}
+
+.icons {
     margin-top: 87px;
     display: flex;
     align-items: center;
@@ -84,14 +85,14 @@ main {
     margin-right: 30px;
 }
 
-.delivery__payment {
+.payment {
     display: flex;
     justify-content: space-between;
     padding: 0 9%;
     width: 100%;
 }
 
-.delivery__text {
+.text {
     font-family: Roboto-Regular, sans-serif;
     font-size: 16px;
     font-style: normal;
@@ -102,12 +103,12 @@ main {
     width: 66%;
 }
 
-.delivery__payment__icons {
+.payment__icons {
     display: flex;
     align-items: center;
 }
 
-.delivery__payment__icons-mir_icon {
+.payment__icons_mir_icon {
     margin: 0 27px;
 }
 
@@ -138,34 +139,34 @@ main {
 }
 
 @media screen and (max-width: 1100px) {
-    .delivery_container {
+    .container {
         flex-direction: column;
         align-items: center;
     }
 
-    .delivery__header {
+    .header {
         text-align: center;
     }
 
-    .delivery__info {
+    .info {
         text-align: center;
     }
 
-    .delivery__icons {
+    .icons {
         margin-top: 40px;
     }
-}
 
-.delivery__payment {
-    flex-direction: column;
-    align-items: center;
-}
+    .payment {
+        flex-direction: column;
+        align-items: center;
+    }
 
-.delivery__payment__icons {
-    margin-top: 40px;
-}
+    .payment__icons {
+        margin-top: 40px;
+    }
 
-.delivery__text {
-    text-align: center;
-    width: 100%;
+    .text {
+        text-align: center;
+        width: 100%;
+    }
 }

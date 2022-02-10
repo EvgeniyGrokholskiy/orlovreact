@@ -2,37 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1db4bea4-2679-42e4-8c16-8a37b79ebd5f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/assets/images/delivery/mastercard.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/images/delivery/mir.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/images/delivery/russian_post.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/images/delivery/sdek.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/images/delivery/visa.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/delivery/delivery.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/homepage/FL/FL_FC.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/homepage/FL/FL_class.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/homepage/FL/WeatherDisplay.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/commons/button/myButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/commons/button/myButton.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/commons/footer/footer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/commons/footer/footer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/commons/header/back/back.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/commons/header/back/back.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/commons/header/header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/commons/header/header.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/commons/header/heeaderRoute.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/commons/header/heeaderRoute.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/commons/link/myLink.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/commons/link/myLink.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/delivery/delivery.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/delivery/delivery.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/delivery/delivery.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/delivery/delivery.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/homepage/banner/banner.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/homepage/banner/banner.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/homepage/coverSelect/coveSelect.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/homepage/coverSelect/coveSelect.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/homepage/coverSelect/coverSelectButton/coverSelectButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/homepage/coverSelect/coverSelectButton/coverSelectButton.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/homepage/homepage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/homepage/homepage.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/homepage/sizeselect/sizeSelect.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/homepage/sizeselect/sizeSelect.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/homepage/sizeselect/sizeSelect.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/homepage/sizeselect/sizeSelect.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/homepage/sizeselect/syzeSelectButton/sizeSelectButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/homepage/sizeselect/syzeSelectButton/sizeSelectButton.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/homepage/slider/slider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/homepage/slider/slider.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/order/order.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/order/order.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/page404/page404.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/page404/page404.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/policy/policy.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/policy/policy.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/promotions/promotions.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/promotions/promotions.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/reviews/reviews.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/reviews/reviews.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/coverSelectReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/coverSelectReducer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/sizeSelectReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/sizeSelectReducer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,6 +24,7 @@
         <option value="TypeScript JSX File" />
         <option value="TypeScript File" />
         <option value="CSS File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -67,7 +44,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/assets/images/delivery" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="ts.external.directory.path" value="D:\FRONT\orlov\orlovreact\node_modules\typescript\lib" />
@@ -82,11 +59,11 @@
       <recent name="D:\FRONT\orlov\reactsra\src\assets\images\common" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\FRONT\orlov\orlovreact\src\components\homepage\FL" />
       <recent name="D:\FRONT\orlov\orlovreact\src\components" />
       <recent name="D:\FRONT\orlov\reactsra\src\commons\footer" />
       <recent name="D:\FRONT\orlov\reactsra\src\homepage" />
       <recent name="D:\FRONT\orlov\reactsra\src\commons\header\back" />
-      <recent name="D:\FRONT\orlov\reactsra\src\commons" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -104,7 +81,8 @@
       <workItem from="1644322685558" duration="364000" />
       <workItem from="1644382230056" duration="79000" />
       <workItem from="1644382541652" duration="21325000" />
-      <workItem from="1644467034584" duration="8600000" />
+      <workItem from="1644467034584" duration="9167000" />
+      <workItem from="1644486468906" duration="7562000" />
     </task>
     <servers />
   </component>
