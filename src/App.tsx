@@ -1,22 +1,22 @@
-import React from 'react';
 import './App.css';
-import Order from "./order/order";
-import Policy from "./policy/policy";
-import Reviews from './reviews/reviews';
-import Page404 from './page404/page404';
-import Delivery from "./delivery/delivery";
-import Homepage from "./homepage/homepage";
-import Promotions from "./promotions/promotions";
-import {Link, Route, Routes} from "react-router-dom";
-import HeaderRoute from "./commons/header/heeaderRoute";
-import Footer from "./commons/footer/footer";
+import React from 'react';
+import Order from "./components/order/order";
+import {Route, Routes} from "react-router-dom";
+import Policy from "./components/policy/policy";
+import Reviews from './components/reviews/reviews';
+import Page404 from './components/page404/page404';
+import Delivery from "./components/delivery/delivery";
+import Footer from "./components/commons/footer/footer";
+import Promotions from "./components/promotions/promotions";
+import ConnectedHomePage from './components/homepage/homepage';
+import HeaderRoute from "./components/commons/header/heeaderRoute";
 
 function App() {
     return (
         <div className={"wrapper"}>
             <HeaderRoute/>
             <Routes>
-                <Route path="/" element={<Homepage/>}/>
+                <Route path="/" element={<ConnectedHomePage/>}/>
                 <Route path="/delivery" element={<Delivery/>}/>
                 <Route path="/order" element={<Order/>}/>
                 <Route path="/policy" element={<Policy/>}/>

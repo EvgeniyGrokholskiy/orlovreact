@@ -1,40 +1,44 @@
 * {
-  box-sizing: border-box;
-  margin: 0;
+    box-sizing: border-box;
+    margin: 0;
+}
+
+html, body, #root {
+    height: calc(100vh - 100px);
 }
 
 @font-face {
-  font-family: 'Pattaya';
-  src: url('./assets/fonts/Pattaya-Regular.woff2') format('woff2'),
-  url('./assets/fonts/Pattaya-Regular.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
+    font-family: 'Pattaya';
+    src: url('./assets/fonts/Pattaya-Regular.woff2') format('woff2'),
+    url('./assets/fonts/Pattaya-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
 }
 
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  /*variables*/
-  --black_text: black;
-  --blue_text: #323260;
-  --button_enabled: black;
-  --button_disabled: gray;
-  --dark_green: #326034;
-  --gray: #EBEBEB;
-  --light_blue: #3E81FB;
-  --orange: #FD7900;
-  --price_color: #6A6E7C;
-  --policy_text: #1F242F;
-  --text_color: #323260;
-  --white_text: #ffffff;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /*variables*/
+    --black_text: black;
+    --blue_text: #323260;
+    --button_enabled: black;
+    --button_disabled: gray;
+    --dark_green: #326034;
+    --gray: #EBEBEB;
+    --light_blue: #3E81FB;
+    --orange: #FD7900;
+    --price_color: #6A6E7C;
+    --policy_text: #1F242F;
+    --text_color: #323260;
+    --white_text: #ffffff;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
