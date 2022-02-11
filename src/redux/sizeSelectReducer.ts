@@ -1,24 +1,24 @@
 const SET_SIZE = "SET_SIZE"
-const SET_ERROR = "SET_ERROR"
-const REMOVE_ERROR = "REMOVE_ERROR"
+const SET_SIZE_ERROR = "SET_SIZE_ERROR"
+const REMOVE_SIZE_ERROR = "REMOVE_SIZE_ERROR"
 
 type SetSizeAction = {
     type: typeof SET_SIZE
     payload: number
 }
 type SetErrorAction = {
-    type: typeof SET_ERROR
+    type: typeof SET_SIZE_ERROR
 }
 type RemoveErrorAction = {
-    type: typeof REMOVE_ERROR
+    type: typeof REMOVE_SIZE_ERROR
 }
 type SetSizeActions = SetSizeAction | SetErrorAction | RemoveErrorAction
 
 type SizeSelectReducerType = (state: SizeSelectStateType, action: SetSizeActions) => SizeSelectStateType
 
 type SizeSelectActionType = (index: number) => { type: typeof SET_SIZE, payload: number }
-type SetErrorActionType = () => { type: typeof SET_ERROR}
-type RemoveErrorActionType = () => { type: typeof REMOVE_ERROR}
+type SetErrorActionType = () => { type: typeof SET_SIZE_ERROR}
+type RemoveErrorActionType = () => { type: typeof REMOVE_SIZE_ERROR}
 
 type InitialStateItem = {
     format: string,
@@ -41,7 +41,7 @@ const InitialState: SizeSelectStateType = {
             format: "A5",
             name: "small",
             price: "990",
-            selected: true,
+            selected: false,
             size: "148.0×210.0 мм, толщина 3 мм",
             tabIndex: 5,
             top: false
@@ -93,13 +93,13 @@ export const SizeSelectReducer: SizeSelectReducerType = (state: SizeSelectStateT
             })
         }
 
-        case SET_ERROR: {
+        case SET_SIZE_ERROR: {
             return ({
                 ...state, error: true
             })
         }
 
-        case REMOVE_ERROR: {
+        case REMOVE_SIZE_ERROR: {
             return ({
                 ...state,error:false
             })
@@ -111,5 +111,5 @@ export const SizeSelectReducer: SizeSelectReducerType = (state: SizeSelectStateT
 }
 
 export const sizeSelectActionCreator: SizeSelectActionType = (index: number) => ({type: SET_SIZE, payload: index})
-export const setSizeErrorActionCreator: SetErrorActionType = () => ({type: SET_ERROR})
-export const removeSizeErrorActionCreator: RemoveErrorActionType = () => ({type: REMOVE_ERROR})
+export const setSizeErrorActionCreator: SetErrorActionType = () => ({type: SET_SIZE_ERROR})
+export const removeSizeErrorActionCreator: RemoveErrorActionType = () => ({type: REMOVE_SIZE_ERROR})

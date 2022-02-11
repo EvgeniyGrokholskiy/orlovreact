@@ -1,6 +1,7 @@
 import React, {ReactNode} from 'react';
 import styles from "./coverSlect.module.css";
 import CoverSelectButton from "./coverSelectButton/coverSelectButton";
+import AppleCover from "./../../../assets/images/homepage/apple.jpg"
 
 
 type PropsType = {
@@ -13,6 +14,21 @@ type PropsType = {
 type StateItemType = { tabIndex: number, name: string, className: string, selected: boolean, cover: any };
 
 const CoveSelect: React.FC<PropsType> = ({covers, error, setCoverActionCreator}: PropsType) => {
+
+    const setCover = () => {
+        return covers.filter((item: StateItemType) => {
+                if (item.selected) {
+                    return (
+                        <img key={item.tabIndex} src={item.cover} alt="Обложка проигрывателя онлайн музыки" width="280"
+                             height="379"/>
+                    )
+                }
+                return null
+            }
+        )
+    }
+
+    let selectedCover: StateItemType | Array<any> = setCover()
 
     return (
 
@@ -35,16 +51,9 @@ const CoveSelect: React.FC<PropsType> = ({covers, error, setCoverActionCreator}:
             </div>
             <div className={styles.cover_select__image}>
                 {
-                    covers.map((item: StateItemType) => {
-                            if (item.selected) {
-                                return (
-                                    <img key={item.tabIndex} src={item.cover} alt="Обложка проигрывателя онлайн музыки"
-                                         id="cover_img" width="280" height="379"/>
-                                )
-                            }
-                            return null
-                        }
-                    )
+                    <img src={selectedCover[0] ? selectedCover[0].cover : AppleCover}
+                         alt="Обложка проигрывателя онлайн музыки"
+                         width="280" height="379"/>
                 }
             </div>
         </div>

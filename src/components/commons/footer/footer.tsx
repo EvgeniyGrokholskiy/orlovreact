@@ -1,5 +1,5 @@
 import React from 'react';
-import MyLink from "../link/myLink";
+import MyLink from "../myLink/myLink";
 import styles from "./footer.module.css"
 import Logo from "../../../assets/images/footer/logo_orange_bg.jpg";
 

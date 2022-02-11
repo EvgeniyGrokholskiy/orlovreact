@@ -2,7 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1db4bea4-2679-42e4-8c16-8a37b79ebd5f" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/components/commons/continueButton/continueButton.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/commons/myLink/myLink.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.test.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.test.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/commons/button/myButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/commons/myButton/myButton.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/commons/footer/footer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/commons/footer/footer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/commons/link/myLink.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/delivery/delivery.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/delivery/delivery.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/homepage/coverSelect/coveSelect.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/homepage/coverSelect/coveSelect.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/homepage/homepage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/homepage/homepage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/promotions/promotions.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/promotions/promotions.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/reviews/reviews.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/reviews/reviews.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/coverSelectReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/coverSelectReducer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/sizeSelectReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/sizeSelectReducer.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,10 +28,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="TypeScript JSX File" />
         <option value="TypeScript File" />
-        <option value="CSS File" />
         <option value="JavaScript File" />
+        <option value="TypeScript JSX File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -40,6 +53,10 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.standard" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.standard" value="" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="ts.external.directory.path" value="D:\FRONT\orlov\orlovreact\node_modules\typescript\lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
@@ -53,11 +70,11 @@
       <recent name="D:\FRONT\orlov\reactsra\src\assets\images\common" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\FRONT\orlov\orlovreact\src\components\commons" />
       <recent name="D:\FRONT\orlov\orlovreact\src\components\homepage\FL" />
       <recent name="D:\FRONT\orlov\orlovreact\src\components" />
       <recent name="D:\FRONT\orlov\reactsra\src\commons\footer" />
       <recent name="D:\FRONT\orlov\reactsra\src\homepage" />
-      <recent name="D:\FRONT\orlov\reactsra\src\commons\header\back" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -79,6 +96,8 @@
       <workItem from="1644486468906" duration="8082000" />
       <workItem from="1644554605128" duration="108000" />
       <workItem from="1644554731691" duration="42000" />
+      <workItem from="1644556128049" duration="249000" />
+      <workItem from="1644556407692" duration="20791000" />
     </task>
     <servers />
   </component>

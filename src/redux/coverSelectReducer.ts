@@ -3,18 +3,18 @@ import vk_music from "../assets/images/homepage/vk.jpg";
 import spotify from "../assets/images/homepage/spotify.jpg";
 
 const SET_COVER = "SET_COVER"
-const SET_ERROR = "SET_ERROR"
-const REMOVE_ERROR = "REMOVE_ERROR"
+const SET_COVER_ERROR = "SET_COVER_ERROR"
+const REMOVE_COVER_ERROR = "REMOVE_COVER_ERROR"
 
 type SetCoverAction = {
     type: typeof SET_COVER
     payload: number
 }
 type SetErrorAction = {
-    type: typeof SET_ERROR
+    type: typeof SET_COVER_ERROR
 }
 type RemoveErrorAction = {
-    type: typeof REMOVE_ERROR
+    type: typeof REMOVE_COVER_ERROR
 }
 
 type CoverSelectActions = SetCoverAction | SetErrorAction | RemoveErrorAction
@@ -22,8 +22,8 @@ type CoverSelectActions = SetCoverAction | SetErrorAction | RemoveErrorAction
 type coverSelectReducerType = (state: IInitialState, action: CoverSelectActions) => IInitialState
 
 type SetCoverActionCreatorType = (index: number) => { type: typeof SET_COVER, payload: number }
-type SetErrorActionCreatorType = () => { type: typeof SET_ERROR }
-type RemoveErrorActionCreatorType = () => { type: typeof REMOVE_ERROR }
+type SetErrorActionCreatorType = () => { type: typeof SET_COVER_ERROR }
+type RemoveErrorActionCreatorType = () => { type: typeof REMOVE_COVER_ERROR }
 
 type StateItem = {
     tabIndex: number,
@@ -45,7 +45,7 @@ const initialState: IInitialState = {
             tabIndex: 9,
             name: "Apple Music",
             className: "apple",
-            selected: true,
+            selected: false,
             cover: apple
         },
         {
@@ -84,13 +84,13 @@ const coverSelectReducer: coverSelectReducerType = (state: IInitialState = initi
             })
         }
 
-        case SET_ERROR: {
+        case SET_COVER_ERROR: {
             return ({
                 ...state, error: true
             })
         }
 
-        case REMOVE_ERROR: {
+        case REMOVE_COVER_ERROR: {
             return ({
                 ...state, error: false
             })
@@ -101,7 +101,7 @@ const coverSelectReducer: coverSelectReducerType = (state: IInitialState = initi
 }
 
 export const setCoverActionCreator: SetCoverActionCreatorType = (index: number) => ({type: SET_COVER, payload: index})
-export const setCoverErrorActionCreator: SetErrorActionCreatorType = () => ({type: SET_ERROR})
-export const removeCoverErrorActionCreator: RemoveErrorActionCreatorType = () => ({type: REMOVE_ERROR})
+export const setCoverErrorActionCreator: SetErrorActionCreatorType = () => ({type: SET_COVER_ERROR})
+export const removeCoverErrorActionCreator: RemoveErrorActionCreatorType = () => ({type: REMOVE_COVER_ERROR})
 
 export default coverSelectReducer;

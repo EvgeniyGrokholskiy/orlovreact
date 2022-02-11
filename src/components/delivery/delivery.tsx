@@ -5,7 +5,7 @@ import Visa from "../../assets/images/delivery/visa.svg";
 import Mir from "../../assets/images/delivery/russian_post.svg";
 import Mastercard from "../../assets/images/delivery/mastercard.svg";
 import RussianPost from "../../assets/images/delivery/russian_post.svg";
-import MyLink from "../commons/link/myLink";
+import MyLink from "../commons/myLink/myLink";
 
 
 const Delivery: React.FC = () => {
