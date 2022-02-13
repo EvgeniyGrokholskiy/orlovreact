@@ -20,12 +20,7 @@ import ContinueButton from "../commons/continueButton/continueButton";
 import React, {ReactNode, useCallback, useEffect, useState} from "react";
 
 
-interface ICovers {
-    error: boolean,
-    covers: Array<{ tabIndex: number, name: string, className: string, selected: boolean, cover: string }>
-}
-
-interface ICoversCovers {
+interface ICoversItem {
     tabIndex: number,
     name: string,
     className: string,
@@ -33,12 +28,12 @@ interface ICoversCovers {
     cover: string
 }
 
-interface ISizes {
+interface ICovers {
     error: boolean,
-    sizes: Array<{ format: string, name: string, price: string, selected: boolean, size: string, tabIndex: number, top: boolean }>
+    covers: Array<ICoversItem>
 }
 
-interface ISizesSizes {
+interface ISizesItem {
     format: string,
     name: string,
     price: string,
@@ -46,6 +41,11 @@ interface ISizesSizes {
     size: string,
     tabIndex: number,
     top: boolean
+}
+
+interface ISizes {
+    error: boolean,
+    sizes: Array<ISizesItem>
 }
 
 interface IProps {
@@ -61,7 +61,7 @@ interface IProps {
 }
 
 type TermsType = () => {
-    sizeCoverNotSelected: boolean
+    sizeAndCoverNotSelected: boolean
     sizeSelectedCoversNot: boolean
     coverSelectedSizeNot: boolean
     allSelected: boolean
@@ -83,12 +83,12 @@ const Homepage: React.FC<IProps> = ({
     const [href, setHref] = useState("#size-select")
 
     const isCoverSelected: isCoverSelectedType = (covers: ICovers) => {
-        const selected = covers.covers.filter((item: ICoversCovers) => item.selected)
+        const selected = covers.covers.filter((item: ICoversItem) => item.selected)
         return !!selected[0];
     }
 
     const isSizesSelected: isSizesSelectedType = (sizes: ISizes) => {
-        const selected = sizes.sizes.filter((item: ISizesSizes) => item.selected)
+        const selected = sizes.sizes.filter((item: ISizesItem) => item.selected)
         return !!selected[0];
     }
 
@@ -96,13 +96,13 @@ const Homepage: React.FC<IProps> = ({
         const isSize: boolean = isSizesSelected(sizes)
         const isCover: boolean = isCoverSelected(covers)
 
-        const sizeCoverNotSelected: boolean = (!isSize && !isCover)
+        const sizeAndCoverNotSelected: boolean = (!isSize && !isCover)
         const sizeSelectedCoversNot: boolean = (!isCover && (isSize && !isCover))
         const coverSelectedSizeNot: boolean = (!isSize && (isCover && !isSize))
         const allSelected: boolean = (isSize && isCover)
 
         return {
-            sizeCoverNotSelected, sizeSelectedCoversNot, coverSelectedSizeNot, allSelected
+            sizeAndCoverNotSelected, sizeSelectedCoversNot, coverSelectedSizeNot, allSelected
         }
     }, [sizes, covers])
 
@@ -110,7 +110,7 @@ const Homepage: React.FC<IProps> = ({
     const nextPage: (() => void) | null = () => {
         const terms = Terms()
 
-        if (terms.sizeCoverNotSelected) {
+        if (terms.sizeAndCoverNotSelected) {
             setCoverErrorActionCreator()
             setSizeErrorActionCreator()
         } else if (terms.coverSelectedSizeNot) {
@@ -128,7 +128,7 @@ const Homepage: React.FC<IProps> = ({
     useEffect(() => {
         const terms = Terms()
 
-        if (terms.sizeCoverNotSelected) {
+        if (terms.sizeAndCoverNotSelected) {
             setHref("#size_select")
         } else if (terms.coverSelectedSizeNot) {
             setHref("#size_select")

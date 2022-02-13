@@ -3,9 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="4e6b6aa3-4f7b-48d5-b00e-46f20cde7307" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/coverSelectReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/coverSelectReducer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/sizeSelectReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/sizeSelectReducer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/store.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/homepage/homepage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/homepage/homepage.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,7 +39,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../react_Skill_factopy/my-app" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
@@ -89,7 +87,7 @@
       <workItem from="1644556128049" duration="249000" />
       <workItem from="1644556407692" duration="20791000" />
       <workItem from="1644646589566" duration="267000" />
-      <workItem from="1644731106786" duration="8266000" />
+      <workItem from="1644731106786" duration="9767000" />
     </task>
     <servers />
   </component>
