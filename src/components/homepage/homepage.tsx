@@ -3,7 +3,7 @@ import Banner from "./banner/banner";
 import React, {ReactNode, useEffect, useState} from "react";
 import styles from "./homepage.module.css";
 import MyLink from "../commons/myLink/myLink";
-import {RootStateType} from "../../redux/store";
+import {IRootState} from "../../redux/store";
 import SizeSelect from "./sizeselect/sizeSelect";
 import FocusOnSelectSlider from "./slider/slider";
 import CoveSelect from "./coverSelect/coveSelect";
@@ -18,6 +18,7 @@ import {
     sizeSelectActionCreator
 } from "../../redux/sizeSelectReducer";
 import ContinueButton from "../commons/continueButton/continueButton";
+
 
 type CoversType = { error: boolean, covers: Array<{ tabIndex: number, name: string, className: string, selected: boolean, cover: any }> }
 type CoversCoversType = { tabIndex: number, name: string, className: string, selected: boolean, cover: any }
@@ -52,43 +53,58 @@ const Homepage: React.FC<PropsType> = ({
 
     const [href, setHref] = useState("#size-select")
 
-    const nextPage: (() => void) | null = () => {
-        const isSizes: boolean = isSizesSelected(sizes)
-        const isCovers: boolean = isCoverSelected(covers)
-        if (!isSizes && !isCovers) {
-            setCoverErrorActionCreator()
-            setSizeErrorActionCreator()
-        } else if (!isSizes && (isCovers && !isSizes)) {
-            setSizeErrorActionCreator()
-        } else if (!isCovers && (isSizes && !isCovers)) {
-            setCoverErrorActionCreator()
-            removeSizeErrorActionCreator()
-        } else if (isSizes && isCovers) {
-            return
-        }
-
-    }
-
     const isCoverSelected: IisCoverSelectedType = (covers: CoversType) => {
         const selected = covers.covers.filter((item: CoversCoversType) => item.selected)
         return !!selected[0];
     }
+
     const isSizesSelected: IisSizesSelectedType = (sizes: SizesType) => {
         const selected = sizes.sizes.filter((item: SizesSizesType) => item.selected)
         return !!selected[0];
     }
 
-    useEffect(() => {
-        const isSizes: boolean = isSizesSelected(sizes)
-        const isCovers: boolean = isCoverSelected(covers)
+    const Term = ()=> {
+        const isSize: boolean = isSizesSelected(sizes)
+        const isCover: boolean = isCoverSelected(covers)
 
-        if (!isSizes && !isCovers) {
+        const sizeCoverNotSelected = (!isSize && !isCover)
+        const sizeSelectedCoversNot = (!isCover && (isSize && !isCover))
+        const coverSelectedSizeNot = (!isSize && (isCover && !isSize))
+        const allSelected = (isSize && isCover)
+
+        return {
+            isSize, isCover, sizeCoverNotSelected, sizeSelectedCoversNot, coverSelectedSizeNot, allSelected
+        }
+    }
+
+    const nextPage: (() => void) | null = () => {
+        const terms = Term()
+
+        if (terms.sizeCoverNotSelected) {
+            setCoverErrorActionCreator()
+            setSizeErrorActionCreator()
+        } else if (terms.coverSelectedSizeNot) {
+            setSizeErrorActionCreator()
+            removeCoverErrorActionCreator()
+        } else if (terms.sizeSelectedCoversNot) {
+            setCoverErrorActionCreator()
+            removeSizeErrorActionCreator()
+        } else if (terms.allSelected) {
+            removeSizeErrorActionCreator()
+            removeCoverErrorActionCreator()
+        }
+    }
+
+    useEffect(() => {
+        const terms = Term()
+
+        if (terms.sizeCoverNotSelected) {
             setHref("#size_select")
-        } else if (!isSizes && (isCovers && !isSizes)) {
+        } else if (terms.coverSelectedSizeNot) {
             setHref("#size_select")
-        } else if (!isCovers && (isSizes && !isCovers)) {
+        } else if (terms.sizeSelectedCoversNot) {
             setHref("#cover_select")
-        } else if (isSizes && isCovers) {
+        } else if (terms.allSelected) {
             setHref("/order")
         }
 
@@ -140,9 +156,9 @@ const Homepage: React.FC<PropsType> = ({
     );
 };
 
-const mapStateToProps = (state: RootStateType) => ({
+const mapStateToProps = (state: IRootState) => ({
     covers: state.covers,
-    sizes: state.size,
+    sizes: state.sizes,
 })
 
 const mapDispatchToProps = {

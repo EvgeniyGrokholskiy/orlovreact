@@ -65,7 +65,7 @@ const initialState: IInitialState = {
     ]
 }
 
-const coverSelectReducer: coverSelectReducerType = (state: IInitialState = initialState, action: CoverSelectActions): IInitialState => {
+export const coverSelectReducer: coverSelectReducerType = (state: IInitialState = initialState, action: CoverSelectActions): IInitialState => {
     switch (action.type) {
         case SET_COVER: {
             const newState: Array<StateItem> = state.covers.map((item: StateItem) => {
@@ -103,5 +103,3 @@ const coverSelectReducer: coverSelectReducerType = (state: IInitialState = initi
 export const setCoverActionCreator: SetCoverActionCreatorType = (index: number) => ({type: SET_COVER, payload: index})
 export const setCoverErrorActionCreator: SetErrorActionCreatorType = () => ({type: SET_COVER_ERROR})
 export const removeCoverErrorActionCreator: RemoveErrorActionCreatorType = () => ({type: REMOVE_COVER_ERROR})
-
-export default coverSelectReducer;
