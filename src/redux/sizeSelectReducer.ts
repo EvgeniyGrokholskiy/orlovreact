@@ -1,26 +1,26 @@
-const SET_SIZE = "SET_SIZE"
-const SET_SIZE_ERROR = "SET_SIZE_ERROR"
-const REMOVE_SIZE_ERROR = "REMOVE_SIZE_ERROR"
+const SET_SIZE = "REACTSPA/SRC/REDUX/SIZE_SELECT_REDUCER/SET_SIZE"
+const SET_SIZE_ERROR = "REACTSPA/SRC/REDUX/SIZE_SELECT_REDUCER/SET_SIZE_ERROR"
+const REMOVE_SIZE_ERROR = "REACTSPA/SRC/REDUX/SIZE_SELECT_REDUCER/REMOVE_SIZE_ERROR"
 
-type SetSizeAction = {
+interface ISetSizeAction {
     type: typeof SET_SIZE
     payload: number
 }
-type SetErrorAction = {
+interface ISetErrorAction {
     type: typeof SET_SIZE_ERROR
 }
-type RemoveErrorAction = {
+interface IRemoveErrorAction {
     type: typeof REMOVE_SIZE_ERROR
 }
-type SetSizeActions = SetSizeAction | SetErrorAction | RemoveErrorAction
+type SetSizeActions = ISetSizeAction | ISetErrorAction | IRemoveErrorAction
 
-type SizeSelectReducerType = (state: SizeSelectStateType, action: SetSizeActions) => SizeSelectStateType
+type SizeSelectReducerType = (state: ISizeSelectStateType, action: SetSizeActions) => ISizeSelectStateType
 
 type SizeSelectActionType = (index: number) => { type: typeof SET_SIZE, payload: number }
 type SetErrorActionType = () => { type: typeof SET_SIZE_ERROR}
 type RemoveErrorActionType = () => { type: typeof REMOVE_SIZE_ERROR}
 
-type InitialStateItem = {
+interface IInitialStateItem {
     format: string,
     name: string,
     price: string,
@@ -29,12 +29,12 @@ type InitialStateItem = {
     tabIndex: number,
     top: boolean,
 }
-export type SizeSelectStateType = {
+export interface ISizeSelectStateType {
     error: boolean
-    sizes: Array<InitialStateItem>
+    sizes: Array<IInitialStateItem>
 }
 
-const InitialState: SizeSelectStateType = {
+const InitialState: ISizeSelectStateType = {
     error: false,
     sizes: [
         {
@@ -76,12 +76,12 @@ const InitialState: SizeSelectStateType = {
     ]
 }
 
-export const SizeSelectReducer: SizeSelectReducerType = (state: SizeSelectStateType = InitialState, action: SetSizeActions) => {
+export const SizeSelectReducer: SizeSelectReducerType = (state: ISizeSelectStateType = InitialState, action: SetSizeActions) => {
 
     switch (action.type) {
         case SET_SIZE: {
 
-            const newSizes = state.sizes.map((item: InitialStateItem) => {
+            const newSizes = state.sizes.map((item: IInitialStateItem) => {
                 if (item.tabIndex === action.payload) {
                     sessionStorage.setItem("size", item.name)
                     return ({...item, selected: true})

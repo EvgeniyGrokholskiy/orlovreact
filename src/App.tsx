@@ -11,7 +11,9 @@ import Promotions from "./components/promotions/promotions";
 import ConnectedHomePage from './components/homepage/homepage';
 import HeaderRoute from "./components/commons/header/heeaderRoute";
 
+
 function App() {
+
     return (
         <div className={"wrapper"}>
             <HeaderRoute/>

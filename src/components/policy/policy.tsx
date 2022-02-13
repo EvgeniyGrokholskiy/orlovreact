@@ -1,7 +1,9 @@
 import React from "react";
 import styles from "./policy.module.css"
 
+
 const Policy: React.FC = () => {
+
     return (
         <main>
             <div className={styles.section_container}>

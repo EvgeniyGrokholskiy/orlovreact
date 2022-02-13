@@ -1,20 +1,21 @@
 import React, {ReactNode} from 'react';
 
-type PropsType = {
-    children?: ReactNode
-    href: string
+interface IProps  {
     ariaLabel: string
+    children?: ReactNode
     className: string
+    href: string
     target?: string
 }
 
-const MyLink: React.FC<PropsType> = ({
-                                         href,
+
+const MyLink: React.FC<IProps> = ({
                                          ariaLabel,
                                          children,
                                          className,
+                                         href,
                                          target = "_blank"
-                                     }: PropsType) => {
+                                     }: IProps) => {
 
     return (
         <>

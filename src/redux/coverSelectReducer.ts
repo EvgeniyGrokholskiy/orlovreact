@@ -2,30 +2,32 @@ import apple from "../assets/images/homepage/apple.jpg";
 import vk_music from "../assets/images/homepage/vk.jpg";
 import spotify from "../assets/images/homepage/spotify.jpg";
 
-const SET_COVER = "SET_COVER"
-const SET_COVER_ERROR = "SET_COVER_ERROR"
-const REMOVE_COVER_ERROR = "REMOVE_COVER_ERROR"
+const SET_COVER = "REACTSPA/SRC/REDUX/COVER_SELECT_REDUCER/SET_COVER"
+const SET_COVER_ERROR = "REACTSPA/SRC/REDUX/COVER_SELECT_REDUCER/SET_COVER_ERROR"
+const REMOVE_COVER_ERROR = "REACTSPA/SRC/REDUX/COVER_SELECT_REDUCER/REMOVE_COVER_ERROR"
 
-type SetCoverAction = {
+interface ISetCoverAction {
     type: typeof SET_COVER
     payload: number
 }
-type SetErrorAction = {
+
+interface ISetErrorAction {
     type: typeof SET_COVER_ERROR
 }
-type RemoveErrorAction = {
+
+interface IRemoveErrorAction {
     type: typeof REMOVE_COVER_ERROR
 }
 
-type CoverSelectActions = SetCoverAction | SetErrorAction | RemoveErrorAction
+type CoverSelectActionsType = ISetCoverAction | ISetErrorAction | IRemoveErrorAction
 
-type coverSelectReducerType = (state: IInitialState, action: CoverSelectActions) => IInitialState
+type coverSelectReducerType = (state: IInitialState, action: CoverSelectActionsType) => IInitialState
 
 type SetCoverActionCreatorType = (index: number) => { type: typeof SET_COVER, payload: number }
 type SetErrorActionCreatorType = () => { type: typeof SET_COVER_ERROR }
 type RemoveErrorActionCreatorType = () => { type: typeof REMOVE_COVER_ERROR }
 
-type StateItem = {
+interface IStateItem {
     tabIndex: number,
     name: string,
     className: string,
@@ -35,7 +37,7 @@ type StateItem = {
 
 export interface IInitialState {
     error: boolean
-    covers: Array<StateItem>
+    covers: Array<IStateItem>
 }
 
 const initialState: IInitialState = {
@@ -65,10 +67,10 @@ const initialState: IInitialState = {
     ]
 }
 
-export const coverSelectReducer: coverSelectReducerType = (state: IInitialState = initialState, action: CoverSelectActions): IInitialState => {
+export const coverSelectReducer: coverSelectReducerType = (state: IInitialState = initialState, action: CoverSelectActionsType): IInitialState => {
     switch (action.type) {
         case SET_COVER: {
-            const newState: Array<StateItem> = state.covers.map((item: StateItem) => {
+            const newState: Array<IStateItem> = state.covers.map((item: IStateItem) => {
                 if (action.payload === item.tabIndex) {
                     sessionStorage.setItem("cover", item.className)
                     return {

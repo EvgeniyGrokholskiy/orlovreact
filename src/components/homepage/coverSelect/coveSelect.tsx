@@ -1,34 +1,43 @@
 import React, {ReactNode} from 'react';
 import styles from "./coverSlect.module.css";
+import AppleCover from "./../../../assets/images/homepage/apple.jpg";
 import CoverSelectButton from "./coverSelectButton/coverSelectButton";
-import AppleCover from "./../../../assets/images/homepage/apple.jpg"
 
+interface ICover {
+    tabIndex: number,
+    name: string,
+    className: string,
+    selected: boolean,
+    cover: any
+}
 
-type PropsType = {
-    covers: Array<{ tabIndex: number, name: string, className: string, selected: boolean, cover: any }>
+interface IProps {
+    covers: Array<ICover>
     error: boolean
     setCoverActionCreator: (index: number) => void
     children?: ReactNode
 }
 
-type StateItemType = { tabIndex: number, name: string, className: string, selected: boolean, cover: any };
 
-const CoveSelect: React.FC<PropsType> = ({covers, error, setCoverActionCreator}: PropsType) => {
+const CoveSelect: React.FC<IProps> = ({covers, error, setCoverActionCreator}: IProps) => {
 
     const setCover = () => {
-        return covers.filter((item: StateItemType) => {
-                if (item.selected) {
-                    return (
-                        <img key={item.tabIndex} src={item.cover} alt="Обложка проигрывателя онлайн музыки" width="280"
-                             height="379"/>
-                    )
+
+        return (
+            covers.filter((item: ICover) => {
+                    if (item.selected) {
+                        return (
+                            <img key={item.tabIndex} src={item.cover} alt="Обложка проигрывателя онлайн музыки" width="280"
+                                 height="379"/>
+                        )
+                    }
+                    return null
                 }
-                return null
-            }
+            )
         )
     }
 
-    let selectedCover: StateItemType | Array<any> = setCover()
+    let selectedCover: ICover | Array<ICover> | Array<null> = setCover()
 
     return (
 
@@ -41,7 +50,7 @@ const CoveSelect: React.FC<PropsType> = ({covers, error, setCoverActionCreator}:
                 </div>
                 <div className={styles.buttons}>
                     {
-                        covers.map((item: StateItemType) => {
+                        covers.map((item: ICover) => {
                             return (
                                 <CoverSelectButton key={item.tabIndex} item={item} callback={setCoverActionCreator}/>
                             )

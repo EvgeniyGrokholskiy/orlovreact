@@ -2,8 +2,7 @@ import React, {ReactNode} from "react";
 import styles from "./sizeSelect.module.css"
 import SizeSelectButton from "./syzeSelectButton/sizeSelectButton";
 
-
-type ItemType = {
+interface IItem {
     format: string,
     name: string,
     price: string,
@@ -13,14 +12,15 @@ type ItemType = {
     top: boolean,
 }
 
-type PropsType = {
-    sizes: Array<ItemType>
+interface IProps {
+    sizes: Array<IItem>
     error: boolean
     sizeSelectActionCreator: (index: number) => void
     children?: ReactNode
 }
 
-const SizeSelect: React.FC<PropsType> = ({sizes, error, sizeSelectActionCreator}: PropsType) => {
+
+const SizeSelect: React.FC<IProps> = ({sizes, error, sizeSelectActionCreator}: IProps) => {
 
     return (
         <div id={"size_select"} className={styles.size_select}>
@@ -30,7 +30,7 @@ const SizeSelect: React.FC<PropsType> = ({sizes, error, sizeSelectActionCreator}
             </div>
             <div className={styles.buttons}>
                 {
-                    sizes.map((item: ItemType) => {
+                    sizes.map((item: IItem) => {
                         return <SizeSelectButton key={item.tabIndex} callback={sizeSelectActionCreator} name={item.name}
                                                  tabIndex={item.tabIndex} format={item.format} size={item.size}
                                                  price={item.price} top={item.top} selected={item.selected}/>

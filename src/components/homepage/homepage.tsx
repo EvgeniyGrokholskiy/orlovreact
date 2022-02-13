@@ -1,9 +1,8 @@
 import {connect} from "react-redux";
 import Banner from "./banner/banner";
-import React, {ReactNode, useEffect, useState} from "react";
 import styles from "./homepage.module.css";
-import MyLink from "../commons/myLink/myLink";
 import {IRootState} from "../../redux/store";
+import MyLink from "../commons/myLink/myLink";
 import SizeSelect from "./sizeselect/sizeSelect";
 import FocusOnSelectSlider from "./slider/slider";
 import CoveSelect from "./coverSelect/coveSelect";
@@ -18,16 +17,40 @@ import {
     sizeSelectActionCreator
 } from "../../redux/sizeSelectReducer";
 import ContinueButton from "../commons/continueButton/continueButton";
+import React, {ReactNode, useCallback, useEffect, useState} from "react";
 
 
-type CoversType = { error: boolean, covers: Array<{ tabIndex: number, name: string, className: string, selected: boolean, cover: any }> }
-type CoversCoversType = { tabIndex: number, name: string, className: string, selected: boolean, cover: any }
-type SizesType = { error: boolean, sizes: Array<{ format: string, name: string, price: string, selected: boolean, size: string, tabIndex: number, top: boolean }> }
-type SizesSizesType = { format: string, name: string, price: string, selected: boolean, size: string, tabIndex: number, top: boolean }
+interface ICovers {
+    error: boolean,
+    covers: Array<{ tabIndex: number, name: string, className: string, selected: boolean, cover: any }>
+}
 
-type PropsType = {
-    covers: CoversType
-    sizes: SizesType
+interface ICoversCovers {
+    tabIndex: number,
+    name: string,
+    className: string,
+    selected: boolean,
+    cover: any
+}
+
+interface ISizes {
+    error: boolean,
+    sizes: Array<{ format: string, name: string, price: string, selected: boolean, size: string, tabIndex: number, top: boolean }>
+}
+
+interface ISizesSizes {
+    format: string,
+    name: string,
+    price: string,
+    selected: boolean,
+    size: string,
+    tabIndex: number,
+    top: boolean
+}
+
+interface IProps {
+    covers: ICovers
+    sizes: ISizes
     setCoverActionCreator: (index: number) => void
     setCoverErrorActionCreator: () => void
     removeCoverErrorActionCreator: () => void
@@ -37,48 +60,55 @@ type PropsType = {
     children?: ReactNode;
 }
 
-type IisCoverSelectedType = (covers: CoversType) => boolean
-type IisSizesSelectedType = (sizes: SizesType) => boolean
+type TermsType = () => {
+    sizeCoverNotSelected: boolean
+    sizeSelectedCoversNot: boolean
+    coverSelectedSizeNot: boolean
+    allSelected: boolean
+}
+type isCoverSelectedType = (covers: ICovers) => boolean
+type isSizesSelectedType = (sizes: ISizes) => boolean
 
-const Homepage: React.FC<PropsType> = ({
-                                           covers,
-                                           setCoverActionCreator,
-                                           setCoverErrorActionCreator,
-                                           removeCoverErrorActionCreator,
-                                           sizes,
-                                           sizeSelectActionCreator,
-                                           setSizeErrorActionCreator,
-                                           removeSizeErrorActionCreator
-                                       }: PropsType) => {
+const Homepage: React.FC<IProps> = ({
+                                        covers,
+                                        setCoverActionCreator,
+                                        setCoverErrorActionCreator,
+                                        removeCoverErrorActionCreator,
+                                        sizes,
+                                        sizeSelectActionCreator,
+                                        setSizeErrorActionCreator,
+                                        removeSizeErrorActionCreator
+                                    }: IProps) => {
 
     const [href, setHref] = useState("#size-select")
 
-    const isCoverSelected: IisCoverSelectedType = (covers: CoversType) => {
-        const selected = covers.covers.filter((item: CoversCoversType) => item.selected)
+    const isCoverSelected: isCoverSelectedType = (covers: ICovers) => {
+        const selected = covers.covers.filter((item: ICoversCovers) => item.selected)
         return !!selected[0];
     }
 
-    const isSizesSelected: IisSizesSelectedType = (sizes: SizesType) => {
-        const selected = sizes.sizes.filter((item: SizesSizesType) => item.selected)
+    const isSizesSelected: isSizesSelectedType = (sizes: ISizes) => {
+        const selected = sizes.sizes.filter((item: ISizesSizes) => item.selected)
         return !!selected[0];
     }
 
-    const Term = ()=> {
+    const Terms: TermsType = useCallback(() => {
         const isSize: boolean = isSizesSelected(sizes)
         const isCover: boolean = isCoverSelected(covers)
 
-        const sizeCoverNotSelected = (!isSize && !isCover)
-        const sizeSelectedCoversNot = (!isCover && (isSize && !isCover))
-        const coverSelectedSizeNot = (!isSize && (isCover && !isSize))
-        const allSelected = (isSize && isCover)
+        const sizeCoverNotSelected: boolean = (!isSize && !isCover)
+        const sizeSelectedCoversNot: boolean = (!isCover && (isSize && !isCover))
+        const coverSelectedSizeNot: boolean = (!isSize && (isCover && !isSize))
+        const allSelected: boolean = (isSize && isCover)
 
         return {
-            isSize, isCover, sizeCoverNotSelected, sizeSelectedCoversNot, coverSelectedSizeNot, allSelected
+            sizeCoverNotSelected, sizeSelectedCoversNot, coverSelectedSizeNot, allSelected
         }
-    }
+    }, [sizes, covers])
+
 
     const nextPage: (() => void) | null = () => {
-        const terms = Term()
+        const terms = Terms()
 
         if (terms.sizeCoverNotSelected) {
             setCoverErrorActionCreator()
@@ -96,7 +126,7 @@ const Homepage: React.FC<PropsType> = ({
     }
 
     useEffect(() => {
-        const terms = Term()
+        const terms = Terms()
 
         if (terms.sizeCoverNotSelected) {
             setHref("#size_select")
@@ -108,7 +138,7 @@ const Homepage: React.FC<PropsType> = ({
             setHref("/order")
         }
 
-    }, [sizes, covers])
+    }, [sizes, covers, Terms])
 
 
     return (

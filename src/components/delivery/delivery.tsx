@@ -1,11 +1,11 @@
 import React from 'react';
 import styles from "./delivery.module.css";
+import MyLink from "../commons/myLink/myLink";
 import Sdek from "../../assets/images/delivery/sdek.png";
 import Visa from "../../assets/images/delivery/visa.svg";
 import Mir from "../../assets/images/delivery/russian_post.svg";
 import Mastercard from "../../assets/images/delivery/mastercard.svg";
 import RussianPost from "../../assets/images/delivery/russian_post.svg";
-import MyLink from "../commons/myLink/myLink";
 
 
 const Delivery: React.FC = () => {
@@ -19,7 +19,8 @@ const Delivery: React.FC = () => {
                     <p className={styles.info}>Вы можете узнать стоимость доставки перейдя по ссылкам.</p>
                 </div>
                 <div className={styles.icons}>
-                    <MyLink className={styles.link} href="https://www.cdek.ru/ru/calculate" target="_blank" ariaLabel={""}>
+                    <MyLink className={styles.link} href="https://www.cdek.ru/ru/calculate" target="_blank"
+                            ariaLabel={""}>
                         <img className={styles.icon_sdek} src={Sdek}
                              alt="Логотип экспресс-перевозчика «СДЭК»"
                              height="25"

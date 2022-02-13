@@ -2,7 +2,9 @@ import React from 'react';
 import {Link} from "react-router-dom";
 import styles from "./back.module.css";
 
-const Back:React.FC = () => {
+
+const Back: React.FC = () => {
+
     return (
         <Link to={"/"} className={styles.link}>
           <span>

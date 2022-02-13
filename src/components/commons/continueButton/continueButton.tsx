@@ -1,18 +1,19 @@
 import React, {ReactNode} from 'react';
 
-type PropsType = {
+interface IProps {
     href: string
     children?: ReactNode
     className: string
     callback: (() => void) | null
 }
 
-const ContinueButton: React.FC<PropsType> = ({
-                                                 href,
-                                                 children,
-                                                 callback,
-                                                 className,
-                                             }: PropsType) => {
+
+const ContinueButton: React.FC<IProps> = ({
+                                              href,
+                                              children,
+                                              callback,
+                                              className,
+                                          }: IProps) => {
 
 
     return (

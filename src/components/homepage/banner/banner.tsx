@@ -1,7 +1,9 @@
 import React from "react";
 import styles from "./banner.module.css"
 
+
 const Banner:React.FC = () => {
+
     return (
         <div className={styles.banner} >
             <div className={styles.size} id="order">
