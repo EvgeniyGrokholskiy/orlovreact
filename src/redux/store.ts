@@ -1,6 +1,6 @@
 import {combineReducers, createStore} from 'redux'
-import {SizeSelectReducer, ISizeSelectStateType} from "./sizeSelectReducer";
-import {coverSelectReducer, IInitialState} from "./coverSelectReducer";
+import sizeSelectReducer, {ISizeSelectStateType} from "./sizeSelectReducer";
+import coverSelectReducer, {IInitialState} from "./coverSelectReducer";
 
 export interface IRootState {
     covers: IInitialState
@@ -9,7 +9,7 @@ export interface IRootState {
 
 const reducers = combineReducers({
     covers: coverSelectReducer,
-    sizes: SizeSelectReducer
+    sizes: sizeSelectReducer
 })
 
 const store = createStore(reducers);

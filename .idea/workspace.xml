@@ -3,28 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="4e6b6aa3-4f7b-48d5-b00e-46f20cde7307" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/commons/continueButton/continueButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/commons/continueButton/continueButton.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/commons/footer/footer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/commons/footer/footer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/commons/header/back/back.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/commons/header/back/back.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/commons/header/header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/commons/header/header.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/commons/header/heeaderRoute.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/commons/header/heeaderRoute.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/commons/myButton/myButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/commons/myButton/myButton.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/commons/myLink/myLink.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/commons/myLink/myLink.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/delivery/delivery.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/delivery/delivery.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/homepage/banner/banner.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/homepage/banner/banner.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/homepage/coverSelect/coveSelect.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/homepage/coverSelect/coveSelect.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/homepage/coverSelect/coverSelectButton/coverSelectButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/homepage/coverSelect/coverSelectButton/coverSelectButton.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/homepage/homepage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/homepage/homepage.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/homepage/sizeselect/sizeSelect.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/homepage/sizeselect/sizeSelect.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/homepage/sizeselect/syzeSelectButton/sizeSelectButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/homepage/sizeselect/syzeSelectButton/sizeSelectButton.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/homepage/slider/slider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/homepage/slider/slider.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/order/order.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/order/order.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/page404/page404.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/page404/page404.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/policy/policy.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/policy/policy.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/promotions/promotions.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/promotions/promotions.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/reviews/reviews.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/reviews/reviews.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/redux/coverSelectReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/coverSelectReducer.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/redux/sizeSelectReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/sizeSelectReducer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/store.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,7 +89,7 @@
       <workItem from="1644556128049" duration="249000" />
       <workItem from="1644556407692" duration="20791000" />
       <workItem from="1644646589566" duration="267000" />
-      <workItem from="1644731106786" duration="7059000" />
+      <workItem from="1644731106786" duration="8266000" />
     </task>
     <servers />
   </component>

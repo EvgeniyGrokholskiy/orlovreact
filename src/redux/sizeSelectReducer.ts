@@ -6,19 +6,22 @@ interface ISetSizeAction {
     type: typeof SET_SIZE
     payload: number
 }
+
 interface ISetErrorAction {
     type: typeof SET_SIZE_ERROR
 }
+
 interface IRemoveErrorAction {
     type: typeof REMOVE_SIZE_ERROR
 }
+
 type SetSizeActions = ISetSizeAction | ISetErrorAction | IRemoveErrorAction
 
 type SizeSelectReducerType = (state: ISizeSelectStateType, action: SetSizeActions) => ISizeSelectStateType
 
 type SizeSelectActionType = (index: number) => { type: typeof SET_SIZE, payload: number }
-type SetErrorActionType = () => { type: typeof SET_SIZE_ERROR}
-type RemoveErrorActionType = () => { type: typeof REMOVE_SIZE_ERROR}
+type SetErrorActionType = () => { type: typeof SET_SIZE_ERROR }
+type RemoveErrorActionType = () => { type: typeof REMOVE_SIZE_ERROR }
 
 interface IInitialStateItem {
     format: string,
@@ -29,6 +32,7 @@ interface IInitialStateItem {
     tabIndex: number,
     top: boolean,
 }
+
 export interface ISizeSelectStateType {
     error: boolean
     sizes: Array<IInitialStateItem>
@@ -76,7 +80,7 @@ const InitialState: ISizeSelectStateType = {
     ]
 }
 
-export const SizeSelectReducer: SizeSelectReducerType = (state: ISizeSelectStateType = InitialState, action: SetSizeActions) => {
+const sizeSelectReducer: SizeSelectReducerType = (state: ISizeSelectStateType = InitialState, action: SetSizeActions) => {
 
     switch (action.type) {
         case SET_SIZE: {
@@ -89,7 +93,7 @@ export const SizeSelectReducer: SizeSelectReducerType = (state: ISizeSelectState
                 return ({...item, selected: false})
             })
             return ({
-                ...state, sizes:newSizes, error: false
+                ...state, sizes: newSizes, error: false
             })
         }
 
@@ -101,7 +105,7 @@ export const SizeSelectReducer: SizeSelectReducerType = (state: ISizeSelectState
 
         case REMOVE_SIZE_ERROR: {
             return ({
-                ...state,error:false
+                ...state, error: false
             })
         }
 
@@ -113,3 +117,5 @@ export const SizeSelectReducer: SizeSelectReducerType = (state: ISizeSelectState
 export const sizeSelectActionCreator: SizeSelectActionType = (index: number) => ({type: SET_SIZE, payload: index})
 export const setSizeErrorActionCreator: SetErrorActionType = () => ({type: SET_SIZE_ERROR})
 export const removeSizeErrorActionCreator: RemoveErrorActionType = () => ({type: REMOVE_SIZE_ERROR})
+
+export default sizeSelectReducer

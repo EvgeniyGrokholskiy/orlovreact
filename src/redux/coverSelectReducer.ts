@@ -32,7 +32,7 @@ interface IStateItem {
     name: string,
     className: string,
     selected: boolean,
-    cover: any
+    cover: string
 }
 
 export interface IInitialState {
@@ -67,7 +67,7 @@ const initialState: IInitialState = {
     ]
 }
 
-export const coverSelectReducer: coverSelectReducerType = (state: IInitialState = initialState, action: CoverSelectActionsType): IInitialState => {
+const coverSelectReducer: coverSelectReducerType = (state: IInitialState = initialState, action: CoverSelectActionsType): IInitialState => {
     switch (action.type) {
         case SET_COVER: {
             const newState: Array<IStateItem> = state.covers.map((item: IStateItem) => {
@@ -105,3 +105,5 @@ export const coverSelectReducer: coverSelectReducerType = (state: IInitialState 
 export const setCoverActionCreator: SetCoverActionCreatorType = (index: number) => ({type: SET_COVER, payload: index})
 export const setCoverErrorActionCreator: SetErrorActionCreatorType = () => ({type: SET_COVER_ERROR})
 export const removeCoverErrorActionCreator: RemoveErrorActionCreatorType = () => ({type: REMOVE_COVER_ERROR})
+
+export default coverSelectReducer

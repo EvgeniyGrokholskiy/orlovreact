@@ -8,7 +8,7 @@ interface ICover {
     name: string,
     className: string,
     selected: boolean,
-    cover: any
+    cover: string
 }
 
 interface IProps {

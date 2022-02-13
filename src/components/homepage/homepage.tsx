@@ -22,7 +22,7 @@ import React, {ReactNode, useCallback, useEffect, useState} from "react";
 
 interface ICovers {
     error: boolean,
-    covers: Array<{ tabIndex: number, name: string, className: string, selected: boolean, cover: any }>
+    covers: Array<{ tabIndex: number, name: string, className: string, selected: boolean, cover: string }>
 }
 
 interface ICoversCovers {
@@ -30,7 +30,7 @@ interface ICoversCovers {
     name: string,
     className: string,
     selected: boolean,
-    cover: any
+    cover: string
 }
 
 interface ISizes {
