@@ -17,59 +17,19 @@ import {
     sizeSelectActionCreator
 } from "../../redux/sizeSelectReducer";
 import ContinueButton from "../commons/continueButton/continueButton";
-import React, {ReactNode, useCallback, useEffect, useState} from "react";
+import React, {Dispatch, SetStateAction, useCallback, useEffect, useState} from "react";
+import {
+    ICovers,
+    ICoversItem,
+    IHomePageProps,
+    isCoverSelectedType,
+    ISizes,
+    ISizesItem,
+    isSizesSelectedType, TermsType
+} from "../interfacesAndTypes/interfacesAndTypes";
 
 
-interface ICoversItem {
-    tabIndex: number,
-    name: string,
-    className: string,
-    selected: boolean,
-    cover: string
-}
-
-interface ICovers {
-    error: boolean,
-    covers: Array<ICoversItem>
-}
-
-interface ISizesItem {
-    format: string,
-    name: string,
-    price: string,
-    selected: boolean,
-    size: string,
-    tabIndex: number,
-    top: boolean
-}
-
-interface ISizes {
-    error: boolean,
-    sizes: Array<ISizesItem>
-}
-
-interface IProps {
-    covers: ICovers
-    sizes: ISizes
-    setCoverActionCreator: (index: number) => void
-    setCoverErrorActionCreator: () => void
-    removeCoverErrorActionCreator: () => void
-    sizeSelectActionCreator: (index: number) => void
-    setSizeErrorActionCreator: () => void
-    removeSizeErrorActionCreator: () => void
-    children?: ReactNode;
-}
-
-type TermsType = () => {
-    sizeAndCoverNotSelected: boolean
-    sizeSelectedCoversNot: boolean
-    coverSelectedSizeNot: boolean
-    allSelected: boolean
-}
-type isCoverSelectedType = (covers: ICovers) => boolean
-type isSizesSelectedType = (sizes: ISizes) => boolean
-
-const Homepage: React.FC<IProps> = ({
+const Homepage: React.FC<IHomePageProps> = ({
                                         covers,
                                         setCoverActionCreator,
                                         setCoverErrorActionCreator,
@@ -78,16 +38,16 @@ const Homepage: React.FC<IProps> = ({
                                         sizeSelectActionCreator,
                                         setSizeErrorActionCreator,
                                         removeSizeErrorActionCreator
-                                    }: IProps) => {
+                                    }: IHomePageProps) => {
 
-    const [href, setHref] = useState("#size-select")
+    const [href, setHref]: [href: string, setHref: Dispatch<SetStateAction<string>>] = useState<string>("#size-select")
 
-    const isCoverSelected: isCoverSelectedType = (covers: ICovers) => {
+    const isCoverSelected: isCoverSelectedType = (covers: ICovers): boolean => {
         const selected = covers.covers.filter((item: ICoversItem) => item.selected)
         return !!selected[0];
     }
 
-    const isSizesSelected: isSizesSelectedType = (sizes: ISizes) => {
+    const isSizesSelected: isSizesSelectedType = (sizes: ISizes): boolean => {
         const selected = sizes.sizes.filter((item: ISizesItem) => item.selected)
         return !!selected[0];
     }
@@ -186,7 +146,7 @@ const Homepage: React.FC<IProps> = ({
     );
 };
 
-const mapStateToProps = (state: IRootState) => ({
+const mapStateToProps = (state: IRootState): { covers: ICovers, sizes: ISizes } => ({
     covers: state.covers,
     sizes: state.sizes,
 })

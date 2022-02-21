@@ -21,23 +21,21 @@ interface IProps {
 
 const CoveSelect: React.FC<IProps> = ({covers, error, setCoverActionCreator}: IProps) => {
 
-    const setCover = () => {
-
-        return (
-            covers.filter((item: ICover) => {
-                    if (item.selected) {
-                        return (
-                            <img key={item.tabIndex} src={item.cover} alt="Обложка проигрывателя онлайн музыки" width="280"
-                                 height="379"/>
-                        )
-                    }
-                    return null
+    const setCover = (): ICover => {
+        const coversArray = covers.filter((item: ICover) => {
+                if (item.selected) {
+                    return (
+                        <img key={item.tabIndex} src={item.cover} alt="Обложка проигрывателя онлайн музыки" width="280"
+                             height="379"/>
+                    )
                 }
-            )
+                return null
+            }
         )
+        return coversArray[0]
     }
 
-    let selectedCover: ICover | Array<ICover> | Array<null> = setCover()
+    let selectedCover: ICover = setCover()
 
     return (
 
@@ -60,7 +58,7 @@ const CoveSelect: React.FC<IProps> = ({covers, error, setCoverActionCreator}: IP
             </div>
             <div className={styles.cover_select__image}>
                 {
-                    <img src={selectedCover[0] ? selectedCover[0].cover : AppleCover}
+                    <img src={selectedCover ? selectedCover.cover : AppleCover}
                          alt="Обложка проигрывателя онлайн музыки"
                          width="280" height="379"/>
                 }
