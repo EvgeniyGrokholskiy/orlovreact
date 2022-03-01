@@ -1,0 +1,14 @@
+.upload_file {
+    display: block;
+    font-family: Roboto,sans-serif;
+    font-size: 20px;
+    line-height: 50px;
+    color: var(--white_text);
+    background-color: var(--light_blue);
+    border: none;
+    border-radius: 25px;
+    margin-bottom: 10px;
+    text-align: center;
+    height: 50px;
+    width: 248px;
+}

@@ -17,7 +17,7 @@ interface IRemoveErrorAction {
 
 type SetSizeActions = ISetSizeAction | ISetErrorAction | IRemoveErrorAction
 
-type SizeSelectReducerType = (state: ISizeSelectStateType, action: SetSizeActions) => ISizeSelectStateType
+type SizeSelectReducerType = (state: ISizeSelectState, action: SetSizeActions) => ISizeSelectState
 
 type SizeSelectActionType = (index: number) => { type: typeof SET_SIZE, payload: number }
 type SetErrorActionType = () => { type: typeof SET_SIZE_ERROR }
@@ -33,12 +33,12 @@ interface IInitialStateItem {
     top: boolean,
 }
 
-export interface ISizeSelectStateType {
+export interface ISizeSelectState {
     error: boolean
     sizes: Array<IInitialStateItem>
 }
 
-const InitialState: ISizeSelectStateType = {
+const InitialState: ISizeSelectState = {
     error: false,
     sizes: [
         {
@@ -80,7 +80,7 @@ const InitialState: ISizeSelectStateType = {
     ]
 }
 
-const sizeSelectReducer: SizeSelectReducerType = (state: ISizeSelectStateType = InitialState, action: SetSizeActions) => {
+const sizeSelectReducer: SizeSelectReducerType = (state: ISizeSelectState = InitialState, action: SetSizeActions) => {
 
     switch (action.type) {
         case SET_SIZE: {

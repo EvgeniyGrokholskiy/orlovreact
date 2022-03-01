@@ -1,0 +1,42 @@
+.container {
+    display: flex;
+    top: 57%;
+    left: 50%;
+    transform: translateX(-50%);
+    position: absolute;
+}
+
+.item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 5px;
+}
+
+.increase, .reduction {
+    font-family: Roboto, sans-serif;
+    font-size: 16px;
+    line-height: 20px;
+    color: var(--white_text);
+    background-color: var(--light_blue);
+    border: none;
+    border-radius: 10px;
+    height: 21px;
+    width: 21px;
+}
+
+.sign {
+    fill: white;
+}
+
+
+.move_button {
+    font-family: Roboto, sans-serif;
+    font-size: 14px;
+    color: var(--white_text);
+    background-color: var(--light_blue);
+    border: none;
+    border-radius: 5px;
+    height: 21px;
+    margin: 0 5px;
+}

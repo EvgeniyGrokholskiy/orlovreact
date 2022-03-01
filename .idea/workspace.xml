@@ -2,17 +2,32 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4e6b6aa3-4f7b-48d5-b00e-46f20cde7307" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/assets/images/homepage/back_arrow.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/interfacesAndTypes/interfacesAndTypes.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/order/order.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/redux/orderReducer.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/order/apple_w_o_text.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/order/spotify_w_o_text.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/order/vk_w_o_text.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/commons/headerWithPrice/headerWithPrice.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/commons/headerWithPrice/headerWithPrice.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/commons/input/input.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/commons/input/input.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/order/playerCover/playerCover.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/order/playerCover/playerCover.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/order/socialLinks/socialLinks.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/order/socialLinks/socialLinks.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/order/totalPrice/totalPrice.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/order/totalPrice/totalPrice.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/order/tunungButtons/tuningButton.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/order/tunungButtons/tuningButtons.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/order/uploadFile/uploadFile.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/order/uploadFile/uploadFile.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/redux/selector.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/commons/header/back/back.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/commons/header/back/back.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/commons/header/back/back.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/commons/header/back/back.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/homepage/coverSelect/coveSelect.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/homepage/coverSelect/coveSelect.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/homepage/homepage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/homepage/homepage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/commons/myButton/myButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/commons/myButton/myButton.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/commons/myLink/myLink.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/commons/myLink/myLink.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/interfacesAndTypes/interfacesAndTypes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/interfacesAndTypes/interfacesAndTypes.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/order/order.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/order/order.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/order/order.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/order/order.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/orderReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/orderReducer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/sizeSelectReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/sizeSelectReducer.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/redux/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/store.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -27,14 +42,22 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaScript File" />
-        <option value="TypeScript JSX File" />
         <option value="TypeScript File" />
+        <option value="TypeScript JSX File" />
         <option value="CSS File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="ProjectId" id="24g6sHa3OW92hh2so98xiu8XpwO" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -61,18 +84,18 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\FRONT\orlov\reactsra\src\assets\images\order" />
       <recent name="D:\FRONT\orlov\reactsra\public" />
       <recent name="D:\FRONT\orlov\orlovreact\src\assets\images\delivery" />
       <recent name="D:\FRONT\orlov\reactsra\src\assets\images\homepage" />
       <recent name="D:\FRONT\orlov\reactsra\src\assets\images\footer" />
-      <recent name="D:\FRONT\orlov\reactsra\src\homepage\header\img" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\FRONT\orlov\reactsra\src\components\commons" />
+      <recent name="D:\FRONT\orlov\reactsra\src\components\order" />
+      <recent name="D:\FRONT\orlov\reactsra\src\components\order\playerCover" />
       <recent name="D:\FRONT\orlov\reactsra\src\assets\images\homepage" />
       <recent name="D:\FRONT\orlov\orlovreact\src\components\commons" />
-      <recent name="D:\FRONT\orlov\orlovreact\src\components\homepage\FL" />
-      <recent name="D:\FRONT\orlov\orlovreact\src\components" />
-      <recent name="D:\FRONT\orlov\reactsra\src\commons\footer" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -99,7 +122,9 @@
       <workItem from="1644646589566" duration="267000" />
       <workItem from="1644731106786" duration="9827000" />
       <workItem from="1645455202718" duration="10868000" />
-      <workItem from="1645467265329" duration="1127000" />
+      <workItem from="1645467265329" duration="1213000" />
+      <workItem from="1646118121247" duration="25268000" />
+      <workItem from="1646145940935" duration="13794000" />
     </task>
     <servers />
   </component>

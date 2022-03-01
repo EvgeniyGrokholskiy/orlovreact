@@ -1,17 +1,19 @@
 import React, {ReactNode, MouseEvent} from 'react';
 
 interface IProps {
-    callback?: null | (() => void)
+    callback?: null | (() => void) | ((action: string) => void)
     children: ReactNode
     className: string
+    id: string
 }
 
 
-const MyButton: React.FC<IProps> = ({children, className, callback = null}: IProps) => {
+const MyButton: React.FC<IProps> = ({id, children, className, callback = null}: IProps) => {
+
     return (
-        <button className={className} onClick={(event: MouseEvent<HTMLButtonElement>) => {
+        <button id={id} className={className} onClick={(event: MouseEvent<HTMLButtonElement>) => {
             if (callback) {
-                callback()
+                callback(event.currentTarget.id)
             }
             return
         }}>

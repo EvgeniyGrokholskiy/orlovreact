@@ -40,6 +40,17 @@ export interface IHomePageProps {
     children?: ReactNode;
 }
 
+export interface IPlayerCoverProps {
+    cover: string | undefined
+    uploadedCover: string | undefined
+    trackName: string
+    performerName: string
+    optionalText: string
+    top: number
+    left: number
+    height: number
+}
+
 export type TermsType = () => {
     sizeAndCoverNotSelected: boolean
     sizeSelectedCoversNot: boolean

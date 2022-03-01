@@ -1,0 +1,19 @@
+.input {
+    background-color: var(--gray);
+    border: none;
+    border-radius: 10px;
+    color: var(--text_color);
+    font-family: Roboto,sans-serif;
+    font-size: 16px;
+    margin-top: 10px;
+    padding: 25px 34px;
+    height: 75px;
+    max-width: 580px;
+    width: 100%;
+}
+
+.input::placeholder {
+    font-family: Roboto,sans-serif;
+    font-size: 16px;
+    color: var(--text_color);
+}

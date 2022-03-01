@@ -6,6 +6,8 @@ interface IProps  {
     className: string
     href: string
     target?: string
+    referrerPolicy?: string
+    rel?: string
 }
 
 

@@ -1,0 +1,85 @@
+.background_image {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-bottom: 60px;
+}
+
+.player_theme {
+    height: auto;
+    max-width: 293px;
+    width: 100%;
+}
+
+.user_img_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: absolute;
+    background-color: gray;
+    height: 203px;
+    width: 200px;
+    top: 7%;
+}
+
+.user_image {
+
+}
+
+.user_text_container, .user_text_container.vk {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 0.3em;
+    position: absolute;
+    top: 64%;
+    width: 47%;
+}
+
+.user_text_container.spotify {
+    top: 59%;
+}
+
+.user_text {
+    font-family: Roboto, sans-serif;
+    background-color: rgba(255, 255, 255, 0);
+    color: var(--white_text);
+    font-size: 0.8em;
+    font-weight: bold;
+    text-align: center;
+}
+
+.user_text_track {
+    font-size: 13px;
+}
+
+.user_text_track.spotify {
+    font-size: 16px;
+}
+
+.user_text_performer {
+    font-size: 10px;
+}
+
+.user_text_performer.apple, .user_text_performer.vk {
+    margin-top: 5px;
+}
+
+.user_text_performer.spotify {
+    margin-top: 5px;
+}
+
+.user_text_optional {
+    font-size: 13px;
+}
+
+.user_text_optional.apple, .user_text_optional.vk {
+    margin-top: 73px;
+}
+
+.user_text_optional.spotify {
+    margin-top: 88px;
+}
