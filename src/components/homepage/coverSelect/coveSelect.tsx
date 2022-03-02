@@ -2,21 +2,7 @@ import React, {ReactNode} from 'react';
 import styles from "./coverSlect.module.css";
 import AppleCover from "./../../../assets/images/homepage/apple.jpg";
 import CoverSelectButton from "./coverSelectButton/coverSelectButton";
-
-interface ICover {
-    tabIndex: number,
-    name: string,
-    className: string,
-    selected: boolean,
-    cover: string
-}
-
-interface IProps {
-    covers: Array<ICover>
-    error: boolean
-    setCoverActionCreator: (index: number) => void
-    children?: ReactNode
-}
+import {ICover, IProps} from "../../interfacesAndTypes/interfacesAndTypes";
 
 
 const CoveSelect: React.FC<IProps> = ({covers, error, setCoverActionCreator}: IProps) => {

@@ -1,3 +1,4 @@
-import {IRootState} from "./store";
+import {IRootState} from "../components/interfacesAndTypes/interfacesAndTypes";
+
 
 export const getOrderState = (state:IRootState) => state.order

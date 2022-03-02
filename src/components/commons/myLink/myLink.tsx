@@ -1,23 +1,14 @@
-import React, {ReactNode} from 'react';
-
-interface IProps  {
-    ariaLabel: string
-    children?: ReactNode
-    className: string
-    href: string
-    target?: string
-    referrerPolicy?: string
-    rel?: string
-}
+import React from 'react';
+import { IMyLinkProps } from '../../interfacesAndTypes/interfacesAndTypes';
 
 
-const MyLink: React.FC<IProps> = ({
-                                         ariaLabel,
-                                         children,
-                                         className,
-                                         href,
-                                         target = "_blank"
-                                     }: IProps) => {
+const MyLink: React.FC<IMyLinkProps> = ({
+                                            href,
+                                            children,
+                                            ariaLabel,
+                                            className,
+                                            target = "_blank"
+                                        }: IMyLinkProps) => {
 
     return (
         <>

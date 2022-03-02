@@ -1,18 +1,13 @@
+import orderReducer from "./orderReducer";
 import {combineReducers, createStore} from 'redux'
-import sizeSelectReducer, {ISizeSelectState} from "./sizeSelectReducer";
-import coverSelectReducer, {IInitialState} from "./coverSelectReducer";
-import orderReducer, {IOrderState} from "./orderReducer";
+import sizeSelectReducer from "./sizeSelectReducer";
+import coverSelectReducer from "./coverSelectReducer";
 
-export interface IRootState {
-    covers: IInitialState
-    sizes: ISizeSelectState
-    order: IOrderState
-}
 
 const reducers = combineReducers({
-    covers: coverSelectReducer,
+    order: orderReducer,
     sizes: sizeSelectReducer,
-    order: orderReducer
+    covers: coverSelectReducer
 })
 
 const store = createStore(reducers);

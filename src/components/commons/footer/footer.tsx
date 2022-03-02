@@ -5,6 +5,7 @@ import Logo from "../../../assets/images/footer/logo_orange_bg.jpg";
 
 
 const Footer: React.FC = () => {
+
     return (
         <footer>
             <div className={styles.footer}>

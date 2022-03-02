@@ -1,16 +1,55 @@
-import {ReactNode} from "react";
+import {ChangeEvent, ReactNode} from "react";
+import {IOrderState, selectOptionActionCreator} from "../../redux/orderReducer";
+import {IInitialState} from "../../redux/coverSelectReducer";
+import {ISizeSelectState} from "../../redux/sizeSelectReducer";
 
-export interface ICoversItem {
-    tabIndex: number,
+export interface IItem {
+    top: boolean,
     name: string,
-    className: string,
-    selected: boolean,
+    size: string,
+    price: string,
+    format: string,
+    selected: boolean
+    tabIndex: number,
+}
+
+export interface ISizes {
+    error: boolean,
+    sizes: Array<ISizesItem>
+}
+
+export interface IProps {
+    error: boolean
+    children?: ReactNode
+    covers: Array<ICover>
+    setCoverActionCreator: (index: number) => void
+}
+
+export interface ICover {
+    name: string,
     cover: string
+    selected: boolean,
+    tabIndex: number,
+    className: string,
 }
 
 export interface ICovers {
     error: boolean,
     covers: Array<ICoversItem>
+}
+
+export interface IRootState {
+    order: IOrderState
+    covers: IInitialState
+    sizes: ISizeSelectState
+}
+
+export interface IStateItem {
+    name: string,
+    cover: string
+    tabIndex: number,
+    selected: boolean,
+    className: string,
 }
 
 export interface ISizesItem {
@@ -23,9 +62,48 @@ export interface ISizesItem {
     top: boolean
 }
 
-export interface ISizes {
-    error: boolean,
-    sizes: Array<ISizesItem>
+export interface ICoversItem {
+    tabIndex: number,
+    name: string,
+    className: string,
+    selected: boolean,
+    cover: string
+}
+
+export interface IInputProps {
+    placeholder: string
+    isDisabled?: boolean
+    value: string | undefined
+    callback: (payload: string) => void
+}
+
+export interface IOrderProps {
+    order: IOrderState
+    selectOptionActionCreator: (id:string) => void
+    setTrackNameActionCreator: (name: string) => void
+    setOptionalTextActionCreator: (name: string) => void
+    uploadImageFileActionCreator: (payload: any) => void
+    setPerformerNameActionCreator: (name: string) => void
+    changeImageMagnificationActionCreator: (payload: string) => void
+    changeImagePositionUpDownActionCreator: (payload: string) => void
+    changeImagePositionLeftRightActionCreator: (payload: string) => void
+}
+
+export type TermsType = () => {
+    sizeAndCoverNotSelected: boolean
+    sizeSelectedCoversNot: boolean
+    coverSelectedSizeNot: boolean
+    allSelected: boolean
+}
+
+export interface IMyLinkProps {
+    rel?: string
+    href: string
+    target?: string
+    ariaLabel: string
+    className: string
+    children?: ReactNode
+    referrerPolicy?: string
 }
 
 export interface IHomePageProps {
@@ -40,6 +118,20 @@ export interface IHomePageProps {
     children?: ReactNode;
 }
 
+export interface IMyButtonProps {
+    id?: string
+    className: string
+    children: ReactNode
+    callback?: null | (() => void) | ((action: string) => void)
+}
+
+export interface ISizeSelectProps {
+    error: boolean
+    sizes: Array<IItem>
+    children?: ReactNode
+    sizeSelectActionCreator: (index: number) => void
+}
+
 export interface IPlayerCoverProps {
     cover: string | undefined
     uploadedCover: string | undefined
@@ -51,12 +143,29 @@ export interface IPlayerCoverProps {
     height: number
 }
 
-export type TermsType = () => {
-    sizeAndCoverNotSelected: boolean
-    sizeSelectedCoversNot: boolean
-    coverSelectedSizeNot: boolean
-    allSelected: boolean
+export interface IContinueButtonProps {
+    href: string
+    children?: ReactNode
+    className: string
+    callback: (() => void) | null
 }
 
-export type isCoverSelectedType = (covers: ICovers) => boolean
+export interface IHeaderWithPriceProps {
+    id?: string
+    header: string
+    price?: number
+    isListItem?: boolean
+    isSelected?: boolean
+    callback?: (id: string) => void
+}
+
+export interface ICoverSelectButtonProps {
+    item: IStateItem
+    callback: (index: number) => void
+    children?: ReactNode
+}
+
+export type onChangeType = (event: ChangeEvent<HTMLInputElement>) => void
+
 export type isSizesSelectedType = (sizes: ISizes) => boolean
+export type isCoverSelectedType = (covers: ICovers) => boolean

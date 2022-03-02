@@ -44,6 +44,7 @@ const PlayerCover: React.FC<IPlayerCoverProps> = ({
                  width="280" height="379"/>
             <div className={styles.user_img_container}>
                 <img style={{
+                    cursor: "all-scroll",
                     position: "relative",
                     top: topToString,
                     left: leftToString,

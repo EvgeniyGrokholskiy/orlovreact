@@ -1,6 +1,6 @@
 import React from 'react';
-import MyLink from "../commons/myLink/myLink";
 import styles from "./promotions.module.css";
+import MyLink from "../commons/myLink/myLink";
 
 
 const Promotions: React.FC = () => {

@@ -1,22 +1,9 @@
 import React, {ReactNode} from 'react';
 import styles from "../coverSlect.module.css";
-
-interface IStateItem {
-    tabIndex: number,
-    name: string,
-    className: string,
-    selected: boolean,
-    cover: string
-}
-
-interface IProps {
-    item: IStateItem
-    callback: (index: number) => void
-    children?: ReactNode
-}
+import {ICoverSelectButtonProps} from "../../../interfacesAndTypes/interfacesAndTypes";
 
 
-const CoverSelectButton: React.FC<IProps> = ({item, callback}: IProps) => {
+const CoverSelectButton: React.FC<ICoverSelectButtonProps> = ({item, callback}: ICoverSelectButtonProps) => {
 
     return (
         <div

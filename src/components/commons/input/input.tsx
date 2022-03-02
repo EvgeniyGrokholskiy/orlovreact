@@ -1,22 +1,16 @@
-import React, {ChangeEvent} from 'react';
 import styles from "./input.module.css";
+import React, {ChangeEvent} from 'react';
+import {IInputProps, onChangeType} from '../../interfacesAndTypes/interfacesAndTypes';
 
-interface IInputProps {
-    value: string | undefined
-    placeholder: string
-    callback: (payload: string) => void
-}
 
-type onChangeType = (event: ChangeEvent<HTMLInputElement>) => void
+const Input: React.FC<IInputProps> = ({placeholder, value, callback, isDisabled}: IInputProps) => {
 
-const Input: React.FC<IInputProps> = ({value, placeholder, callback}: IInputProps) => {
-
-    const onClickCallback:onChangeType = (event:ChangeEvent<HTMLInputElement>) => {
+    const onClickCallback: onChangeType = (event: ChangeEvent<HTMLInputElement>) => {
         callback(event.target.value)
     }
 
     return (
-        <input className={styles.input} value={value} placeholder={placeholder}
+        <input className={styles.input} value={value} placeholder={placeholder} disabled={isDisabled}
                onChange={onClickCallback}/>
     );
 };

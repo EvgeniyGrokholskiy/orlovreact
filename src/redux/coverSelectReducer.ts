@@ -23,9 +23,9 @@ type CoverSelectActionsType = ISetCoverAction | ISetErrorAction | IRemoveErrorAc
 
 type coverSelectReducerType = (state: IInitialState, action: CoverSelectActionsType) => IInitialState
 
-type SetCoverActionCreatorType = (index: number) => { type: typeof SET_COVER, payload: number }
 type SetErrorActionCreatorType = () => { type: typeof SET_COVER_ERROR }
 type RemoveErrorActionCreatorType = () => { type: typeof REMOVE_COVER_ERROR }
+type SetCoverActionCreatorType = (index: number) => { type: typeof SET_COVER, payload: number }
 
 interface IStateItem {
     tabIndex: number,
@@ -102,8 +102,8 @@ const coverSelectReducer: coverSelectReducerType = (state: IInitialState = initi
     }
 }
 
-export const setCoverActionCreator: SetCoverActionCreatorType = (index: number) => ({type: SET_COVER, payload: index})
 export const setCoverErrorActionCreator: SetErrorActionCreatorType = () => ({type: SET_COVER_ERROR})
 export const removeCoverErrorActionCreator: RemoveErrorActionCreatorType = () => ({type: REMOVE_COVER_ERROR})
+export const setCoverActionCreator: SetCoverActionCreatorType = (index: number) => ({type: SET_COVER, payload: index})
 
 export default coverSelectReducer

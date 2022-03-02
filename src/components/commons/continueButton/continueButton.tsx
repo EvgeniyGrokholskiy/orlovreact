@@ -1,20 +1,13 @@
-import React, {ReactNode} from 'react';
-
-interface IProps {
-    href: string
-    children?: ReactNode
-    className: string
-    callback: (() => void) | null
-}
+import React from 'react';
+import {IContinueButtonProps} from "../../interfacesAndTypes/interfacesAndTypes";
 
 
-const ContinueButton: React.FC<IProps> = ({
+const ContinueButton: React.FC<IContinueButtonProps> = ({
                                               href,
                                               children,
                                               callback,
                                               className,
-                                          }: IProps) => {
-
+                                          }: IContinueButtonProps) => {
 
     return (
         <>
@@ -29,7 +22,6 @@ const ContinueButton: React.FC<IProps> = ({
                     </a>
             }
         </>
-
     );
 }
 

@@ -1,10 +1,32 @@
+.main_container {
+    display: flex;
+    justify-content: center;
+}
+
 .image_container {
     display: flex;
     flex-direction: column;
+    margin-right: 26px;
     position: relative;
 }
 
 .form_container {
     display: flex;
     flex-direction: column;
+    margin-left: 26px;
+}
+
+.sendOrder {
+    display: block;
+    font-family: Roboto,sans-serif;
+    font-size: 20px;
+    line-height: 50px;
+    color: var(--white_text);
+    background-color: var(--light_blue);
+    border: none;
+    border-radius: 25px;
+    margin: 61px 0  115px 0;
+    text-align: center;
+    height: 50px;
+    width: 248px;
 }

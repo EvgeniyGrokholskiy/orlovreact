@@ -8,14 +8,16 @@ import slide3 from "../../../assets/images/homepage/slide_3.jpg";
 export default class FocusOnSelect extends Component {
 
     render() {
+
         const settings = {
+            speed: 500,
             autoplay: true,
-            focusOnSelect: true,
             infinite: true,
             slidesToShow: 2,
             slidesToScroll: 1,
-            speed: 500
+            focusOnSelect: true
         };
+
         return (
             <>
                 <Slider {...settings}>

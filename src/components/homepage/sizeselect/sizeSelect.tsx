@@ -1,26 +1,10 @@
-import React, {ReactNode} from "react";
+import React from "react";
 import styles from "./sizeSelect.module.css"
 import SizeSelectButton from "./syzeSelectButton/sizeSelectButton";
-
-interface IItem {
-    format: string,
-    name: string,
-    price: string,
-    selected: boolean
-    size: string,
-    tabIndex: number,
-    top: boolean,
-}
-
-interface IProps {
-    sizes: Array<IItem>
-    error: boolean
-    sizeSelectActionCreator: (index: number) => void
-    children?: ReactNode
-}
+import {IItem, ISizeSelectProps} from "../../interfacesAndTypes/interfacesAndTypes";
 
 
-const SizeSelect: React.FC<IProps> = ({sizes, error, sizeSelectActionCreator}: IProps) => {
+const SizeSelect: React.FC<ISizeSelectProps> = ({error, sizes, sizeSelectActionCreator}: ISizeSelectProps) => {
 
     return (
         <div id={"size_select"} className={styles.size_select}>

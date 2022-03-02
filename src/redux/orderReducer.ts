@@ -1,20 +1,21 @@
 import {ICoversItem, ISizesItem} from "../components/interfacesAndTypes/interfacesAndTypes";
 
+const SELECT_OPTION_ACTION = "REACTSPA/SRC/REDUX/ORDER_REDUCER/SELECT_OPTION_ACTION"
 const SET_TRACK_NAME_ACTION = "REACTSPA/SRC/REDUX/ORDER_REDUCER/SET_TRACK_NAME_ACTION"
-const SET_PERFORMER_NAME_ACTION = "REACTSPA/SRC/REDUX/ORDER_REDUCER/SET_PERFORMER_NAME_ACTION"
 const SET_OPTIONAL_TEXT_ACTION = "REACTSPA/SRC/REDUX/ORDER_REDUCER/SET_OPTIONAL_TEXT_ACTION"
 const UPLOAD_IMAGE_FILE_ACTION = "REACTSPA/SRC/REDUX/ORDER_REDUCER/UPLOAD_IMAGE_FILE_ACTION"
+const SET_PERFORMER_NAME_ACTION = "REACTSPA/SRC/REDUX/ORDER_REDUCER/SET_PERFORMER_NAME_ACTION"
+const CHANGE_IMAGE_MAGNIFICATION_ACTION = "REACTSPA/SRC/REDUX/ORDER_REDUCER/CHANGE_IMAGE_MAGNIFICATION_ACTION"
 const CHANGE_IMAGE_POSITION_UP_DOWN_ACTION = "REACTSPA/SRC/REDUX/ORDER_REDUCER/CHANGE_IMAGE_POSITION_UP_DOWN_ACTION"
 const CHANGE_IMAGE_POSITION_LEFT_RIGHT_ACTION = "REACTSPA/SRC/REDUX/ORDER_REDUCER/CHANGE_IMAGE_POSITION_LEFT_RIGHT_ACTION"
-const CHANGE_IMAGE_MAGNIFICATION_ACTION = "REACTSPA/SRC/REDUX/ORDER_REDUCER/CHANGE_IMAGE_MAGNIFICATION_ACTION"
 
-interface ISetTrackNameAction {
-    type: typeof SET_TRACK_NAME_ACTION
+interface ISelectOptionAction {
+    type: typeof SELECT_OPTION_ACTION
     payload: string
 }
 
-interface ISetPerformerNameAction {
-    type: typeof SET_PERFORMER_NAME_ACTION
+interface ISetTrackNameAction {
+    type: typeof SET_TRACK_NAME_ACTION
     payload: string
 }
 
@@ -28,6 +29,16 @@ interface IUploadImageFileAction {
     payload: string | undefined
 }
 
+interface ISetPerformerNameAction {
+    type: typeof SET_PERFORMER_NAME_ACTION
+    payload: string
+}
+
+interface IChangeImageMagnificationAction {
+    type: typeof CHANGE_IMAGE_MAGNIFICATION_ACTION
+    payload: string
+}
+
 interface IChangeImagePositionUpDownAction {
     type: typeof CHANGE_IMAGE_POSITION_UP_DOWN_ACTION
     payload: string
@@ -38,13 +49,9 @@ interface IChangeImagePositionLeftRightAction {
     payload: string
 }
 
-interface IChangeImageMagnificationAction {
-    type: typeof CHANGE_IMAGE_MAGNIFICATION_ACTION
-    payload: string
-}
-
 type actionType =
-    ISetTrackNameAction
+    ISelectOptionAction
+    | ISetTrackNameAction
     | ISetPerformerNameAction
     | ISetOptionalTextAction
     | IUploadImageFileAction
@@ -52,7 +59,7 @@ type actionType =
     | IChangeImagePositionLeftRightAction
     | IChangeImageMagnificationAction
 
-interface IOrderOptionItem {
+export interface IOrderOptionItem {
     id: string
     name: string
     isSelected: boolean
@@ -77,11 +84,17 @@ const initialState: IOrderState = {
     uploadedImage: undefined,
     orderOption: [
         /*{
-            id:"1"
+            id:"0"
             name: "Оживить фото (QR-код)",
             isSelected: false,
             price: 500
         },*/
+        {
+            id: "1",
+            name: "Дополнительный текст или дата",
+            isSelected: false,
+            price: 100
+        },
         {
             id: "2",
             name: "Добавить крепление на стену",
@@ -127,6 +140,20 @@ type OrderReducerType = (state: IOrderState, action: actionType) => IOrderState
 
 const orderReducer: OrderReducerType = (state: IOrderState = initialState, action: actionType): IOrderState => {
     switch (action.type) {
+        case SELECT_OPTION_ACTION: {
+            const newArray: Array<IOrderOptionItem> = state.orderOption.map((item: IOrderOptionItem) => {
+                if (item.id === action.payload) {
+                    return {
+                        ...item, isSelected: !item.isSelected
+                    }
+                }
+                return item
+            })
+
+            return {
+                ...state, orderOption: newArray
+            }
+        }
         case SET_TRACK_NAME_ACTION: {
             return {
                 ...state, trackName: action.payload
@@ -152,10 +179,10 @@ const orderReducer: OrderReducerType = (state: IOrderState = initialState, actio
             let newPosition: number = state.top
 
             if (action.payload === "up") {
-                newPosition += 5
+                newPosition -= 5
             }
             if (action.payload === "down") {
-                newPosition -= 5
+                newPosition += 5
             }
             return {
                 ...state, top: newPosition
@@ -176,7 +203,7 @@ const orderReducer: OrderReducerType = (state: IOrderState = initialState, actio
             }
         }
         case CHANGE_IMAGE_MAGNIFICATION_ACTION: {
-debugger
+
             let newMagnification: number = state.height
 
             if (action.payload === "+") {
@@ -195,13 +222,13 @@ debugger
     }
 }
 
-export type setTrackNameActionCreatorType = (payload: string) => {
-    type: typeof SET_TRACK_NAME_ACTION
+export type selectOptionActionCreatorType = (id: string) => {
+    type: typeof SELECT_OPTION_ACTION
     payload: string
 }
 
-export type setPerformerNameActionCreatorType = (payload: string) => {
-    type: typeof SET_PERFORMER_NAME_ACTION
+export type setTrackNameActionCreatorType = (payload: string) => {
+    type: typeof SET_TRACK_NAME_ACTION
     payload: string
 }
 
@@ -210,18 +237,8 @@ export type setOptionalTextActionCreatorType = (payload: string) => {
     payload: string
 }
 
-export type uploadImageFileActionCreatorType = (payload: string | undefined) => {
-    type: typeof UPLOAD_IMAGE_FILE_ACTION
-    payload: string | undefined
-}
-
-export type changeImagePositionUpDownActionCreatorType = (payload: string) => {
-    type: typeof CHANGE_IMAGE_POSITION_UP_DOWN_ACTION
-    payload: string
-}
-
-export type changeImagePositionLeftRightActionCreatorType = (payload: string) => {
-    type: typeof CHANGE_IMAGE_POSITION_LEFT_RIGHT_ACTION
+export type setPerformerNameActionCreatorType = (payload: string) => {
+    type: typeof SET_PERFORMER_NAME_ACTION
     payload: string
 }
 
@@ -230,6 +247,27 @@ export type changeImageMagnificationActionCreatorType = (payload: string) => {
     payload: string
 }
 
+export type changeImagePositionUpDownActionCreatorType = (payload: string) => {
+    type: typeof CHANGE_IMAGE_POSITION_UP_DOWN_ACTION
+    payload: string
+}
+
+export type uploadImageFileActionCreatorType = (payload: string | undefined) => {
+    type: typeof UPLOAD_IMAGE_FILE_ACTION
+    payload: string | undefined
+}
+
+export type changeImagePositionLeftRightActionCreatorType = (payload: string) => {
+    type: typeof CHANGE_IMAGE_POSITION_LEFT_RIGHT_ACTION
+    payload: string
+}
+
+export const selectOptionActionCreator: selectOptionActionCreatorType = (id: string): ISelectOptionAction => {
+    return {
+        type: SELECT_OPTION_ACTION,
+        payload: id
+    }
+}
 
 export const setTrackNameActionCreator: setTrackNameActionCreatorType = (payload: string): ISetTrackNameAction => {
     return {
@@ -238,23 +276,9 @@ export const setTrackNameActionCreator: setTrackNameActionCreatorType = (payload
     }
 }
 
-export const setPerformerNameActionCreator: setPerformerNameActionCreatorType = (payload: string): ISetPerformerNameAction => {
+export const changeImageMagnificationActionCreator: changeImageMagnificationActionCreatorType = (payload: string) => {
     return {
-        type: SET_PERFORMER_NAME_ACTION,
-        payload
-    }
-}
-
-export const setOptionalTextActionCreator: setOptionalTextActionCreatorType = (payload: string): ISetOptionalTextAction => {
-    return {
-        type: SET_OPTIONAL_TEXT_ACTION,
-        payload
-    }
-}
-
-export const uploadImageFileActionCreator: uploadImageFileActionCreatorType = (payload: string | undefined): IUploadImageFileAction => {
-    return {
-        type: UPLOAD_IMAGE_FILE_ACTION,
+        type: CHANGE_IMAGE_MAGNIFICATION_ACTION,
         payload
     }
 }
@@ -266,6 +290,13 @@ export const changeImagePositionUpDownActionCreator: changeImagePositionUpDownAc
     }
 }
 
+export const setOptionalTextActionCreator: setOptionalTextActionCreatorType = (payload: string): ISetOptionalTextAction => {
+    return {
+        type: SET_OPTIONAL_TEXT_ACTION,
+        payload
+    }
+}
+
 export const changeImagePositionLeftRightActionCreator: changeImagePositionLeftRightActionCreatorType = (payload: string) => {
     return {
         type: CHANGE_IMAGE_POSITION_LEFT_RIGHT_ACTION,
@@ -273,9 +304,16 @@ export const changeImagePositionLeftRightActionCreator: changeImagePositionLeftR
     }
 }
 
-export const changeImageMagnificationActionCreator: changeImageMagnificationActionCreatorType = (payload: string) => {
+export const setPerformerNameActionCreator: setPerformerNameActionCreatorType = (payload: string): ISetPerformerNameAction => {
     return {
-        type: CHANGE_IMAGE_MAGNIFICATION_ACTION,
+        type: SET_PERFORMER_NAME_ACTION,
+        payload
+    }
+}
+
+export const uploadImageFileActionCreator: uploadImageFileActionCreatorType = (payload: string | undefined): IUploadImageFileAction => {
+    return {
+        type: UPLOAD_IMAGE_FILE_ACTION,
         payload
     }
 }

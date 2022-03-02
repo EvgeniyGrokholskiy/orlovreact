@@ -2,31 +2,38 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4e6b6aa3-4f7b-48d5-b00e-46f20cde7307" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/assets/images/order/apple_w_o_text.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/images/order/spotify_w_o_text.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/images/order/vk_w_o_text.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/commons/headerWithPrice/headerWithPrice.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/commons/headerWithPrice/headerWithPrice.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/commons/input/input.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/commons/input/input.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/order/playerCover/playerCover.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/order/playerCover/playerCover.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/order/socialLinks/socialLinks.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/order/socialLinks/socialLinks.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/order/totalPrice/totalPrice.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/order/totalPrice/totalPrice.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/order/tunungButtons/tuningButton.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/order/tunungButtons/tuningButtons.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/order/uploadFile/uploadFile.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/order/uploadFile/uploadFile.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/redux/selector.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.test.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.test.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/commons/continueButton/continueButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/commons/continueButton/continueButton.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/commons/footer/footer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/commons/footer/footer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/commons/header/back/back.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/commons/header/back/back.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/commons/headerWithPrice/headerWithPrice.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/commons/headerWithPrice/headerWithPrice.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/commons/headerWithPrice/headerWithPrice.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/commons/headerWithPrice/headerWithPrice.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/commons/input/input.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/commons/input/input.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/commons/input/input.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/commons/input/input.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/commons/myButton/myButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/commons/myButton/myButton.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/commons/myLink/myLink.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/commons/myLink/myLink.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/delivery/delivery.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/delivery/delivery.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/delivery/delivery.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/delivery/delivery.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/homepage/FL/FL_FC.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/homepage/FL/FL_class.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/homepage/FL/WeatherDisplay.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/homepage/coverSelect/coveSelect.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/homepage/coverSelect/coveSelect.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/homepage/coverSelect/coverSelectButton/coverSelectButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/homepage/coverSelect/coverSelectButton/coverSelectButton.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/homepage/homepage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/homepage/homepage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/homepage/sizeselect/sizeSelect.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/homepage/sizeselect/sizeSelect.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/homepage/slider/slider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/homepage/slider/slider.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/interfacesAndTypes/interfacesAndTypes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/interfacesAndTypes/interfacesAndTypes.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/order/order.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/order/order.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/order/order.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/order/order.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/order/totalPrice/totalPrice.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/order/totalPrice/totalPrice.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/order/tunungButtons/tuningButtons.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/order/tunungButtons/tuningButtons.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/order/uploadFile/uploadFile.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/order/uploadFile/uploadFile.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/promotions/promotions.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/promotions/promotions.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/promotions/promotions.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/promotions/promotions.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/coverSelectReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/coverSelectReducer.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/redux/orderReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/orderReducer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/selector.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/selector.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/redux/sizeSelectReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/sizeSelectReducer.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/redux/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/store.ts" afterDir="false" />
     </list>
@@ -72,7 +79,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../site" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
@@ -124,7 +131,10 @@
       <workItem from="1645455202718" duration="10868000" />
       <workItem from="1645467265329" duration="1213000" />
       <workItem from="1646118121247" duration="25268000" />
-      <workItem from="1646145940935" duration="13794000" />
+      <workItem from="1646145940935" duration="14362000" />
+      <workItem from="1646209698322" duration="76000" />
+      <workItem from="1646210195184" duration="597000" />
+      <workItem from="1646222153732" duration="17724000" />
     </task>
     <servers />
   </component>

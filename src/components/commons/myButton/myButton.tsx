@@ -1,14 +1,8 @@
-import React, {ReactNode, MouseEvent} from 'react';
-
-interface IProps {
-    callback?: null | (() => void) | ((action: string) => void)
-    children: ReactNode
-    className: string
-    id: string
-}
+import React, {MouseEvent} from 'react';
+import {IMyButtonProps} from '../../interfacesAndTypes/interfacesAndTypes';
 
 
-const MyButton: React.FC<IProps> = ({id, children, className, callback = null}: IProps) => {
+const MyButton: React.FC<IMyButtonProps> = ({id, className, children, callback = null}: IMyButtonProps) => {
 
     return (
         <button id={id} className={className} onClick={(event: MouseEvent<HTMLButtonElement>) => {

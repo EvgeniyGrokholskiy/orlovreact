@@ -1,44 +1,44 @@
 import {connect} from "react-redux";
 import Banner from "./banner/banner";
 import styles from "./homepage.module.css";
-import {IRootState} from "../../redux/store";
 import MyLink from "../commons/myLink/myLink";
 import SizeSelect from "./sizeselect/sizeSelect";
 import FocusOnSelectSlider from "./slider/slider";
 import CoveSelect from "./coverSelect/coveSelect";
+import {IRootState} from "../interfacesAndTypes/interfacesAndTypes";
 import {
-    removeCoverErrorActionCreator,
     setCoverActionCreator,
-    setCoverErrorActionCreator
+    setCoverErrorActionCreator,
+    removeCoverErrorActionCreator
 } from "../../redux/coverSelectReducer";
 import {
-    removeSizeErrorActionCreator,
+    sizeSelectActionCreator,
     setSizeErrorActionCreator,
-    sizeSelectActionCreator
+    removeSizeErrorActionCreator
 } from "../../redux/sizeSelectReducer";
 import ContinueButton from "../commons/continueButton/continueButton";
 import React, {Dispatch, SetStateAction, useCallback, useEffect, useState} from "react";
 import {
+    ISizes,
     ICovers,
+    ISizesItem,
     ICoversItem,
     IHomePageProps,
     isCoverSelectedType,
-    ISizes,
-    ISizesItem,
     isSizesSelectedType, TermsType
 } from "../interfacesAndTypes/interfacesAndTypes";
 
 
 const Homepage: React.FC<IHomePageProps> = ({
-                                        covers,
-                                        setCoverActionCreator,
-                                        setCoverErrorActionCreator,
-                                        removeCoverErrorActionCreator,
-                                        sizes,
-                                        sizeSelectActionCreator,
-                                        setSizeErrorActionCreator,
-                                        removeSizeErrorActionCreator
-                                    }: IHomePageProps) => {
+                                                sizes,
+                                                covers,
+                                                setCoverActionCreator,
+                                                sizeSelectActionCreator,
+                                                setSizeErrorActionCreator,
+                                                setCoverErrorActionCreator,
+                                                removeSizeErrorActionCreator,
+                                                removeCoverErrorActionCreator
+                                            }: IHomePageProps) => {
 
     const [href, setHref]: [href: string, setHref: Dispatch<SetStateAction<string>>] = useState<string>("#size-select")
 
@@ -147,17 +147,17 @@ const Homepage: React.FC<IHomePageProps> = ({
 };
 
 const mapStateToProps = (state: IRootState): { covers: ICovers, sizes: ISizes } => ({
-    covers: state.covers,
     sizes: state.sizes,
+    covers: state.covers,
 })
 
 const mapDispatchToProps = {
     setCoverActionCreator,
-    setCoverErrorActionCreator,
-    removeCoverErrorActionCreator,
     sizeSelectActionCreator,
     setSizeErrorActionCreator,
-    removeSizeErrorActionCreator
+    setCoverErrorActionCreator,
+    removeSizeErrorActionCreator,
+    removeCoverErrorActionCreator
 }
 
 const ConnectedHomePage = connect(mapStateToProps, mapDispatchToProps)(Homepage)

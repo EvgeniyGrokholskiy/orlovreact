@@ -3,42 +3,36 @@ import styles from "./tuningButton.module.css";
 import MyButton from "../../commons/myButton/myButton";
 
 interface ITuningButtonsProps {
-    changeHeight: (payload:string) => void
     changeTop: (payload:string) => void
     changeLeft: (payload:string) => void
+    changeHeight: (payload:string) => void
 }
 
-const TuningButtons: React.FC<ITuningButtonsProps> = ({changeHeight, changeTop, changeLeft}: ITuningButtonsProps) => {
+const TuningButtons: React.FC<ITuningButtonsProps> = ({changeTop, changeLeft, changeHeight}: ITuningButtonsProps) => {
 
     const imageTuning = (action: string): void => {
         switch (action) {
             case "+": {
-                console.log("+")
                 changeHeight(action)
                 break
             }
             case "-": {
-                console.log("-")
                 changeHeight(action)
                 break
             }
             case "left": {
-                console.log("left")
                 changeLeft(action)
                 break
             }
             case "right": {
-                console.log("right")
                 changeLeft(action)
                 break
             }
             case "up": {
-                console.log("up")
                 changeTop(action)
                 break
             }
             case "down": {
-                console.log("down")
                 changeTop(action)
                 break
             }
