@@ -1,24 +1,33 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {connect} from "react-redux";
 import styles from "./order.module.css";
 import Input from "../commons/input/input";
 import UploadFile from "./uploadFile/uploadFile";
 import TotalPrice from "./totalPrice/totalPrice";
-import SocialLinks from "./socialLinks/socialLinks";
+import MyButton from "../commons/myButton/myButton";
 import PlayerCover from "./playerCover/playerCover";
+import SocialLinks from "./socialLinks/socialLinks";
 import TuningButtons from "./tunungButtons/tuningButtons";
 import HeaderWithPrice from "../commons/headerWithPrice/headerWithPrice";
-import {IOrderProps, IRootState} from "../interfacesAndTypes/interfacesAndTypes";
 import {
+    getPriceType,
+    ICoversItem,
+    IOrderProps,
+    IRootState,
+    iSizeAndCoversObj, ISizesItem
+} from "../interfacesAndTypes/interfacesAndTypes";
+import {
+    IOrderState,
+    IOrderOptionItem,
     setTrackNameActionCreator,
+    selectOptionActionCreator,
     uploadImageFileActionCreator,
     setOptionalTextActionCreator,
     setPerformerNameActionCreator,
-    changeImageMagnificationActionCreator,
-    changeImagePositionUpDownActionCreator,
-    changeImagePositionLeftRightActionCreator, IOrderOptionItem, selectOptionActionCreator, IOrderState
+    changeImagePositionAndMagnificationActionCreator,
+    setSelectedSizeOfProductActionCreator,
+    setSelectedCoverOfProductActionCreator
 } from '../../redux/orderReducer';
-import MyButton from "../commons/myButton/myButton";
 
 
 const Order: React.FC<IOrderProps> = ({
@@ -28,32 +37,74 @@ const Order: React.FC<IOrderProps> = ({
                                           setOptionalTextActionCreator,
                                           uploadImageFileActionCreator,
                                           setPerformerNameActionCreator,
-                                          changeImageMagnificationActionCreator,
-                                          changeImagePositionUpDownActionCreator,
-                                          changeImagePositionLeftRightActionCreator
+                                          setSelectedSizeOfProductActionCreator,
+                                          setSelectedCoverOfProductActionCreator,
+                                          changeImagePositionAndMagnificationActionCreator
                                       }: IOrderProps) => {
-    const getPrice = (order: IOrderState, startOfCount?: number) => {
-        let totalPrice: number = 0
+
+    const getPrice: getPriceType = (order: IOrderState, startOfCount: string | undefined) => {
+        const startOfCountValue = Number.parseFloat(startOfCount ? startOfCount : "0")
+        let totalPrice: number = startOfCountValue
         order.orderOption.forEach((item: IOrderOptionItem) => {
             item.isSelected ? totalPrice += item.price : totalPrice += 0
         })
         return totalPrice
     }
 
+    useEffect(() => {
+
+        const selectedSizeAndCoverString: string | null = localStorage.getItem("price")
+
+        if (selectedSizeAndCoverString) {
+            const selectedSizeAndCoverObj: iSizeAndCoversObj = JSON.parse(selectedSizeAndCoverString)
+            const cover: ICoversItem = selectedSizeAndCoverObj.cover
+            const size: ISizesItem = selectedSizeAndCoverObj.size
+            if (order.cover?.name !== cover.name) {
+                setSelectedCoverOfProductActionCreator(cover)
+            }
+            if (order.size?.name !== size.name) {
+                setSelectedSizeOfProductActionCreator(size)
+            }
+        }
+    },[])
+
+   useEffect(()=>{
+
+        const trackName = localStorage.getItem("trackName")
+        const performerName = localStorage.getItem("performerName")
+        const optionalText = localStorage.getItem("optionalText")
+
+        if (order.trackName !== trackName) {
+            setTrackNameActionCreator(trackName ? trackName : "")
+        }
+        if (order.performerName !== performerName) {
+            setPerformerNameActionCreator(performerName ? performerName : "")
+        }
+        if (order.optionalText !== optionalText) {
+            setOptionalTextActionCreator(optionalText ? optionalText : "")
+        }
+    },[])
+
+    useEffect(() => {
+
+        localStorage.setItem("trackName", order.trackName)
+        localStorage.setItem("performerName", order.performerName)
+        localStorage.setItem("optionalText", order.optionalText)
+
+    },[order.trackName, order.performerName, order.optionalText])
+
     return (
         <main>
             <div className={styles.main_container}>
                 <section>
                     <div className={styles.image_container}>
-                        <PlayerCover cover={order.cover?.name} optionalText={order.optionalText}
+                        <PlayerCover cover={order.cover?.className} optionalText={order.optionalText}
                                      trackName={order.trackName}
                                      performerName={order.performerName} uploadedCover={order.uploadedImage}
                                      height={order.height} top={order.top} left={order.left}/>
-                        <TuningButtons changeHeight={changeImageMagnificationActionCreator}
-                                       changeTop={changeImagePositionUpDownActionCreator}
-                                       changeLeft={changeImagePositionLeftRightActionCreator}/>
+                        <TuningButtons callback={changeImagePositionAndMagnificationActionCreator}/>
                         <SocialLinks/>
-                        <TotalPrice price={getPrice(order)}/>
+                        <TotalPrice price={getPrice(order, order.size?.price)}/>
                     </div>
                 </section>
                 <section>
@@ -78,7 +129,8 @@ const Order: React.FC<IOrderProps> = ({
                                                         callback={selectOptionActionCreator}/>
                             })
                         }
-                        <MyButton className={styles.sendOrder}>{"Оформить заказ"}</MyButton>
+                        <MyButton className={`${styles.sendOrder} shadow`} id={""}
+                                  callback={undefined}>{"Оформить заказ"}</MyButton>
                     </div>
                 </section>
             </div>
@@ -98,9 +150,9 @@ const mapDispatchToProps = {
     setOptionalTextActionCreator,
     uploadImageFileActionCreator,
     setPerformerNameActionCreator,
-    changeImageMagnificationActionCreator,
-    changeImagePositionUpDownActionCreator,
-    changeImagePositionLeftRightActionCreator
+    setSelectedSizeOfProductActionCreator,
+    setSelectedCoverOfProductActionCreator,
+    changeImagePositionAndMagnificationActionCreator
 }
 const ConnectedOrder = connect(mapStateToProps, mapDispatchToProps)(Order)
 

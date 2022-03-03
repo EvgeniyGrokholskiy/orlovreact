@@ -1,48 +1,15 @@
 import React from 'react';
 import styles from "./tuningButton.module.css";
 import MyButton from "../../commons/myButton/myButton";
+import { ITuningButtonsProps } from '../../interfacesAndTypes/interfacesAndTypes';
 
-interface ITuningButtonsProps {
-    changeTop: (payload:string) => void
-    changeLeft: (payload:string) => void
-    changeHeight: (payload:string) => void
-}
 
-const TuningButtons: React.FC<ITuningButtonsProps> = ({changeTop, changeLeft, changeHeight}: ITuningButtonsProps) => {
-
-    const imageTuning = (action: string): void => {
-        switch (action) {
-            case "+": {
-                changeHeight(action)
-                break
-            }
-            case "-": {
-                changeHeight(action)
-                break
-            }
-            case "left": {
-                changeLeft(action)
-                break
-            }
-            case "right": {
-                changeLeft(action)
-                break
-            }
-            case "up": {
-                changeTop(action)
-                break
-            }
-            case "down": {
-                changeTop(action)
-                break
-            }
-        }
-    }
+const TuningButtons: React.FC<ITuningButtonsProps> = ({callback}: ITuningButtonsProps) => {
 
     return (
         <>
             <div className={styles.container}>
-                <MyButton className={`${styles.increase} ${styles.item} shadow`} callback={imageTuning} id={"+"}>
+                <MyButton className={`${styles.increase} ${styles.item} shadow`} callback={callback} id={"+"}>
                     <svg className={styles.sign} xmlns="http://www.w3.org/2000/svg" width="15"
                          height="15" viewBox="0 0 1267.000000 1280.000000"
                          preserveAspectRatio="xMidYMid meet">
@@ -53,7 +20,7 @@ const TuningButtons: React.FC<ITuningButtonsProps> = ({changeTop, changeLeft, ch
                         </g>
                     </svg>
                 </MyButton>
-                <MyButton className={`${styles.reduction} ${styles.item} shadow`} callback={imageTuning}
+                <MyButton className={`${styles.reduction} ${styles.item} shadow`} callback={callback}
                           id={"-"}>
                     <svg className={styles.sign} xmlns="http://www.w3.org/2000/svg"
                          height="15px" viewBox="0 0 24 24"
@@ -61,11 +28,11 @@ const TuningButtons: React.FC<ITuningButtonsProps> = ({changeTop, changeLeft, ch
                         <path d="M18,11H6c-1.104,0-2,0.896-2,2s0.896,2,2,2h12c1.104,0,2-0.896,2-2S19.104,11,18,11z"/>
                     </svg>
                 </MyButton>
-                <MyButton className={`${styles.move_button} shadow`} callback={imageTuning} id={"left"}>влево</MyButton>
-                <MyButton className={`${styles.move_button} shadow`} callback={imageTuning}
+                <MyButton className={`${styles.move_button} shadow`} callback={callback} id={"left"}>влево</MyButton>
+                <MyButton className={`${styles.move_button} shadow`} callback={callback}
                           id={"right"}>вправо</MyButton>
-                <MyButton className={`${styles.move_button} shadow`} callback={imageTuning} id={"up"}>вверх</MyButton>
-                <MyButton className={`${styles.move_button} shadow`} callback={imageTuning} id={"down"}>вниз</MyButton>
+                <MyButton className={`${styles.move_button} shadow`} callback={callback} id={"up"}>вверх</MyButton>
+                <MyButton className={`${styles.move_button} shadow`} callback={callback} id={"down"}>вниз</MyButton>
             </div>
         </>
     );

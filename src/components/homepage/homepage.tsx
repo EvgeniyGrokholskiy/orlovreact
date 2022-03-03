@@ -5,7 +5,7 @@ import MyLink from "../commons/myLink/myLink";
 import SizeSelect from "./sizeselect/sizeSelect";
 import FocusOnSelectSlider from "./slider/slider";
 import CoveSelect from "./coverSelect/coveSelect";
-import {IRootState} from "../interfacesAndTypes/interfacesAndTypes";
+import {IRootState, iSizeAndCoversObj} from "../interfacesAndTypes/interfacesAndTypes";
 import {
     setCoverActionCreator,
     setCoverErrorActionCreator,
@@ -29,6 +29,7 @@ import {
 } from "../interfacesAndTypes/interfacesAndTypes";
 
 
+
 const Homepage: React.FC<IHomePageProps> = ({
                                                 sizes,
                                                 covers,
@@ -39,6 +40,14 @@ const Homepage: React.FC<IHomePageProps> = ({
                                                 removeSizeErrorActionCreator,
                                                 removeCoverErrorActionCreator
                                             }: IHomePageProps) => {
+
+    const selectedCoverAndSizeToLocalStorage = (sizes: ISizes, covers: ICovers) => {
+
+        const selectedSize = sizes.sizes.filter((item: ISizesItem) => item.selected)
+        const selectedCover = covers.covers.filter((item: ICoversItem) => item.selected)
+        let sizeAndCoversObj:iSizeAndCoversObj = {cover: selectedCover[0], size: selectedSize[0]}
+        localStorage.setItem("price", JSON.stringify(sizeAndCoversObj))
+    }
 
     const [href, setHref]: [href: string, setHref: Dispatch<SetStateAction<string>>] = useState<string>("#size-select")
 
@@ -96,6 +105,7 @@ const Homepage: React.FC<IHomePageProps> = ({
             setHref("#cover_select")
         } else if (terms.allSelected) {
             setHref("/order")
+            selectedCoverAndSizeToLocalStorage(sizes, covers)
         }
 
     }, [sizes, covers, Terms])

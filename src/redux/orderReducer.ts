@@ -5,9 +5,9 @@ const SET_TRACK_NAME_ACTION = "REACTSPA/SRC/REDUX/ORDER_REDUCER/SET_TRACK_NAME_A
 const SET_OPTIONAL_TEXT_ACTION = "REACTSPA/SRC/REDUX/ORDER_REDUCER/SET_OPTIONAL_TEXT_ACTION"
 const UPLOAD_IMAGE_FILE_ACTION = "REACTSPA/SRC/REDUX/ORDER_REDUCER/UPLOAD_IMAGE_FILE_ACTION"
 const SET_PERFORMER_NAME_ACTION = "REACTSPA/SRC/REDUX/ORDER_REDUCER/SET_PERFORMER_NAME_ACTION"
-const CHANGE_IMAGE_MAGNIFICATION_ACTION = "REACTSPA/SRC/REDUX/ORDER_REDUCER/CHANGE_IMAGE_MAGNIFICATION_ACTION"
-const CHANGE_IMAGE_POSITION_UP_DOWN_ACTION = "REACTSPA/SRC/REDUX/ORDER_REDUCER/CHANGE_IMAGE_POSITION_UP_DOWN_ACTION"
-const CHANGE_IMAGE_POSITION_LEFT_RIGHT_ACTION = "REACTSPA/SRC/REDUX/ORDER_REDUCER/CHANGE_IMAGE_POSITION_LEFT_RIGHT_ACTION"
+const SET_SELECTED_SIZE_OF_PRODUCT_ACTION = "REACTSPA/SRC/REDUX/ORDER_REDUCER/SET_SELECTED_SIZE_OF_PRODUCT_ACTION"
+const SET_SELECTED_COVER_OF_PRODUCT_ACTION = "REACTSPA/SRC/REDUX/ORDER_REDUCER/SET_SELECTED_COVER_OF_PRODUCT_ACTION"
+const CHANGE_IMAGE_POSITION_AND_MAGNIFICATION_ACTION = "REACTSPA/SRC/REDUX/ORDER_REDUCER/CHANGE_IMAGE_POSITION_AND_MAGNIFICATION_ACTION"
 
 interface ISelectOptionAction {
     type: typeof SELECT_OPTION_ACTION
@@ -34,30 +34,30 @@ interface ISetPerformerNameAction {
     payload: string
 }
 
-interface IChangeImageMagnificationAction {
-    type: typeof CHANGE_IMAGE_MAGNIFICATION_ACTION
-    payload: string
+interface ISetSelectedSizeOfProductAction {
+    type: typeof SET_SELECTED_SIZE_OF_PRODUCT_ACTION
+    payload: ISizesItem
 }
 
-interface IChangeImagePositionUpDownAction {
-    type: typeof CHANGE_IMAGE_POSITION_UP_DOWN_ACTION
-    payload: string
+interface ISetSelectedCoverOfProductAction {
+    type: typeof SET_SELECTED_COVER_OF_PRODUCT_ACTION
+    payload: ICoversItem
 }
 
-interface IChangeImagePositionLeftRightAction {
-    type: typeof CHANGE_IMAGE_POSITION_LEFT_RIGHT_ACTION
+interface IChangeImagePositionAndMagnificationAction {
+    type: typeof CHANGE_IMAGE_POSITION_AND_MAGNIFICATION_ACTION
     payload: string
 }
 
 type actionType =
     ISelectOptionAction
     | ISetTrackNameAction
-    | ISetPerformerNameAction
     | ISetOptionalTextAction
     | IUploadImageFileAction
-    | IChangeImagePositionUpDownAction
-    | IChangeImagePositionLeftRightAction
-    | IChangeImageMagnificationAction
+    | ISetPerformerNameAction
+    | ISetSelectedSizeOfProductAction
+    | ISetSelectedCoverOfProductAction
+    | IChangeImagePositionAndMagnificationAction
 
 export interface IOrderOptionItem {
     id: string
@@ -174,46 +174,56 @@ const orderReducer: OrderReducerType = (state: IOrderState = initialState, actio
                 ...state, uploadedImage: action.payload
             }
         }
-        case CHANGE_IMAGE_POSITION_UP_DOWN_ACTION: {
-
-            let newPosition: number = state.top
-
-            if (action.payload === "up") {
-                newPosition -= 5
-            }
-            if (action.payload === "down") {
-                newPosition += 5
-            }
+        case SET_SELECTED_SIZE_OF_PRODUCT_ACTION: {
             return {
-                ...state, top: newPosition
+                ...state, size: action.payload
             }
         }
-        case CHANGE_IMAGE_POSITION_LEFT_RIGHT_ACTION: {
-
-            let newPosition: number = state.left
-
-            if (action.payload === "right") {
-                newPosition += 5
-            }
-            if (action.payload === "left") {
-                newPosition -= 5
-            }
+        case SET_SELECTED_COVER_OF_PRODUCT_ACTION: {
             return {
-                ...state, left: newPosition
+                ...state, cover: action.payload
             }
         }
-        case CHANGE_IMAGE_MAGNIFICATION_ACTION: {
+        case CHANGE_IMAGE_POSITION_AND_MAGNIFICATION_ACTION: {
 
             let newMagnification: number = state.height
+            let newVerticalPosition: number = state.top
+            let newHorizontalPosition: number = state.left
 
-            if (action.payload === "+") {
-                newMagnification += 10
-            }
-            if (action.payload === "-") {
-                newMagnification -= 10
-            }
-            return {
-                ...state, height: newMagnification
+            switch (action.payload) {
+                case "+": {
+                    return {
+                        ...state, height: newMagnification += 10
+                    }
+                }
+                case "-": {
+                    return {
+                        ...state, height: newMagnification -= 10
+                    }
+                }
+                case "up": {
+                    return {
+                        ...state, top: newVerticalPosition -= 5
+                    }
+                }
+                case "down": {
+                    return {
+                        ...state, top: newVerticalPosition += 5
+                    }
+                }
+                case "left": {
+                    return {
+                        ...state, left: newHorizontalPosition -= 5
+                    }
+                }
+                case "right": {
+                    return {
+                        ...state, left: newHorizontalPosition += 5
+                    }
+                }
+                default: {
+                    return state
+                }
             }
         }
         default: {
@@ -242,23 +252,23 @@ export type setPerformerNameActionCreatorType = (payload: string) => {
     payload: string
 }
 
-export type changeImageMagnificationActionCreatorType = (payload: string) => {
-    type: typeof CHANGE_IMAGE_MAGNIFICATION_ACTION
-    payload: string
-}
-
-export type changeImagePositionUpDownActionCreatorType = (payload: string) => {
-    type: typeof CHANGE_IMAGE_POSITION_UP_DOWN_ACTION
-    payload: string
-}
-
 export type uploadImageFileActionCreatorType = (payload: string | undefined) => {
     type: typeof UPLOAD_IMAGE_FILE_ACTION
     payload: string | undefined
 }
 
-export type changeImagePositionLeftRightActionCreatorType = (payload: string) => {
-    type: typeof CHANGE_IMAGE_POSITION_LEFT_RIGHT_ACTION
+export type setSelectedSizeOfProductActionCreatorType = (payload: ISizesItem) => {
+    type: typeof SET_SELECTED_SIZE_OF_PRODUCT_ACTION
+    payload: ISizesItem
+}
+
+export type setSelectedCoverOfProductActionCreatorType = (payload: ICoversItem) => {
+    type: typeof SET_SELECTED_COVER_OF_PRODUCT_ACTION
+    payload: ICoversItem
+}
+
+export type changeImagePositionAndMagnificationActionCreatorType = (payload: string) => {
+    type: typeof CHANGE_IMAGE_POSITION_AND_MAGNIFICATION_ACTION
     payload: string
 }
 
@@ -276,30 +286,9 @@ export const setTrackNameActionCreator: setTrackNameActionCreatorType = (payload
     }
 }
 
-export const changeImageMagnificationActionCreator: changeImageMagnificationActionCreatorType = (payload: string) => {
-    return {
-        type: CHANGE_IMAGE_MAGNIFICATION_ACTION,
-        payload
-    }
-}
-
-export const changeImagePositionUpDownActionCreator: changeImagePositionUpDownActionCreatorType = (payload: string) => {
-    return {
-        type: CHANGE_IMAGE_POSITION_UP_DOWN_ACTION,
-        payload
-    }
-}
-
 export const setOptionalTextActionCreator: setOptionalTextActionCreatorType = (payload: string): ISetOptionalTextAction => {
     return {
         type: SET_OPTIONAL_TEXT_ACTION,
-        payload
-    }
-}
-
-export const changeImagePositionLeftRightActionCreator: changeImagePositionLeftRightActionCreatorType = (payload: string) => {
-    return {
-        type: CHANGE_IMAGE_POSITION_LEFT_RIGHT_ACTION,
         payload
     }
 }
@@ -314,6 +303,27 @@ export const setPerformerNameActionCreator: setPerformerNameActionCreatorType = 
 export const uploadImageFileActionCreator: uploadImageFileActionCreatorType = (payload: string | undefined): IUploadImageFileAction => {
     return {
         type: UPLOAD_IMAGE_FILE_ACTION,
+        payload
+    }
+}
+
+export const setSelectedSizeOfProductActionCreator: setSelectedSizeOfProductActionCreatorType = (payload:ISizesItem) => {
+    return {
+        type: SET_SELECTED_SIZE_OF_PRODUCT_ACTION,
+        payload
+    }
+}
+
+export const setSelectedCoverOfProductActionCreator: setSelectedCoverOfProductActionCreatorType = (payload:ICoversItem) => {
+    return {
+        type: SET_SELECTED_COVER_OF_PRODUCT_ACTION,
+        payload
+    }
+}
+
+export const changeImagePositionAndMagnificationActionCreator: changeImagePositionAndMagnificationActionCreatorType = (payload: string) => {
+    return {
+        type: CHANGE_IMAGE_POSITION_AND_MAGNIFICATION_ACTION,
         payload
     }
 }

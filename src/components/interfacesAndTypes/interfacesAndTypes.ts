@@ -1,5 +1,5 @@
 import {ChangeEvent, ReactNode} from "react";
-import {IOrderState, selectOptionActionCreator} from "../../redux/orderReducer";
+import {changeImagePositionAndMagnificationActionCreator, IOrderState} from "../../redux/orderReducer";
 import {IInitialState} from "../../redux/coverSelectReducer";
 import {ISizeSelectState} from "../../redux/sizeSelectReducer";
 
@@ -79,14 +79,14 @@ export interface IInputProps {
 
 export interface IOrderProps {
     order: IOrderState
-    selectOptionActionCreator: (id:string) => void
+    selectOptionActionCreator: (id: string) => void
     setTrackNameActionCreator: (name: string) => void
     setOptionalTextActionCreator: (name: string) => void
     uploadImageFileActionCreator: (payload: any) => void
     setPerformerNameActionCreator: (name: string) => void
-    changeImageMagnificationActionCreator: (payload: string) => void
-    changeImagePositionUpDownActionCreator: (payload: string) => void
-    changeImagePositionLeftRightActionCreator: (payload: string) => void
+    setSelectedSizeOfProductActionCreator: (payload: ISizesItem) => void
+    setSelectedCoverOfProductActionCreator: (payload: ICoversItem) => void
+    changeImagePositionAndMagnificationActionCreator: (payload: string) => void
 }
 
 export type TermsType = () => {
@@ -165,7 +165,17 @@ export interface ICoverSelectButtonProps {
     children?: ReactNode
 }
 
-export type onChangeType = (event: ChangeEvent<HTMLInputElement>) => void
+export interface ITuningButtonsProps {
+    callback: (payload: string) => void
+}
+
+export interface iSizeAndCoversObj {
+    cover: ICoversItem
+    size: ISizesItem
+}
+
 
 export type isSizesSelectedType = (sizes: ISizes) => boolean
 export type isCoverSelectedType = (covers: ICovers) => boolean
+export type onChangeType = (event: ChangeEvent<HTMLInputElement>) => void
+export type getPriceType = (order: IOrderState, startOfCount?: string | undefined) => number
