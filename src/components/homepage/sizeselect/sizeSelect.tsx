@@ -1,7 +1,8 @@
 import React from "react";
 import styles from "./sizeSelect.module.css"
+import { ISizeItem } from "../../../redux/sizeSelectReducer";
 import SizeSelectButton from "./syzeSelectButton/sizeSelectButton";
-import {IItem, ISizeSelectProps} from "../../interfacesAndTypes/interfacesAndTypes";
+import {ISizeSelectProps} from "../../interfacesAndTypes/interfacesAndTypes";
 
 
 const SizeSelect: React.FC<ISizeSelectProps> = ({error, sizes, sizeSelectActionCreator}: ISizeSelectProps) => {
@@ -14,7 +15,7 @@ const SizeSelect: React.FC<ISizeSelectProps> = ({error, sizes, sizeSelectActionC
             </div>
             <div className={styles.buttons}>
                 {
-                    sizes.map((item: IItem) => {
+                    sizes.map((item: ISizeItem) => {
                         return <SizeSelectButton key={item.tabIndex} callback={sizeSelectActionCreator} name={item.name}
                                                  tabIndex={item.tabIndex} format={item.format} size={item.size}
                                                  price={item.price} top={item.top} selected={item.selected}/>

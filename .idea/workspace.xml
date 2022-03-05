@@ -3,13 +3,19 @@
   <component name="ChangeListManager">
     <list default="true" id="4e6b6aa3-4f7b-48d5-b00e-46f20cde7307" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/commons/myButton/myButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/commons/myButton/myButton.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/commons/continueButton/continueButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/commons/continueButton/continueButton.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/commons/headerWithPrice/headerWithPrice.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/commons/headerWithPrice/headerWithPrice.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/commons/headerWithPrice/headerWithPrice.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/commons/headerWithPrice/headerWithPrice.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/homepage/coverSelect/coveSelect.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/homepage/coverSelect/coveSelect.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/homepage/homepage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/homepage/homepage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/homepage/sizeselect/sizeSelect.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/homepage/sizeselect/sizeSelect.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/interfacesAndTypes/interfacesAndTypes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/interfacesAndTypes/interfacesAndTypes.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/order/order.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/order/order.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/order/order.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/order/order.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/order/socialLinks/socialLinks.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/order/socialLinks/socialLinks.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/order/tunungButtons/tuningButtons.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/order/tunungButtons/tuningButtons.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/order/uploadFile/uploadFile.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/order/uploadFile/uploadFile.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/coverSelectReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/coverSelectReducer.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/redux/orderReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/orderReducer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/sizeSelectReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/sizeSelectReducer.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -109,7 +115,9 @@
       <workItem from="1646209698322" duration="76000" />
       <workItem from="1646210195184" duration="597000" />
       <workItem from="1646222153732" duration="18368000" />
-      <workItem from="1646292663201" duration="12082000" />
+      <workItem from="1646292663201" duration="13256000" />
+      <workItem from="1646465692271" duration="10844000" />
+      <workItem from="1646476698150" duration="16681000" />
     </task>
     <servers />
   </component>

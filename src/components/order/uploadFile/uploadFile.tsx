@@ -11,7 +11,7 @@ const UploadFile: React.FC<IUploadFileProps> = ({callback}: IUploadFileProps) =>
 
         const file: Blob | MediaSource = input[0]
 
-        const uploadFileURL = URL.createObjectURL(file)
+        const uploadFileURL: string = URL.createObjectURL(file)
 
         callback(uploadFileURL)
 

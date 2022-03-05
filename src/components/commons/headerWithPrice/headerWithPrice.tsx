@@ -1,11 +1,15 @@
-import React from "react";
+import {useDispatch} from "react-redux";
 import styles from "./headerWithPrice.module.css";
+import React, {Dispatch, ReducerAction} from "react";
 import {IHeaderWithPriceProps} from "../../interfacesAndTypes/interfacesAndTypes";
+import {setOptionalTextActionCreator, setOptionalTextActionCreatorType} from "../../../redux/orderReducer";
 
 
 const HeaderWithPrice: React.FC<IHeaderWithPriceProps> = ({
                                                               id,
                                                               price,
+                                                              error,
+                                                              anchor,
                                                               header,
                                                               callback,
                                                               isListItem,
@@ -13,18 +17,22 @@ const HeaderWithPrice: React.FC<IHeaderWithPriceProps> = ({
                                                           }: IHeaderWithPriceProps) => {
 
     const priceToString = `+${price} р.`
-
+    const dispatch: Dispatch<ReducerAction<setOptionalTextActionCreatorType>> = useDispatch()
 
     return (
-        <div className={isListItem ? `${styles.container} ${styles.listItem}`: styles.container}>
+        <div id={anchor} className={isListItem ? `${styles.container} ${styles.listItem}` : styles.container}>
             <div className={styles.text_and_price}>
-                <p className={styles.text}>{header}</p>
+                <p className={error ? `${styles.text} ${styles.error}` : styles.text}>{header}</p>
                 <p className={styles.price}>{price ? priceToString : undefined}</p>
             </div>
             {
-                price && callback ?
+                !!price && !!callback ?
                     <span className={`${styles.checkbox} ${isSelected ? styles.check : ""}`} onClick={() => {
-                        callback(id ? id : '')
+                        if (id === "1" && isSelected) {
+                            localStorage.setItem("optionalText", "")
+                            dispatch(setOptionalTextActionCreator(""))
+                            callback(id ? id : "")
+                        } else callback(id ? id : "")
                     }}/>
                     :
                     undefined

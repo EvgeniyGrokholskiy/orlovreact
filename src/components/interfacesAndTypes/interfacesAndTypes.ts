@@ -1,74 +1,44 @@
-import {ChangeEvent, ReactNode} from "react";
-import {changeImagePositionAndMagnificationActionCreator, IOrderState} from "../../redux/orderReducer";
-import {IInitialState} from "../../redux/coverSelectReducer";
-import {ISizeSelectState} from "../../redux/sizeSelectReducer";
+import React, {ChangeEvent, ReactNode} from "react";
+import {
+    IOrderState,
+    selectOptionActionCreatorType,
+    setTrackNameActionCreatorType,
+    uploadImageFileActionCreatorType,
+    setOptionalTextActionCreatorType,
+    setPerformerNameActionCreatorType,
+    setTrackNameErrorActionCreatorType,
+    updateSelectedOptionActionCreatorType,
+    setOptionalTextErrorActionCreatorType,
+    setModalWindowIsOpenActionCreatorType,
+    setPerformerNameErrorActionCreatorType,
+    setSelectedSizeOfProductActionCreatorType,
+    setSelectedCoverOfProductActionCreatorType,
+    changeImagePositionAndMagnificationActionCreatorType,
+} from "../../redux/orderReducer";
+import {
+    ICoverSelectState,
+    ICoverItem,
+    setCoverActionCreatorType,
+    setCoverErrorActionCreatorType
+} from "../../redux/coverSelectReducer";
+import {
+    ISizeItem,
+    ISizeSelectState,
+    setSizeErrorActionCreatorType,
+    sizeSelectActionCreatorType
+} from "../../redux/sizeSelectReducer";
 
-export interface IItem {
-    top: boolean,
-    name: string,
-    size: string,
-    price: string,
-    format: string,
-    selected: boolean
-    tabIndex: number,
-}
-
-export interface ISizes {
-    error: boolean,
-    sizes: Array<ISizesItem>
-}
-
-export interface IProps {
-    error: boolean
-    children?: ReactNode
-    covers: Array<ICover>
-    setCoverActionCreator: (index: number) => void
-}
-
-export interface ICover {
-    name: string,
-    cover: string
-    selected: boolean,
-    tabIndex: number,
-    className: string,
-}
-
-export interface ICovers {
-    error: boolean,
-    covers: Array<ICoversItem>
-}
+/************************ROOTStateInterface************************************************/
 
 export interface IRootState {
     order: IOrderState
-    covers: IInitialState
+    covers: ICoverSelectState
     sizes: ISizeSelectState
 }
 
-export interface IStateItem {
-    name: string,
-    cover: string
-    tabIndex: number,
-    selected: boolean,
-    className: string,
-}
+/*****************************************************************************************/
 
-export interface ISizesItem {
-    format: string,
-    name: string,
-    price: string,
-    selected: boolean,
-    size: string,
-    tabIndex: number,
-    top: boolean
-}
-
-export interface ICoversItem {
-    tabIndex: number,
-    name: string,
-    className: string,
-    selected: boolean,
-    cover: string
-}
+/*******************componentPropsInterfaces**********************************************/
 
 export interface IInputProps {
     placeholder: string
@@ -79,21 +49,19 @@ export interface IInputProps {
 
 export interface IOrderProps {
     order: IOrderState
-    selectOptionActionCreator: (id: string) => void
-    setTrackNameActionCreator: (name: string) => void
-    setOptionalTextActionCreator: (name: string) => void
-    uploadImageFileActionCreator: (payload: any) => void
-    setPerformerNameActionCreator: (name: string) => void
-    setSelectedSizeOfProductActionCreator: (payload: ISizesItem) => void
-    setSelectedCoverOfProductActionCreator: (payload: ICoversItem) => void
-    changeImagePositionAndMagnificationActionCreator: (payload: string) => void
-}
-
-export type TermsType = () => {
-    sizeAndCoverNotSelected: boolean
-    sizeSelectedCoversNot: boolean
-    coverSelectedSizeNot: boolean
-    allSelected: boolean
+    selectOptionActionCreator: selectOptionActionCreatorType
+    setTrackNameActionCreator: setTrackNameActionCreatorType
+    setOptionalTextActionCreator: setOptionalTextActionCreatorType
+    uploadImageFileActionCreator: uploadImageFileActionCreatorType
+    setPerformerNameActionCreator: setPerformerNameActionCreatorType
+    setTrackNameErrorActionCreator: setTrackNameErrorActionCreatorType
+    setPerformerErrorActionCreator: setPerformerNameErrorActionCreatorType
+    updateSelectedOptionActionCreator: updateSelectedOptionActionCreatorType
+    setModalWindowIsOpenActionCreator: setModalWindowIsOpenActionCreatorType
+    setOptionalTextErrorActionCreator: setOptionalTextErrorActionCreatorType
+    setSelectedSizeOfProductActionCreator: setSelectedSizeOfProductActionCreatorType
+    setSelectedCoverOfProductActionCreator: setSelectedCoverOfProductActionCreatorType
+    changeImagePositionAndMagnificationActionCreator: changeImagePositionAndMagnificationActionCreatorType
 }
 
 export interface IMyLinkProps {
@@ -107,15 +75,13 @@ export interface IMyLinkProps {
 }
 
 export interface IHomePageProps {
-    covers: ICovers
-    sizes: ISizes
-    setCoverActionCreator: (index: number) => void
-    setCoverErrorActionCreator: () => void
-    removeCoverErrorActionCreator: () => void
-    sizeSelectActionCreator: (index: number) => void
-    setSizeErrorActionCreator: () => void
-    removeSizeErrorActionCreator: () => void
     children?: ReactNode;
+    sizes: ISizeSelectState
+    covers: ICoverSelectState
+    setCoverActionCreator: setCoverActionCreatorType
+    sizeSelectActionCreator: sizeSelectActionCreatorType
+    setSizeErrorActionCreator: setSizeErrorActionCreatorType
+    setCoverErrorActionCreator: setCoverErrorActionCreatorType
 }
 
 export interface IMyButtonProps {
@@ -127,55 +93,71 @@ export interface IMyButtonProps {
 
 export interface ISizeSelectProps {
     error: boolean
-    sizes: Array<IItem>
     children?: ReactNode
+    sizes: Array<ISizeItem>
     sizeSelectActionCreator: (index: number) => void
 }
 
+export interface ICoverSelectProps {
+    error: boolean
+    children?: ReactNode
+    covers: Array<ICoverItem>
+    setCoverActionCreator: (index: number) => void
+}
+
 export interface IPlayerCoverProps {
-    cover: string | undefined
-    uploadedCover: string | undefined
-    trackName: string
-    performerName: string
-    optionalText: string
     top: number
     left: number
     height: number
+    trackName: string
+    optionalText: string
+    performerName: string
+    cover: string | undefined
+    uploadedCover: string | undefined
 }
 
-export interface IContinueButtonProps {
-    href: string
-    children?: ReactNode
-    className: string
-    callback: (() => void) | null
-}
-
-export interface IHeaderWithPriceProps {
-    id?: string
-    header: string
-    price?: number
-    isListItem?: boolean
-    isSelected?: boolean
-    callback?: (id: string) => void
-}
-
-export interface ICoverSelectButtonProps {
-    item: IStateItem
-    callback: (index: number) => void
-    children?: ReactNode
+export interface iSizeAndCoversObj {
+    size: string
+    cover: string
 }
 
 export interface ITuningButtonsProps {
     callback: (payload: string) => void
 }
 
-export interface iSizeAndCoversObj {
-    cover: ICoversItem
-    size: ISizesItem
+export interface IContinueButtonProps {
+    href: string
+    children?: ReactNode
+    className: string
+    callback: ((event:React.MouseEvent<HTMLAnchorElement>) => void) | null
+}
+
+export interface IHeaderWithPriceProps {
+    id?: string
+    header: string
+    price?: number
+    error?: boolean
+    anchor?: string
+    isListItem?: boolean
+    isSelected?: boolean
+    callback?: (id: string) => void
+}
+
+export interface ICoverSelectButtonProps {
+    item: ICoverItem
+    children?: ReactNode
+    callback: (index: number) => void
+}
+
+export type HomePageToOrderPageTermsType = () => {
+    allSelected: boolean
+    coverSelectedSizeNot: boolean
+    sizeSelectedCoversNot: boolean
+    sizeAndCoverNotSelected: boolean
 }
 
 
-export type isSizesSelectedType = (sizes: ISizes) => boolean
-export type isCoverSelectedType = (covers: ICovers) => boolean
+export type isSizesSelectedType = (sizes: ISizeSelectState) => boolean
+export type isCoverSelectedType = (covers: ICoverSelectState) => boolean
 export type onChangeType = (event: ChangeEvent<HTMLInputElement>) => void
 export type getPriceType = (order: IOrderState, startOfCount?: string | undefined) => number

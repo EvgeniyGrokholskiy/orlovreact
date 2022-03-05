@@ -13,7 +13,7 @@ const ContinueButton: React.FC<IContinueButtonProps> = ({
         <>
             {
                 callback ?
-                    <a href={href} target={"_self"} className={className} onClick={() => callback()}>
+                    <a href={href} target={"_self"} className={className} onClick={(event:React.MouseEvent<HTMLAnchorElement>) => callback(event)}>
                         {children}
                     </a>
                     :

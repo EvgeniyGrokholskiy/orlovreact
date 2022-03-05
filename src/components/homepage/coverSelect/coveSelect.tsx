@@ -1,14 +1,15 @@
-import React, {ReactNode} from 'react';
+import React from 'react';
 import styles from "./coverSlect.module.css";
+import {ICoverItem} from "../../../redux/coverSelectReducer";
 import AppleCover from "./../../../assets/images/homepage/apple.jpg";
 import CoverSelectButton from "./coverSelectButton/coverSelectButton";
-import {ICover, IProps} from "../../interfacesAndTypes/interfacesAndTypes";
+import {ICoverSelectProps} from "../../interfacesAndTypes/interfacesAndTypes";
 
 
-const CoveSelect: React.FC<IProps> = ({covers, error, setCoverActionCreator}: IProps) => {
+const CoveSelect: React.FC<ICoverSelectProps> = ({covers, error, setCoverActionCreator}: ICoverSelectProps) => {
 
-    const setCover = (): ICover => {
-        const coversArray = covers.filter((item: ICover) => {
+    const setCover = (): ICoverItem => {
+        const coversArray = covers.filter((item: ICoverItem) => {
                 if (item.selected) {
                     return (
                         <img key={item.tabIndex} src={item.cover} alt="Обложка проигрывателя онлайн музыки" width="280"
@@ -21,7 +22,7 @@ const CoveSelect: React.FC<IProps> = ({covers, error, setCoverActionCreator}: IP
         return coversArray[0]
     }
 
-    let selectedCover: ICover = setCover()
+    let selectedCover: ICoverItem = setCover()
 
     return (
 
@@ -34,7 +35,7 @@ const CoveSelect: React.FC<IProps> = ({covers, error, setCoverActionCreator}: IP
                 </div>
                 <div className={styles.buttons}>
                     {
-                        covers.map((item: ICover) => {
+                        covers.map((item: ICoverItem) => {
                             return (
                                 <CoverSelectButton key={item.tabIndex} item={item} callback={setCoverActionCreator}/>
                             )

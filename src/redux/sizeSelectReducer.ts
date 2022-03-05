@@ -1,45 +1,39 @@
-const SET_SIZE = "REACTSPA/SRC/REDUX/SIZE_SELECT_REDUCER/SET_SIZE"
-const SET_SIZE_ERROR = "REACTSPA/SRC/REDUX/SIZE_SELECT_REDUCER/SET_SIZE_ERROR"
-const REMOVE_SIZE_ERROR = "REACTSPA/SRC/REDUX/SIZE_SELECT_REDUCER/REMOVE_SIZE_ERROR"
+const SET_SIZE_ACTION = "REACTSPA/SRC/REDUX/SIZE_SELECT_REDUCER/SET_SIZE_ACTION"
+const SET_SIZE_ERROR_ACTION = "REACTSPA/SRC/REDUX/SIZE_SELECT_REDUCER/SET_SIZE_ERROR_ACTION"
 
-interface ISetSizeAction {
-    type: typeof SET_SIZE
+export interface ISetSizeAction {
+    type: typeof SET_SIZE_ACTION
     payload: number
 }
 
-interface ISetErrorAction {
-    type: typeof SET_SIZE_ERROR
+export interface ISetErrorAction {
+    type: typeof SET_SIZE_ERROR_ACTION
 }
 
-interface IRemoveErrorAction {
-    type: typeof REMOVE_SIZE_ERROR
-}
+type SetSizeActions = ISetSizeAction | ISetErrorAction
 
-type SetSizeActions = ISetSizeAction | ISetErrorAction | IRemoveErrorAction
+export type setSizeErrorActionCreatorType = () => { type: typeof SET_SIZE_ERROR_ACTION }
+export type sizeSelectActionCreatorType = (index: number) => { type: typeof SET_SIZE_ACTION, payload: number }
 
-type SizeSelectReducerType = (state: ISizeSelectState, action: SetSizeActions) => ISizeSelectState
-
-type SetErrorActionType = () => { type: typeof SET_SIZE_ERROR }
-type RemoveErrorActionType = () => { type: typeof REMOVE_SIZE_ERROR }
-type SizeSelectActionType = (index: number) => { type: typeof SET_SIZE, payload: number }
-
-interface IInitialStateItem {
-    format: string,
-    name: string,
-    price: string,
-    selected: boolean
-    size: string,
-    tabIndex: number,
+export interface ISizeItem {
     top: boolean,
+    name: string,
+    size: string,
+    price: string,
+    format: string,
+    selected: boolean
+    tabIndex: number,
 }
 
 export interface ISizeSelectState {
     error: boolean
-    sizes: Array<IInitialStateItem>
+    isSelected: boolean
+    sizes: Array<ISizeItem>
 }
 
 const InitialState: ISizeSelectState = {
     error: false,
+    isSelected: false,
     sizes: [
         {
             format: "A5",
@@ -80,12 +74,13 @@ const InitialState: ISizeSelectState = {
     ]
 }
 
+type SizeSelectReducerType = (state: ISizeSelectState, action: SetSizeActions) => ISizeSelectState
 const sizeSelectReducer: SizeSelectReducerType = (state: ISizeSelectState = InitialState, action: SetSizeActions) => {
 
     switch (action.type) {
-        case SET_SIZE: {
+        case SET_SIZE_ACTION: {
 
-            const newSizes = state.sizes.map((item: IInitialStateItem) => {
+            const newSizes = state.sizes.map((item: ISizeItem) => {
                 if (item.tabIndex === action.payload) {
                     sessionStorage.setItem("size", item.name)
                     return ({...item, selected: true})
@@ -93,19 +88,13 @@ const sizeSelectReducer: SizeSelectReducerType = (state: ISizeSelectState = Init
                 return ({...item, selected: false})
             })
             return ({
-                ...state, sizes: newSizes, error: false
+                ...state, sizes: newSizes, error: false, isSelected: true
             })
         }
 
-        case SET_SIZE_ERROR: {
+        case SET_SIZE_ERROR_ACTION: {
             return ({
                 ...state, error: true
-            })
-        }
-
-        case REMOVE_SIZE_ERROR: {
-            return ({
-                ...state, error: false
             })
         }
 
@@ -114,8 +103,7 @@ const sizeSelectReducer: SizeSelectReducerType = (state: ISizeSelectState = Init
     }
 }
 
-export const setSizeErrorActionCreator: SetErrorActionType = () => ({type: SET_SIZE_ERROR})
-export const removeSizeErrorActionCreator: RemoveErrorActionType = () => ({type: REMOVE_SIZE_ERROR})
-export const sizeSelectActionCreator: SizeSelectActionType = (index: number) => ({type: SET_SIZE, payload: index})
+export const setSizeErrorActionCreator: setSizeErrorActionCreatorType = () => ({type: SET_SIZE_ERROR_ACTION})
+export const sizeSelectActionCreator: sizeSelectActionCreatorType = (index: number) => ({type: SET_SIZE_ACTION, payload: index})
 
 export default sizeSelectReducer

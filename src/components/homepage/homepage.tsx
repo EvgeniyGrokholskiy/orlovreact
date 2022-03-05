@@ -5,29 +5,28 @@ import MyLink from "../commons/myLink/myLink";
 import SizeSelect from "./sizeselect/sizeSelect";
 import FocusOnSelectSlider from "./slider/slider";
 import CoveSelect from "./coverSelect/coveSelect";
-import {IRootState, iSizeAndCoversObj} from "../interfacesAndTypes/interfacesAndTypes";
 import {
+    ICoverItem,
+    ICoverSelectState,
     setCoverActionCreator,
     setCoverErrorActionCreator,
-    removeCoverErrorActionCreator
 } from "../../redux/coverSelectReducer";
 import {
+    IRootState,
+    IHomePageProps,
+    iSizeAndCoversObj,
+    isCoverSelectedType,
+    isSizesSelectedType,
+    HomePageToOrderPageTermsType
+} from "../interfacesAndTypes/interfacesAndTypes";
+import {
+    ISizeItem,
+    ISizeSelectState,
     sizeSelectActionCreator,
     setSizeErrorActionCreator,
-    removeSizeErrorActionCreator
 } from "../../redux/sizeSelectReducer";
 import ContinueButton from "../commons/continueButton/continueButton";
 import React, {Dispatch, SetStateAction, useCallback, useEffect, useState} from "react";
-import {
-    ISizes,
-    ICovers,
-    ISizesItem,
-    ICoversItem,
-    IHomePageProps,
-    isCoverSelectedType,
-    isSizesSelectedType, TermsType
-} from "../interfacesAndTypes/interfacesAndTypes";
-
 
 
 const Homepage: React.FC<IHomePageProps> = ({
@@ -37,31 +36,28 @@ const Homepage: React.FC<IHomePageProps> = ({
                                                 sizeSelectActionCreator,
                                                 setSizeErrorActionCreator,
                                                 setCoverErrorActionCreator,
-                                                removeSizeErrorActionCreator,
-                                                removeCoverErrorActionCreator
                                             }: IHomePageProps) => {
 
-    const selectedCoverAndSizeToLocalStorage = (sizes: ISizes, covers: ICovers) => {
+    const selectedCoverAndSizeToLocalStorage = (sizes: ISizeSelectState, covers: ICoverSelectState) => {
 
-        const selectedSize = sizes.sizes.filter((item: ISizesItem) => item.selected)
-        const selectedCover = covers.covers.filter((item: ICoversItem) => item.selected)
-        let sizeAndCoversObj:iSizeAndCoversObj = {cover: selectedCover[0], size: selectedSize[0]}
-        localStorage.setItem("price", JSON.stringify(sizeAndCoversObj))
+        const selectedSize = sizes.sizes.filter((item: ISizeItem) => item.selected)
+        const selectedCover = covers.covers.filter((item: ICoverItem) => item.selected)
+        let sizeAndCoversObj: iSizeAndCoversObj = {cover: selectedCover[0].className, size: selectedSize[0].price}
+        localStorage.setItem("sizeAndCoverObj", JSON.stringify(sizeAndCoversObj))
     }
 
     const [href, setHref]: [href: string, setHref: Dispatch<SetStateAction<string>>] = useState<string>("#size-select")
 
-    const isCoverSelected: isCoverSelectedType = (covers: ICovers): boolean => {
-        const selected = covers.covers.filter((item: ICoversItem) => item.selected)
-        return !!selected[0];
+    const isCoverSelected: isCoverSelectedType = (covers: ICoverSelectState): boolean => {
+        return covers.isSelected;
     }
 
-    const isSizesSelected: isSizesSelectedType = (sizes: ISizes): boolean => {
-        const selected = sizes.sizes.filter((item: ISizesItem) => item.selected)
-        return !!selected[0];
+    const isSizesSelected: isSizesSelectedType = (sizes: ISizeSelectState): boolean => {
+        return sizes.isSelected
+
     }
 
-    const Terms: TermsType = useCallback(() => {
+    const HomePageToOrderPageTerms: HomePageToOrderPageTermsType = useCallback(() => {
         const isSize: boolean = isSizesSelected(sizes)
         const isCover: boolean = isCoverSelected(covers)
 
@@ -77,25 +73,22 @@ const Homepage: React.FC<IHomePageProps> = ({
 
 
     const nextPage: (() => void) | null = () => {
-        const terms = Terms()
+        const terms = HomePageToOrderPageTerms()
 
         if (terms.sizeAndCoverNotSelected) {
             setCoverErrorActionCreator()
             setSizeErrorActionCreator()
         } else if (terms.coverSelectedSizeNot) {
             setSizeErrorActionCreator()
-            removeCoverErrorActionCreator()
+
         } else if (terms.sizeSelectedCoversNot) {
             setCoverErrorActionCreator()
-            removeSizeErrorActionCreator()
-        } else if (terms.allSelected) {
-            removeSizeErrorActionCreator()
-            removeCoverErrorActionCreator()
         }
     }
 
     useEffect(() => {
-        const terms = Terms()
+
+        const terms = HomePageToOrderPageTerms()
 
         if (terms.sizeAndCoverNotSelected) {
             setHref("#size_select")
@@ -108,7 +101,7 @@ const Homepage: React.FC<IHomePageProps> = ({
             selectedCoverAndSizeToLocalStorage(sizes, covers)
         }
 
-    }, [sizes, covers, Terms])
+    }, [sizes, covers, HomePageToOrderPageTerms])
 
 
     return (
@@ -156,7 +149,7 @@ const Homepage: React.FC<IHomePageProps> = ({
     );
 };
 
-const mapStateToProps = (state: IRootState): { covers: ICovers, sizes: ISizes } => ({
+const mapStateToProps = (state: IRootState): { covers: ICoverSelectState, sizes: ISizeSelectState } => ({
     sizes: state.sizes,
     covers: state.covers,
 })
@@ -165,9 +158,7 @@ const mapDispatchToProps = {
     setCoverActionCreator,
     sizeSelectActionCreator,
     setSizeErrorActionCreator,
-    setCoverErrorActionCreator,
-    removeSizeErrorActionCreator,
-    removeCoverErrorActionCreator
+    setCoverErrorActionCreator
 }
 
 const ConnectedHomePage = connect(mapStateToProps, mapDispatchToProps)(Homepage)
