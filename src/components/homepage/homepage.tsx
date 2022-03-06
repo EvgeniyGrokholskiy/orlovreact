@@ -54,10 +54,10 @@ const Homepage: React.FC<IHomePageProps> = ({
 
     const isSizesSelected: isSizesSelectedType = (sizes: ISizeSelectState): boolean => {
         return sizes.isSelected
-
     }
 
     const HomePageToOrderPageTerms: HomePageToOrderPageTermsType = useCallback(() => {
+
         const isSize: boolean = isSizesSelected(sizes)
         const isCover: boolean = isCoverSelected(covers)
 
@@ -73,6 +73,7 @@ const Homepage: React.FC<IHomePageProps> = ({
 
 
     const nextPage: (() => void) | null = () => {
+
         const terms = HomePageToOrderPageTerms()
 
         if (terms.sizeAndCoverNotSelected) {
@@ -80,7 +81,6 @@ const Homepage: React.FC<IHomePageProps> = ({
             setSizeErrorActionCreator()
         } else if (terms.coverSelectedSizeNot) {
             setSizeErrorActionCreator()
-
         } else if (terms.sizeSelectedCoversNot) {
             setCoverErrorActionCreator()
         }

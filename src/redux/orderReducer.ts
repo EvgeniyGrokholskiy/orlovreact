@@ -46,7 +46,7 @@ interface ISetTrackNameErrorAction {
 
 interface IUpdateSelectedOptionAction {
     type: typeof UPDATE_SELECTED_OPTION_ACTION
-    payload: Array<IOrderOptionItem>
+    payload: IOrderState
 }
 
 interface ISetModalWindowIsOpenAction {
@@ -200,7 +200,7 @@ const orderReducer: OrderReducerType = (state: IOrderState = initialState, actio
         }
         case SET_TRACK_NAME_ACTION: {
             return {
-                ...state, trackName: action.payload , trackNameError: false
+                ...state, trackName: action.payload, trackNameError: false
             }
         }
         case SET_OPTIONAL_TEXT_ACTION: {
@@ -225,7 +225,7 @@ const orderReducer: OrderReducerType = (state: IOrderState = initialState, actio
         }
         case UPDATE_SELECTED_OPTION_ACTION: {
             return {
-                ...state, orderOption: action.payload
+                ...action.payload
             }
         }
         case SET_OPTIONAL_TEXT_ERROR_ACTION: {
@@ -357,9 +357,10 @@ export type changeImagePositionAndMagnificationActionCreatorType = (payload: str
     payload: string
 }
 
-export type updateSelectedOptionActionCreatorType = (payload: Array<IOrderOptionItem>) => {
+export type updateSelectedOptionActionCreatorType = (payload: IOrderState/*Array<IOrderOptionItem>*/) => {
     type: typeof UPDATE_SELECTED_OPTION_ACTION
-    payload: Array<IOrderOptionItem>
+    /*payload: Array<IOrderOptionItem>*/
+    payload: IOrderState
 }
 
 export const selectOptionActionCreator: selectOptionActionCreatorType = (id: string): ISelectOptionAction => {
@@ -402,7 +403,7 @@ export const setModalWindowIsOpenActionCreator: setModalWindowIsOpenActionCreato
 }
 
 export const setOptionalTextErrorActionCreator: setOptionalTextErrorActionCreatorType = (): ISetOptionalTextErrorAction => {
-    return  {
+    return {
         type: SET_OPTIONAL_TEXT_ERROR_ACTION
     }
 }
@@ -435,7 +436,7 @@ export const setSelectedCoverOfProductActionCreator: setSelectedCoverOfProductAc
     }
 }
 
-export const updateSelectedOptionActionCreator: updateSelectedOptionActionCreatorType = (payload: Array<IOrderOptionItem>): IUpdateSelectedOptionAction => {
+export const updateSelectedOptionActionCreator: updateSelectedOptionActionCreatorType = (payload: IOrderState): IUpdateSelectedOptionAction => {
     return {
         type: UPDATE_SELECTED_OPTION_ACTION,
         payload
