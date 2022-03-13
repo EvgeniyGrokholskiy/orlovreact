@@ -3,9 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="4e6b6aa3-4f7b-48d5-b00e-46f20cde7307" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/homepage/homepage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/homepage/homepage.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/order/order.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/order/order.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/orderReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/orderReducer.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,7 +46,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../skillfactory/kanbanboard" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../skillfactory/BACK/first" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
@@ -108,7 +105,10 @@
       <workItem from="1646292663201" duration="13256000" />
       <workItem from="1646465692271" duration="10844000" />
       <workItem from="1646476698150" duration="17632000" />
-      <workItem from="1646559125053" duration="5953000" />
+      <workItem from="1646559125053" duration="7172000" />
+      <workItem from="1646591226431" duration="729000" />
+      <workItem from="1647012325290" duration="13000" />
+      <workItem from="1647191060669" duration="1411000" />
     </task>
     <servers />
   </component>
