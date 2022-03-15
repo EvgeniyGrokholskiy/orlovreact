@@ -1,0 +1,77 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 50px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    background-color: white;
+    border: 2px solid darkgray;
+    border-radius: 20px;
+    transform: translate(-50%, -50%);
+    max-width: 560px;
+    width: 100%;
+    z-index: 1;
+}
+
+.closeButton {
+    background: none;
+    border: none;
+    position: absolute;
+    top: 40px;
+    right: 50px;
+}
+
+.formLabelText {
+    font-family: Roboto, sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.5em;
+    letter-spacing: 0;
+    display: block;
+}
+
+.formInput {
+    font-family: Roboto, sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.5em;
+    letter-spacing: 0;
+    color: #323260;
+    background-color: #EBEBEB;
+    border: none;
+    border-radius: 10px;
+    padding: 0 20px;
+    margin: 15px 0 20px;
+    height: 50px;
+    width: 100%;
+}
+
+.formInput::placeholder {
+    font-family: Roboto, sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.5em;
+    letter-spacing: 0;
+    color: var(--text_color);
+}
+
+.submitButton {
+    font-family: Roboto, sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 2.5em;
+    letter-spacing: 0;
+    color: #ffffff;
+    background-color: #3E81FB;
+    border: none;
+    border-radius: 25px;
+    margin: 20px auto;
+    height: 50px;
+    width: 248px;
+}

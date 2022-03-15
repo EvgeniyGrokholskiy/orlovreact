@@ -2,7 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4e6b6aa3-4f7b-48d5-b00e-46f20cde7307" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/API/localStore.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/redux/selectors.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/commons/input/myInput.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/commons/input/myInput.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/interfacesAndTypes/interfacesAndTypes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/interfacesAndTypes/interfacesAndTypes.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/order/modal/modal.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/order/modal/modal.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/order/modal/modal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/order/modal/modal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/order/order.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/order/order.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/orderReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/orderReducer.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,9 +24,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaScript File" />
-        <option value="TypeScript File" />
         <option value="TypeScript JSX File" />
         <option value="CSS File" />
+        <option value="TypeScript File" />
       </list>
     </option>
   </component>
@@ -46,7 +54,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../skillfactory/BACK/first" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../react" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
@@ -65,11 +73,11 @@
       <recent name="D:\FRONT\orlov\reactsra\src\assets\images\footer" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\FRONT\orlov\reactsra\src\API" />
+      <recent name="D:\FRONT\orlov\reactsra\src\API\default" />
       <recent name="D:\FRONT\orlov\reactsra\src\components\commons" />
       <recent name="D:\FRONT\orlov\reactsra\src\components\order" />
       <recent name="D:\FRONT\orlov\reactsra\src\components\order\playerCover" />
-      <recent name="D:\FRONT\orlov\reactsra\src\assets\images\homepage" />
-      <recent name="D:\FRONT\orlov\orlovreact\src\components\commons" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -109,6 +117,10 @@
       <workItem from="1646591226431" duration="729000" />
       <workItem from="1647012325290" duration="13000" />
       <workItem from="1647191060669" duration="1411000" />
+      <workItem from="1647196407140" duration="116000" />
+      <workItem from="1647270084324" duration="3702000" />
+      <workItem from="1647273818576" duration="2851000" />
+      <workItem from="1647355244995" duration="8974000" />
     </task>
     <servers />
   </component>

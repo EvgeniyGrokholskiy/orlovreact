@@ -1,7 +1,9 @@
+import Modal from "./modal/modal";
 import {connect} from "react-redux";
 import styles from "./order.module.css";
-import Input from "../commons/input/input";
-import React, {useEffect, useState} from 'react';
+import {getPrice} from "../../redux/selectors";
+import MyInput from "../commons/input/myInput";
+import React, {useEffect, useState} from "react";
 import UploadFile from "./uploadFile/uploadFile";
 import TotalPrice from "./totalPrice/totalPrice";
 import PlayerCover from "./playerCover/playerCover";
@@ -9,28 +11,31 @@ import SocialLinks from "./socialLinks/socialLinks";
 import TuningButtons from "./tunungButtons/tuningButtons";
 import ContinueButton from "../commons/continueButton/continueButton";
 import HeaderWithPrice from "../commons/headerWithPrice/headerWithPrice";
-import {getPriceType, IOrderProps, IRootState} from "../interfacesAndTypes/interfacesAndTypes";
+import {IOrderProps, IRootState} from "../interfacesAndTypes/interfacesAndTypes";
 import {
-    changeImagePositionAndMagnificationActionCreator,
-    IOrderOptionItem,
     IOrderState,
+    IOrderOptionItem,
     selectOptionActionCreator,
-    setModalWindowIsOpenActionCreator,
-    setOptionalTextActionCreator,
-    setOptionalTextErrorActionCreator,
-    setPerformerErrorActionCreator,
-    setPerformerNameActionCreator,
-    setSelectedCoverOfProductActionCreator,
-    setSelectedSizeOfProductActionCreator,
     setTrackNameActionCreator,
+    setOptionalTextActionCreator,
+    uploadImageFileActionCreator,
+    setPerformerNameActionCreator,
+    setPerformerErrorActionCreator,
     setTrackNameErrorActionCreator,
+    setOptionalTextErrorActionCreator,
+    setModalWindowIsOpenActionCreator,
     updateSelectedOptionActionCreator,
-    uploadImageFileActionCreator
-} from '../../redux/orderReducer';
+    setModalWindowIsCloseActionCreator,
+    setSelectedSizeOfProductActionCreator,
+    setSelectedCoverOfProductActionCreator,
+    changeImagePositionAndMagnificationActionCreator,
+} from "../../redux/orderReducer";
+import {localStoreAPI} from "../../API/localStore";
 
 
 const Order: React.FC<IOrderProps> = ({
                                           order,
+                                          price,
                                           selectOptionActionCreator,
                                           setTrackNameActionCreator,
                                           setOptionalTextActionCreator,
@@ -41,37 +46,14 @@ const Order: React.FC<IOrderProps> = ({
                                           setOptionalTextErrorActionCreator,
                                           setModalWindowIsOpenActionCreator,
                                           updateSelectedOptionActionCreator,
+                                          setModalWindowIsCloseActionCreator,
                                           setSelectedSizeOfProductActionCreator,
                                           setSelectedCoverOfProductActionCreator,
                                           changeImagePositionAndMagnificationActionCreator
                                       }: IOrderProps) => {
 
-    const getSizeAndCoverFromLocalState = (): { cover: string, size: string } | undefined => {
-        const selectedSizeAndCoverString: string | null = localStorage.getItem("sizeAndCoverObj")
-        if (selectedSizeAndCoverString) {
-            return JSON.parse(selectedSizeAndCoverString)
-        }
-    }
-
-    const getOrderFromLocalStorage = (): IOrderState | undefined => {
-        const orderString: string | null = localStorage.getItem("order")
-        if (orderString) {
-            return JSON.parse(orderString)
-        }
-    }
-
-    const getPrice: getPriceType = (order: IOrderState, startOfCount: string | undefined) => {
-        const initialValue = Number.parseFloat(startOfCount ? startOfCount : "0")
-        let totalPrice: number = initialValue
-        order.orderOption?.forEach((item: IOrderOptionItem) => {
-            item.isSelected ? totalPrice += item.price : totalPrice += 0
-        })
-        return totalPrice
-
-    }
-
     useEffect(() => {
-        const selectedSizeAndCoverString = getSizeAndCoverFromLocalState()
+        const selectedSizeAndCoverString = localStoreAPI.getSizeAndCoverFromLocalState()
         if (selectedSizeAndCoverString) {
             setSelectedCoverOfProductActionCreator(selectedSizeAndCoverString.cover)
             setSelectedSizeOfProductActionCreator(selectedSizeAndCoverString.size)
@@ -79,20 +61,14 @@ const Order: React.FC<IOrderProps> = ({
     }, [])
 
     useEffect(() => {
-
-        const orderFromLocalStorage = getOrderFromLocalStorage()
-
+        const orderFromLocalStorage = localStoreAPI.getOrderFromLocalStorage()
         if (orderFromLocalStorage) {
             updateSelectedOptionActionCreator(orderFromLocalStorage)
         }
     }, [])
 
     useEffect(() => {
-
-        const orderToLocalstorageString = JSON.stringify(order)
-
-        localStorage.setItem("order", orderToLocalstorageString)
-
+        localStoreAPI.setOrderToLocalStorage(order)
     }, [order])
 
     const [href, setHref] = useState("#trackName")
@@ -105,9 +81,8 @@ const Order: React.FC<IOrderProps> = ({
         const isOptionalTextSelected: boolean = order.orderOption[0].isSelected
 
         const allInputIsEmpty: boolean = !isTrackName && !isPerformerName && isOptionalTextSelected && isOptionalText
-        const performerInputNotEmptyTrackIsEmpty: boolean = !isTrackName && isPerformerName
         const trackInputNotEmptyPerformerIsEmpty: boolean = isTrackName && !isPerformerName
-        const trackAndPerformerNotEmptyOptionalIsEmpty: boolean = isTrackName && isPerformerName
+        const performerInputNotEmptyTrackIsEmpty: boolean = !isTrackName && isPerformerName
         const allInputIsNotEmpty: boolean = isTrackName && isPerformerName && isOptionalTextSelected && isOptionalText
         const allInputIsNotEmptyWithOutOptionalText: boolean = isTrackName && isPerformerName && !isOptionalTextSelected
 
@@ -115,7 +90,6 @@ const Order: React.FC<IOrderProps> = ({
             allInputIsEmpty,
             performerInputNotEmptyTrackIsEmpty,
             trackInputNotEmptyPerformerIsEmpty,
-            trackAndPerformerNotEmptyOptionalIsEmpty,
             allInputIsNotEmpty,
             allInputIsNotEmptyWithOutOptionalText
         }
@@ -166,24 +140,24 @@ const Order: React.FC<IOrderProps> = ({
                                      height={order.height} top={order.top} left={order.left}/>
                         <TuningButtons callback={changeImagePositionAndMagnificationActionCreator}/>
                         <SocialLinks/>
-                        <TotalPrice price={getPrice(order, order.selectedSizePrice)}/>
+                        <TotalPrice price={price}/>
                     </div>
                 </section>
                 <section>
                     <div className={styles.form_container}>
                         <HeaderWithPrice header={"Название трека"} anchor={"trackName"} error={order.trackNameError}/>
-                        <Input value={order.trackName} placeholder={"Трек"} callback={setTrackNameActionCreator}/>
+                        <MyInput value={order.trackName} placeholder={"Трек"} callback={setTrackNameActionCreator}/>
                         <HeaderWithPrice header={"Название исполнителя"} anchor={"performerName"}
                                          error={order.performerNameError}/>
-                        <Input value={order.performerName} placeholder={"Исполнитель"}
-                               callback={setPerformerNameActionCreator}/>
+                        <MyInput value={order.performerName} placeholder={"Исполнитель"}
+                                 callback={setPerformerNameActionCreator}/>
                         <UploadFile callback={uploadImageFileActionCreator}/>
                         <HeaderWithPrice header={"Дополнительный текст или дата"}
                                          price={100} anchor={"optionalText"} error={order.optionalTextError}
                                          callback={selectOptionActionCreator}
                                          isSelected={order.orderOption[0].isSelected} id={order.orderOption[0].id}/>
-                        <Input placeholder={"Текст"} value={order.orderOption[0].isSelected ? order.optionalText : ""}
-                               callback={setOptionalTextActionCreator} isDisabled={!order.orderOption[0].isSelected}/>
+                        <MyInput placeholder={"Текст"} value={order.orderOption[0].isSelected ? order.optionalText : ""}
+                                 callback={setOptionalTextActionCreator} isDisabled={!order.orderOption[0].isSelected}/>
                         {
                             order.orderOption.map((item: IOrderOptionItem) => {
                                 if (item.id === "1") return undefined
@@ -196,7 +170,15 @@ const Order: React.FC<IOrderProps> = ({
                         <ContinueButton className={`${styles.sendOrder} shadow`} href={href}
                                         callback={nextPage}>{"Оформить заказ"}</ContinueButton>
                         {
-                            order.isSendOrderWindow ? <div>{"modal"}</div> : undefined
+                            order.isSendOrderWindow ? <Modal
+                                close={(event) => {
+                                    event.preventDefault()
+                                    setModalWindowIsCloseActionCreator()
+                                }}
+                                submit={(event) => {
+                                    event.preventDefault()
+                                    console.log("submit")
+                                }}/> : undefined
                         }
                     </div>
                 </section>
@@ -207,7 +189,8 @@ const Order: React.FC<IOrderProps> = ({
 
 const mapStateToProps = (state: IRootState) => {
     return {
-        order: state.order
+        order: state.order,
+        price: getPrice(state, state.order.selectedSizePrice)
     }
 }
 
@@ -222,6 +205,7 @@ const mapDispatchToProps = {
     setOptionalTextErrorActionCreator,
     setModalWindowIsOpenActionCreator,
     updateSelectedOptionActionCreator,
+    setModalWindowIsCloseActionCreator,
     setSelectedSizeOfProductActionCreator,
     setSelectedCoverOfProductActionCreator,
     changeImagePositionAndMagnificationActionCreator

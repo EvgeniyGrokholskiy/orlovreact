@@ -14,6 +14,8 @@ import {
     setSelectedSizeOfProductActionCreatorType,
     setSelectedCoverOfProductActionCreatorType,
     changeImagePositionAndMagnificationActionCreatorType,
+    setModalWindowIsCloseActionCreator,
+    setModalWindowIsCloseActionCreatorType,
 } from "../../redux/orderReducer";
 import {
     ICoverSelectState,
@@ -49,6 +51,7 @@ export interface IInputProps {
 
 export interface IOrderProps {
     order: IOrderState
+    price: number
     selectOptionActionCreator: selectOptionActionCreatorType
     setTrackNameActionCreator: setTrackNameActionCreatorType
     setOptionalTextActionCreator: setOptionalTextActionCreatorType
@@ -59,6 +62,7 @@ export interface IOrderProps {
     updateSelectedOptionActionCreator: updateSelectedOptionActionCreatorType
     setModalWindowIsOpenActionCreator: setModalWindowIsOpenActionCreatorType
     setOptionalTextErrorActionCreator: setOptionalTextErrorActionCreatorType
+    setModalWindowIsCloseActionCreator: setModalWindowIsCloseActionCreatorType
     setSelectedSizeOfProductActionCreator: setSelectedSizeOfProductActionCreatorType
     setSelectedCoverOfProductActionCreator: setSelectedCoverOfProductActionCreatorType
     changeImagePositionAndMagnificationActionCreator: changeImagePositionAndMagnificationActionCreatorType
@@ -129,7 +133,7 @@ export interface IContinueButtonProps {
     href: string
     children?: ReactNode
     className: string
-    callback: ((event:React.MouseEvent<HTMLAnchorElement>) => void) | null
+    callback: ((event: React.MouseEvent<HTMLAnchorElement>) => void) | null
 }
 
 export interface IHeaderWithPriceProps {

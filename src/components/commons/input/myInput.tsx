@@ -3,7 +3,7 @@ import React, {ChangeEvent} from 'react';
 import {IInputProps, onChangeType} from '../../interfacesAndTypes/interfacesAndTypes';
 
 
-const Input: React.FC<IInputProps> = ({placeholder, value, callback, isDisabled}: IInputProps) => {
+const MyInput: React.FC<IInputProps> = ({placeholder, value, callback, isDisabled}: IInputProps) => {
 
     const onClickCallback: onChangeType = (event: ChangeEvent<HTMLInputElement>) => {
         callback(event.target.value)
@@ -15,4 +15,4 @@ const Input: React.FC<IInputProps> = ({placeholder, value, callback, isDisabled}
     );
 };
 
-export default Input;
+export default MyInput;

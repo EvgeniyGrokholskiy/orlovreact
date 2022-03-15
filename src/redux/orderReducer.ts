@@ -11,6 +11,7 @@ const UPDATE_SELECTED_OPTION_ACTION = "REACTSPA/SRC/REDUX/ORDER_REDUCER/UPDATE_S
 const SET_OPTIONAL_TEXT_ERROR_ACTION = "REACTSPA/SRC/REDUX/ORDER_REDUCER/SET_OPTIONAL_TEXT_ERROR_ACTION"
 const SET_PERFORMER_NAME_ERROR_ACTION = "REACTSPA/SRC/REDUX/ORDER_REDUCER/SET_PERFORMER_NAME_ERROR_ACTION"
 const SET_MODAL_WINDOW_IS_OPEN_ACTION = "REACTSPA/SRC/REDUX/ORDER_REDUCER/SET_MODAL_WINDOW_IS_OPEN_ACTION"
+const SET_MODAL_WINDOW_IS_CLOSE_ACTION = "REACTSPA/SRC/REDUX/ORDER_REDUCER/SET_MODAL_WINDOW_IS_CLOSE_ACTION"
 const SET_SELECTED_SIZE_OF_PRODUCT_ACTION = "REACTSPA/SRC/REDUX/ORDER_REDUCER/SET_SELECTED_SIZE_OF_PRODUCT_ACTION"
 const SET_SELECTED_COVER_OF_PRODUCT_ACTION = "REACTSPA/SRC/REDUX/ORDER_REDUCER/SET_SELECTED_COVER_OF_PRODUCT_ACTION"
 const CHANGE_IMAGE_POSITION_AND_MAGNIFICATION_ACTION = "REACTSPA/SRC/REDUX/ORDER_REDUCER/CHANGE_IMAGE_POSITION_AND_MAGNIFICATION_ACTION"
@@ -53,6 +54,10 @@ interface ISetModalWindowIsOpenAction {
     type: typeof SET_MODAL_WINDOW_IS_OPEN_ACTION
 }
 
+interface ISetModalWindowIsCloseAction {
+    type: typeof SET_MODAL_WINDOW_IS_CLOSE_ACTION
+}
+
 interface ISetOptionalTextErrorAction {
     type: typeof SET_OPTIONAL_TEXT_ERROR_ACTION
 }
@@ -86,6 +91,7 @@ type actionType =
     | IUpdateSelectedOptionAction
     | ISetModalWindowIsOpenAction
     | ISetOptionalTextErrorAction
+    | ISetModalWindowIsCloseAction
     | ISetPerformerNameErrorAction
     | ISetSelectedSizeOfProductAction
     | ISetSelectedCoverOfProductAction
@@ -238,6 +244,11 @@ const orderReducer: OrderReducerType = (state: IOrderState = initialState, actio
                 ...state, isSendOrderWindow: true
             }
         }
+        case SET_MODAL_WINDOW_IS_CLOSE_ACTION: {
+            return {
+                ...state, isSendOrderWindow: false
+            }
+        }
         case SET_PERFORMER_NAME_ERROR_ACTION: {
             return {
                 ...state, performerNameError: true
@@ -309,6 +320,10 @@ export type setModalWindowIsOpenActionCreatorType = () => {
     type: typeof SET_MODAL_WINDOW_IS_OPEN_ACTION
 }
 
+export type setModalWindowIsCloseActionCreatorType = () => {
+    type: typeof SET_MODAL_WINDOW_IS_CLOSE_ACTION
+}
+
 export type setOptionalTextErrorActionCreatorType = () => {
     type: typeof SET_OPTIONAL_TEXT_ERROR_ACTION
 }
@@ -347,6 +362,11 @@ export type setSelectedCoverOfProductActionCreatorType = (payload: string) => {
     payload: string
 }
 
+export type updateSelectedOptionActionCreatorType = (payload: IOrderState) => {
+    type: typeof UPDATE_SELECTED_OPTION_ACTION
+    payload: IOrderState
+}
+
 export type uploadImageFileActionCreatorType = (payload: string | undefined) => {
     type: typeof UPLOAD_IMAGE_FILE_ACTION
     payload: string | undefined
@@ -355,12 +375,6 @@ export type uploadImageFileActionCreatorType = (payload: string | undefined) => 
 export type changeImagePositionAndMagnificationActionCreatorType = (payload: string) => {
     type: typeof CHANGE_IMAGE_POSITION_AND_MAGNIFICATION_ACTION
     payload: string
-}
-
-export type updateSelectedOptionActionCreatorType = (payload: IOrderState/*Array<IOrderOptionItem>*/) => {
-    type: typeof UPDATE_SELECTED_OPTION_ACTION
-    /*payload: Array<IOrderOptionItem>*/
-    payload: IOrderState
 }
 
 export const selectOptionActionCreator: selectOptionActionCreatorType = (id: string): ISelectOptionAction => {
@@ -408,6 +422,12 @@ export const setOptionalTextErrorActionCreator: setOptionalTextErrorActionCreato
     }
 }
 
+export const setModalWindowIsCloseActionCreator: setModalWindowIsCloseActionCreatorType = (): ISetModalWindowIsCloseAction => {
+    return {
+        type: SET_MODAL_WINDOW_IS_CLOSE_ACTION
+    }
+}
+
 export const setPerformerNameActionCreator: setPerformerNameActionCreatorType = (payload: string): ISetPerformerNameAction => {
     return {
         type: SET_PERFORMER_NAME_ACTION,
@@ -422,6 +442,13 @@ export const uploadImageFileActionCreator: uploadImageFileActionCreatorType = (p
     }
 }
 
+export const updateSelectedOptionActionCreator: updateSelectedOptionActionCreatorType = (payload: IOrderState): IUpdateSelectedOptionAction => {
+    return {
+        type: UPDATE_SELECTED_OPTION_ACTION,
+        payload
+    }
+}
+
 export const setSelectedSizeOfProductActionCreator: setSelectedSizeOfProductActionCreatorType = (payload: string): ISetSelectedSizeOfProductAction => {
     return {
         type: SET_SELECTED_SIZE_OF_PRODUCT_ACTION,
@@ -432,13 +459,6 @@ export const setSelectedSizeOfProductActionCreator: setSelectedSizeOfProductActi
 export const setSelectedCoverOfProductActionCreator: setSelectedCoverOfProductActionCreatorType = (payload: string): ISetSelectedCoverOfProductAction => {
     return {
         type: SET_SELECTED_COVER_OF_PRODUCT_ACTION,
-        payload
-    }
-}
-
-export const updateSelectedOptionActionCreator: updateSelectedOptionActionCreatorType = (payload: IOrderState): IUpdateSelectedOptionAction => {
-    return {
-        type: UPDATE_SELECTED_OPTION_ACTION,
         payload
     }
 }
