@@ -12,8 +12,6 @@ export interface ISetErrorAction {
 
 type SetSizeActions = ISetSizeAction | ISetErrorAction
 
-export type setSizeErrorActionCreatorType = () => { type: typeof SET_SIZE_ERROR_ACTION }
-export type sizeSelectActionCreatorType = (index: number) => { type: typeof SET_SIZE_ACTION, payload: number }
 
 export interface ISizeItem {
     top: boolean,
@@ -75,6 +73,8 @@ const InitialState: ISizeSelectState = {
 }
 
 type SizeSelectReducerType = (state: ISizeSelectState, action: SetSizeActions) => ISizeSelectState
+
+
 const sizeSelectReducer: SizeSelectReducerType = (state: ISizeSelectState = InitialState, action: SetSizeActions) => {
 
     switch (action.type) {
@@ -102,6 +102,10 @@ const sizeSelectReducer: SizeSelectReducerType = (state: ISizeSelectState = Init
             return state
     }
 }
+
+export type setSizeErrorActionCreatorType = () => ISetErrorAction
+export type sizeSelectActionCreatorType = (index: number) => ISetSizeAction
+
 
 export const setSizeErrorActionCreator: setSizeErrorActionCreatorType = () => ({type: SET_SIZE_ERROR_ACTION})
 export const sizeSelectActionCreator: sizeSelectActionCreatorType = (index: number) => ({type: SET_SIZE_ACTION, payload: index})

@@ -50,16 +50,16 @@ interface IUpdateSelectedOptionAction {
     payload: IOrderState
 }
 
+interface ISetOptionalTextErrorAction {
+    type: typeof SET_OPTIONAL_TEXT_ERROR_ACTION
+}
+
 interface ISetModalWindowIsOpenAction {
     type: typeof SET_MODAL_WINDOW_IS_OPEN_ACTION
 }
 
 interface ISetModalWindowIsCloseAction {
     type: typeof SET_MODAL_WINDOW_IS_CLOSE_ACTION
-}
-
-interface ISetOptionalTextErrorAction {
-    type: typeof SET_OPTIONAL_TEXT_ERROR_ACTION
 }
 
 interface ISetPerformerNameErrorAction {
@@ -96,6 +96,7 @@ type actionType =
     | ISetSelectedSizeOfProductAction
     | ISetSelectedCoverOfProductAction
     | IChangeImagePositionAndMagnificationAction
+
 
 export interface IOrderState {
     top: number
@@ -187,6 +188,7 @@ const initialState: IOrderState = {
 }
 
 type OrderReducerType = (state: IOrderState, action: actionType) => IOrderState
+
 
 const orderReducer: OrderReducerType = (state: IOrderState = initialState, action: actionType): IOrderState => {
     switch (action.type) {
@@ -312,158 +314,123 @@ const orderReducer: OrderReducerType = (state: IOrderState = initialState, actio
     }
 }
 
-export type setTrackNameErrorActionCreatorType = () => {
-    type: typeof SET_TRACK_NAME_ERROR_ACTION
-}
 
-export type setModalWindowIsOpenActionCreatorType = () => {
-    type: typeof SET_MODAL_WINDOW_IS_OPEN_ACTION
-}
+export type selectOptionActionCreatorType = (id: string) => ISelectOptionAction
 
-export type setModalWindowIsCloseActionCreatorType = () => {
-    type: typeof SET_MODAL_WINDOW_IS_CLOSE_ACTION
-}
+export type setTrackNameErrorActionCreatorType = () => ISetTrackNameErrorAction
 
-export type setOptionalTextErrorActionCreatorType = () => {
-    type: typeof SET_OPTIONAL_TEXT_ERROR_ACTION
-}
+export type setTrackNameActionCreatorType = (payload: string) => ISetTrackNameAction
 
-export type setPerformerNameErrorActionCreatorType = () => {
-    type: typeof SET_PERFORMER_NAME_ERROR_ACTION
-}
+export type setOptionalTextErrorActionCreatorType = () => ISetOptionalTextErrorAction
 
-export type selectOptionActionCreatorType = (id: string) => {
-    type: typeof SELECT_OPTION_ACTION
-    payload: string
-}
+export type setModalWindowIsOpenActionCreatorType = () => ISetModalWindowIsOpenAction
 
-export type setTrackNameActionCreatorType = (payload: string) => {
-    type: typeof SET_TRACK_NAME_ACTION
-    payload: string
-}
+export type setModalWindowIsCloseActionCreatorType = () => ISetModalWindowIsCloseAction
 
-export type setOptionalTextActionCreatorType = (payload: string) => {
-    type: typeof SET_OPTIONAL_TEXT_ACTION
-    payload: string
-}
+export type setPerformerNameErrorActionCreatorType = () => ISetPerformerNameErrorAction
 
-export type setPerformerNameActionCreatorType = (payload: string) => {
-    type: typeof SET_PERFORMER_NAME_ACTION
-    payload: string
-}
+export type setOptionalTextActionCreatorType = (payload: string) => ISetOptionalTextAction
 
-export type setSelectedSizeOfProductActionCreatorType = (payload: string) => {
-    type: typeof SET_SELECTED_SIZE_OF_PRODUCT_ACTION
-    payload: string
-}
+export type setPerformerNameActionCreatorType = (payload: string) => ISetPerformerNameAction
 
-export type setSelectedCoverOfProductActionCreatorType = (payload: string) => {
-    type: typeof SET_SELECTED_COVER_OF_PRODUCT_ACTION
-    payload: string
-}
+export type uploadImageFileActionCreatorType = (payload: string | undefined) => IUploadImageFileAction
 
-export type updateSelectedOptionActionCreatorType = (payload: IOrderState) => {
-    type: typeof UPDATE_SELECTED_OPTION_ACTION
-    payload: IOrderState
-}
+export type updateSelectedOptionActionCreatorType = (payload: IOrderState) => IUpdateSelectedOptionAction
 
-export type uploadImageFileActionCreatorType = (payload: string | undefined) => {
-    type: typeof UPLOAD_IMAGE_FILE_ACTION
-    payload: string | undefined
-}
+export type setSelectedSizeOfProductActionCreatorType = (payload: string) => ISetSelectedSizeOfProductAction
 
-export type changeImagePositionAndMagnificationActionCreatorType = (payload: string) => {
-    type: typeof CHANGE_IMAGE_POSITION_AND_MAGNIFICATION_ACTION
-    payload: string
-}
+export type setSelectedCoverOfProductActionCreatorType = (payload: string) => ISetSelectedCoverOfProductAction
 
-export const selectOptionActionCreator: selectOptionActionCreatorType = (id: string): ISelectOptionAction => {
+export type changeImagePositionAndMagnificationActionCreatorType = (payload: string) => IChangeImagePositionAndMagnificationAction
+
+
+export const selectOptionActionCreator: selectOptionActionCreatorType = (id: string) => {
     return {
         type: SELECT_OPTION_ACTION,
         payload: id
     }
 }
 
-export const setTrackNameActionCreator: setTrackNameActionCreatorType = (payload: string): ISetTrackNameAction => {
+export const setTrackNameErrorActionCreator: setTrackNameErrorActionCreatorType = () => {
+    return {
+        type: SET_TRACK_NAME_ERROR_ACTION
+    }
+}
+
+export const setPerformerErrorActionCreator: setPerformerNameErrorActionCreatorType = () => {
+    return {
+        type: SET_PERFORMER_NAME_ERROR_ACTION
+    }
+}
+
+export const setTrackNameActionCreator: setTrackNameActionCreatorType = (payload: string) => {
     return {
         type: SET_TRACK_NAME_ACTION,
         payload
     }
 }
 
-export const setTrackNameErrorActionCreator: setTrackNameErrorActionCreatorType = (): ISetTrackNameErrorAction => {
+export const setModalWindowIsOpenActionCreator: setModalWindowIsOpenActionCreatorType = () => {
     return {
-        type: SET_TRACK_NAME_ERROR_ACTION
+        type: SET_MODAL_WINDOW_IS_OPEN_ACTION
     }
 }
 
-export const setPerformerErrorActionCreator: setPerformerNameErrorActionCreatorType = (): ISetPerformerNameErrorAction => {
+export const setOptionalTextErrorActionCreator: setOptionalTextErrorActionCreatorType = () => {
     return {
-        type: SET_PERFORMER_NAME_ERROR_ACTION
+        type: SET_OPTIONAL_TEXT_ERROR_ACTION
     }
 }
 
-export const setOptionalTextActionCreator: setOptionalTextActionCreatorType = (payload: string): ISetOptionalTextAction => {
+export const setModalWindowIsCloseActionCreator: setModalWindowIsCloseActionCreatorType = () => {
+    return {
+        type: SET_MODAL_WINDOW_IS_CLOSE_ACTION
+    }
+}
+
+export const setOptionalTextActionCreator: setOptionalTextActionCreatorType = (payload: string) => {
     return {
         type: SET_OPTIONAL_TEXT_ACTION,
         payload
     }
 }
 
-export const setModalWindowIsOpenActionCreator: setModalWindowIsOpenActionCreatorType = (): ISetModalWindowIsOpenAction => {
-    return {
-        type: SET_MODAL_WINDOW_IS_OPEN_ACTION
-    }
-}
-
-export const setOptionalTextErrorActionCreator: setOptionalTextErrorActionCreatorType = (): ISetOptionalTextErrorAction => {
-    return {
-        type: SET_OPTIONAL_TEXT_ERROR_ACTION
-    }
-}
-
-export const setModalWindowIsCloseActionCreator: setModalWindowIsCloseActionCreatorType = (): ISetModalWindowIsCloseAction => {
-    return {
-        type: SET_MODAL_WINDOW_IS_CLOSE_ACTION
-    }
-}
-
-export const setPerformerNameActionCreator: setPerformerNameActionCreatorType = (payload: string): ISetPerformerNameAction => {
+export const setPerformerNameActionCreator: setPerformerNameActionCreatorType = (payload: string) => {
     return {
         type: SET_PERFORMER_NAME_ACTION,
         payload
     }
 }
 
-export const uploadImageFileActionCreator: uploadImageFileActionCreatorType = (payload: string | undefined): IUploadImageFileAction => {
+export const uploadImageFileActionCreator: uploadImageFileActionCreatorType = (payload: string | undefined) => {
     return {
         type: UPLOAD_IMAGE_FILE_ACTION,
         payload
     }
 }
 
-export const updateSelectedOptionActionCreator: updateSelectedOptionActionCreatorType = (payload: IOrderState): IUpdateSelectedOptionAction => {
+export const updateSelectedOptionActionCreator: updateSelectedOptionActionCreatorType = (payload: IOrderState) => {
     return {
         type: UPDATE_SELECTED_OPTION_ACTION,
         payload
     }
 }
 
-export const setSelectedSizeOfProductActionCreator: setSelectedSizeOfProductActionCreatorType = (payload: string): ISetSelectedSizeOfProductAction => {
+export const setSelectedSizeOfProductActionCreator: setSelectedSizeOfProductActionCreatorType = (payload: string) => {
     return {
         type: SET_SELECTED_SIZE_OF_PRODUCT_ACTION,
         payload
     }
 }
 
-export const setSelectedCoverOfProductActionCreator: setSelectedCoverOfProductActionCreatorType = (payload: string): ISetSelectedCoverOfProductAction => {
+export const setSelectedCoverOfProductActionCreator: setSelectedCoverOfProductActionCreatorType = (payload: string) => {
     return {
         type: SET_SELECTED_COVER_OF_PRODUCT_ACTION,
         payload
     }
 }
 
-export const changeImagePositionAndMagnificationActionCreator: changeImagePositionAndMagnificationActionCreatorType = (payload: string): IChangeImagePositionAndMagnificationAction => {
+export const changeImagePositionAndMagnificationActionCreator: changeImagePositionAndMagnificationActionCreatorType = (payload: string) => {
     return {
         type: CHANGE_IMAGE_POSITION_AND_MAGNIFICATION_ACTION,
         payload

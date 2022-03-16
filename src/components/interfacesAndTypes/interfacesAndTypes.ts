@@ -6,16 +6,16 @@ import {
     uploadImageFileActionCreatorType,
     setOptionalTextActionCreatorType,
     setPerformerNameActionCreatorType,
+    setModalWindowIsCloseActionCreator,
     setTrackNameErrorActionCreatorType,
     updateSelectedOptionActionCreatorType,
     setOptionalTextErrorActionCreatorType,
     setModalWindowIsOpenActionCreatorType,
     setPerformerNameErrorActionCreatorType,
+    setModalWindowIsCloseActionCreatorType,
     setSelectedSizeOfProductActionCreatorType,
     setSelectedCoverOfProductActionCreatorType,
     changeImagePositionAndMagnificationActionCreatorType,
-    setModalWindowIsCloseActionCreator,
-    setModalWindowIsCloseActionCreatorType,
 } from "../../redux/orderReducer";
 import {
     ICoverSelectState,
@@ -26,13 +26,15 @@ import {
 import {
     ISizeItem,
     ISizeSelectState,
-    setSizeErrorActionCreatorType,
-    sizeSelectActionCreatorType
+    sizeSelectActionCreatorType,
+    setSizeErrorActionCreatorType
 } from "../../redux/sizeSelectReducer";
+import { IAppState, setHrefActionCreatorType } from "../../redux/appReducer";
 
 /************************ROOTStateInterface************************************************/
 
 export interface IRootState {
+    app: IAppState,
     order: IOrderState
     covers: ICoverSelectState
     sizes: ISizeSelectState
@@ -80,8 +82,10 @@ export interface IMyLinkProps {
 
 export interface IHomePageProps {
     children?: ReactNode;
+    app: IAppState
     sizes: ISizeSelectState
     covers: ICoverSelectState
+    setHrefActionCreator: setHrefActionCreatorType
     setCoverActionCreator: setCoverActionCreatorType
     sizeSelectActionCreator: sizeSelectActionCreatorType
     setSizeErrorActionCreator: setSizeErrorActionCreatorType

@@ -18,8 +18,6 @@ type coverSelectActionsType = ISetCoverAction | ISetErrorAction
 
 type coverSelectReducerType = (state: ICoverSelectState, action: coverSelectActionsType) => ICoverSelectState
 
-export type setCoverErrorActionCreatorType = () => { type: typeof SET_COVER_ERROR }
-export type setCoverActionCreatorType = (index: number) => { type: typeof SET_COVER, payload: number }
 
 export interface ICoverItem {
     tabIndex: number,
@@ -63,7 +61,8 @@ const initialState: ICoverSelectState = {
     ]
 }
 
-const coverSelectReducer: coverSelectReducerType = (state: ICoverSelectState = initialState, action: coverSelectActionsType): ICoverSelectState => {
+
+const coverSelectReducer: coverSelectReducerType = (state: ICoverSelectState = initialState, action: coverSelectActionsType) => {
     switch (action.type) {
         case SET_COVER: {
             const newState: Array<ICoverItem> = state.covers.map((item: ICoverItem) => {
@@ -92,6 +91,11 @@ const coverSelectReducer: coverSelectReducerType = (state: ICoverSelectState = i
             return state
     }
 }
+
+
+export type setCoverErrorActionCreatorType = () => ISetErrorAction
+export type setCoverActionCreatorType = (index: number) => ISetCoverAction
+
 
 export const setCoverErrorActionCreator: setCoverErrorActionCreatorType = () => ({type: SET_COVER_ERROR})
 export const setCoverActionCreator: setCoverActionCreatorType = (index: number) => ({type: SET_COVER, payload: index})

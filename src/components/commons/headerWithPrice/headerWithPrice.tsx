@@ -23,13 +23,14 @@ const HeaderWithPrice: React.FC<IHeaderWithPriceProps> = ({
         <div id={anchor} className={isListItem ? `${styles.container} ${styles.listItem}` : styles.container}>
             <div className={styles.text_and_price}>
                 <p className={error ? `${styles.text} ${styles.error}` : styles.text}>{header}</p>
-                <p className={styles.price}>{price ? priceToString : undefined}</p>
+                {
+                    price ? <p className={styles.price}>{priceToString}</p> : undefined
+                }
             </div>
             {
                 !!price && !!callback ?
                     <span className={`${styles.checkbox} ${isSelected ? styles.check : ""}`} onClick={() => {
                         if (id === "1" && isSelected) {
-                            localStorage.setItem("optionalText", "")
                             dispatch(setOptionalTextActionCreator(""))
                             callback(id ? id : "")
                         } else callback(id ? id : "")
