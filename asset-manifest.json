@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/orlovreact/static/css/main.c110e284.css",
-    "main.js": "/orlovreact/static/js/main.4677e7a5.js",
+    "main.js": "/orlovreact/static/js/main.cdc7d538.js",
     "static/js/787.a3f7ede4.chunk.js": "/orlovreact/static/js/787.a3f7ede4.chunk.js",
     "static/media/Pattaya-Regular.woff": "/orlovreact/static/media/Pattaya-Regular.09f4439170c05382ed77.woff",
     "static/media/Pattaya-Regular.woff2": "/orlovreact/static/media/Pattaya-Regular.d9231c9faeac2985405f.woff2",
@@ -24,11 +24,11 @@
     "index.html": "/orlovreact/index.html",
     "static/media/mastercard.svg": "/orlovreact/static/media/mastercard.0810a191bea85aaa8b423f1a3a2f633b.svg",
     "main.c110e284.css.map": "/orlovreact/static/css/main.c110e284.css.map",
-    "main.4677e7a5.js.map": "/orlovreact/static/js/main.4677e7a5.js.map",
+    "main.cdc7d538.js.map": "/orlovreact/static/js/main.cdc7d538.js.map",
     "787.a3f7ede4.chunk.js.map": "/orlovreact/static/js/787.a3f7ede4.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.c110e284.css",
-    "static/js/main.4677e7a5.js"
+    "static/js/main.cdc7d538.js"
   ]
 }
