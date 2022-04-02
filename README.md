@@ -1,4 +1,4 @@
-# Github page link 
+# Github-pages link 
 
 https://evgeniygrokholskiy.github.io/orlovreact/
 
