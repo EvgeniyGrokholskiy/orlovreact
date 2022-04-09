@@ -5,48 +5,31 @@ import MyLink from "../commons/myLink/myLink";
 import SizeSelect from "./sizeselect/sizeSelect";
 import FocusOnSelectSlider from "./slider/slider";
 import CoveSelect from "./coverSelect/coveSelect";
-import {
-    ICoverItem,
-    ICoverSelectState,
-    setCoverActionCreator,
-    setCoverErrorActionCreator,
-} from "../../redux/coverSelectReducer";
+import {localStoreAPI} from "../../API/localStore";
+import ContinueButton from "../commons/continueButton/continueButton";
+import {IAppState, setHrefActionCreator} from "../../redux/appReducer";
+import React, { useCallback, useEffect} from "react";
+import {ISizeSelectState, setSizeErrorActionCreator, sizeSelectActionCreator,} from "../../redux/sizeSelectReducer";
+import {ICoverSelectState, setCoverActionCreator, setCoverErrorActionCreator,} from "../../redux/coverSelectReducer";
 import {
     IRootState,
     IHomePageProps,
-    iSizeAndCoversObj,
     isCoverSelectedType,
     isSizesSelectedType,
     HomePageToOrderPageTermsType
 } from "../interfacesAndTypes/interfacesAndTypes";
-import {
-    ISizeItem,
-    ISizeSelectState,
-    sizeSelectActionCreator,
-    setSizeErrorActionCreator,
-} from "../../redux/sizeSelectReducer";
-import ContinueButton from "../commons/continueButton/continueButton";
-import React, {Dispatch, SetStateAction, useCallback, useEffect, useState} from "react";
 
 
 const Homepage: React.FC<IHomePageProps> = ({
+                                                app,
                                                 sizes,
                                                 covers,
+                                                setHrefActionCreator,
                                                 setCoverActionCreator,
                                                 sizeSelectActionCreator,
                                                 setSizeErrorActionCreator,
                                                 setCoverErrorActionCreator,
                                             }: IHomePageProps) => {
-
-    const selectedCoverAndSizeToLocalStorage = (sizes: ISizeSelectState, covers: ICoverSelectState) => {
-
-        const selectedSize = sizes.sizes.filter((item: ISizeItem) => item.selected)
-        const selectedCover = covers.covers.filter((item: ICoverItem) => item.selected)
-        let sizeAndCoversObj: iSizeAndCoversObj = {cover: selectedCover[0].className, size: selectedSize[0].price}
-        localStorage.setItem("sizeAndCoverObj", JSON.stringify(sizeAndCoversObj))
-    }
-
-    const [href, setHref]: [href: string, setHref: Dispatch<SetStateAction<string>>] = useState<string>("#size-select")
 
     const isCoverSelected: isCoverSelectedType = (covers: ICoverSelectState): boolean => {
         return covers.isSelected;
@@ -91,14 +74,14 @@ const Homepage: React.FC<IHomePageProps> = ({
         const terms = HomePageToOrderPageTerms()
 
         if (terms.sizeAndCoverNotSelected) {
-            setHref("#size_select")
+            setHrefActionCreator("#size_select")
         } else if (terms.coverSelectedSizeNot) {
-            setHref("#size_select")
+            setHrefActionCreator("#size_select")
         } else if (terms.sizeSelectedCoversNot) {
-            setHref("#cover_select")
+            setHrefActionCreator("#cover_select")
         } else if (terms.allSelected) {
-            setHref("/order")
-            selectedCoverAndSizeToLocalStorage(sizes, covers)
+            setHrefActionCreator("/order")
+            localStoreAPI.selectedCoverAndSizeToLocalStorage(sizes, covers)
         }
 
     }, [sizes, covers, HomePageToOrderPageTerms])
@@ -142,19 +125,21 @@ const Homepage: React.FC<IHomePageProps> = ({
             <section>
                 <CoveSelect covers={covers.covers} error={covers.error} setCoverActionCreator={setCoverActionCreator}/>
                 <hr className={styles.separator}/>
-                <ContinueButton href={href} className={`${styles.continue} shadow`}
+                <ContinueButton href={app.href} className={`${styles.continue} shadow`}
                                 callback={nextPage}>Продолжить</ContinueButton>
             </section>
         </main>
     );
 };
 
-const mapStateToProps = (state: IRootState): { covers: ICoverSelectState, sizes: ISizeSelectState } => ({
+const mapStateToProps = (state: IRootState): { app: IAppState, covers: ICoverSelectState, sizes: ISizeSelectState } => ({
+    app: state.app,
     sizes: state.sizes,
     covers: state.covers,
 })
 
 const mapDispatchToProps = {
+    setHrefActionCreator,
     setCoverActionCreator,
     sizeSelectActionCreator,
     setSizeErrorActionCreator,
